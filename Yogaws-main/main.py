@@ -20,6 +20,10 @@ def close_db(exception):
 def index():
     return render_template('index.html')
 
+@app.route('/workshop')
+def workshop():
+    return render_template('workshop.html')
+
 @app.route('/knowmore')
 def knowmore():
     return render_template('information.html')
@@ -31,6 +35,10 @@ def enroll():
 @app.route('/addtocart')
 def addtocart():
     return render_template('addtocart.html')
+
+@app.route('/teachercart')
+def teachercart():
+    return render_template('teachercart.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

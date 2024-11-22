@@ -13,43 +13,52 @@ html, body {
 }
 
 body {
-    background: linear-gradient(90deg, #fff4cc, #fadd77); /* Light Cream to Golden Yellow */
+    background: linear-gradient(135deg, #fff4cc, #ffc95c);
+    min-height: 100vh;
+    padding: 15px;
 }
 
 section {
-    margin: 0 auto;
-    padding: 20px;
-    background: linear-gradient(90deg, #ff7f0e, #d35400);
+    margin: 20px auto;
+    padding: 25px;
+    background: linear-gradient(135deg, #ff7f0e, #d35400);
     border-radius: 15px;
-    box-shadow: 0px 0px 24px #8c564b; /* Soft Brown shadow */
-    max-width: 600px;
-    position: relative;
+    box-shadow: 0 8px 25px rgba(140, 86, 75, 0.3);
+    max-width: 550px;
+    width: 95%;
 }
 
 ::placeholder {
-    color: #000000; /* Light grey color */
-    opacity: 1; /* Ensures the color is fully applied */
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 1;
 }
 
 .heading {
     text-align: center;
-    color: white;
+    color: #fff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
 }
 
 .heading h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .heading p {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    opacity: 0.9;
 }
 
 hr {
     border: none;
-    height: 1px;
-    background: #8c564b; /* Soft Brown */
-    margin-bottom: 30px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-bottom: 25px;
 }
 
 .candidate-name,
@@ -59,7 +68,33 @@ hr {
 .address-3,
 .info,
 .job-applying {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+/* Special styling for Full Name and Birth Date sections */
+.candidate-name,
+.dob {
+    background: rgba(255, 201, 92, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Special label styling for Full Name and Birth Date */
+.candidate-name label,
+.dob label {
+    color: #fff4cc;
+    font-size: 1.1rem;
 }
 
 .candidate-name input,
@@ -72,14 +107,22 @@ hr {
 .job-applying select,
 .start-date input {
     width: 100%;
-    height: 40px;
-    border: none;
-    border-bottom: 2px solid #d35400; /* Dark Orange */
-    background: none;
-    padding: 10px;
-    font-weight: 700;
-    color: #333; /* Dark text color */
-    transition: .2s;
+    height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    font-weight: 500;
+    color: #fff;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+/* Special input/select styling for Full Name and Birth Date */
+.candidate-name input,
+.dob select {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 201, 92, 0.5);
 }
 
 .candidate-name input:focus,
@@ -91,29 +134,46 @@ hr {
 .job-applying select:focus,
 .start-date input:focus {
     outline: none;
-    border-bottom-color: #ff7f0e; /* Vibrant Orange */
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Special focus styling for Full Name and Birth Date */
+.candidate-name input:focus,
+.dob select:focus {
+    border-color: #ffc95c;
+    background: rgba(255, 201, 92, 0.2);
+}
+
+/* Dropdown specific styling */
+select option {
+    background: #fff;
+    color: #333;
+    padding: 8px;
 }
 
 .submit-form {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .submit-form input {
-    width: 100px;
+    width: 120px;
     height: 40px;
-    background: #fff4cc; /* Light Cream */
-    color: #333; /* Dark text color */
+    background: #ffc95c;
+    color: #333;
     border-radius: 20px;
-    border: 1px solid #d35400; /* Dark Orange */
-    font-size: 15px;
+    border: none;
+    font-size: 0.9rem;
     font-weight: 700;
     cursor: pointer;
-    transition: .2s;
-    box-shadow: 0px 2px 2px #8c564b; /* Soft Brown shadow */
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .submit-form input:hover {
-    border-color: #ff7f0e; /* Vibrant Orange */
+    background: #f7b636;
+    transform: translateY(-2px);
 }

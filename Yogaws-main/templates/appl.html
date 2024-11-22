@@ -20,16 +20,16 @@
 
     <section class="main-body">
         <div class="heading">
-            <h1>Trainer program</h1>
-            <p>Please complete the form below to apply for a position with us.</p>
+            <h1>Join Our Team</h1>
+            <p>We're excited to have you apply! Please fill out the form below.</p>
             <hr>
         </div>
-        <form action="{{ url_for('apply') }}" method="post">
+        <form action="/teachercart" method="post">
             <div class="app-form">
                 <label for="fname">Full Name</label><br>
                 <div class="candidate-name">
-                    <input type="text" name="fname" id="fname" placeholder="First Name" required style="color:aliceblue;">
-                    <input type="text" name="lname" id="lname" placeholder="Last Name" required style="color:aliceblue;">
+                    <input type="text" name="fname" id="fname" placeholder="First Name" required>
+                    <input type="text" name="lname" id="lname" placeholder="Last Name" required>
                 </div>
 
                 <label for="dob-month">Birth Date</label><br>
@@ -56,43 +56,33 @@
 
                 <label for="password">Password</label><br>
                 <div class="password">
-                    <input type="password" name="password" id="password" placeholder="Password" required style="color:aliceblue;">
+                    <input type="password" name="password" id="password" placeholder="Create a strong password" required>
                 </div>
 <br>
                 <label for="address">Current Address</label><br>
                 <div class="address-1">
-                    <input class="strt-1" type="text" name="address" id="address" placeholder="Street Address" required style="color:aliceblue;">
-                    <input class="strt-2" type="text" name="address2" id="address2" placeholder="Street Address Line 2" style="color:aliceblue;">
+                    <input class="strt-1" type="text" name="address" id="address" placeholder="Street Address" required>
+                    <input class="strt-2" type="text" name="address2" id="address2" placeholder="Street Address Line 2">
                 </div>
                 <div class="address-2">
-                    <input class="city" type="text" name="city" id="city" placeholder="City" required style="color:aliceblue;">
-                    <input class="state" type="text" name="state" id="state" placeholder="State / Province" required style="color:aliceblue;">
+                    <input class="city" type="text" name="city" id="city" placeholder="City" required>
+                    <input class="state" type="text" name="state" id="state" placeholder="State / Province" required>
                 </div>
                 <div class="address-3">
-                    <input class="postal" type="text" name="postal" id="postal" placeholder="Postal / Zip Code" required style="color:aliceblue;">
+                    <input class="postal" type="text" name="postal" id="postal" placeholder="Postal / Zip Code" required>
                 </div>
 
-                <label for="phoneNo">Contact info</label>
+                <label for="phoneNo">Contact Information</label>
                 <div class="info">
                     <br>
-                    <input type="email" name="email" id="email" placeholder="ex: myname@example.com" required><br>
+                    <input type="email" name="email" id="email" placeholder="Email: myname@example.com" required><br>
                     <label for="phone"></label>
-                    <input type="tel" name="phone" id="phone" placeholder="+91 00000 00000" required><br>
+                    <input type="tel" name="phone" id="phone" placeholder="Phone: +91 00000 00000" required><br>
                 </div>
             </div>
 
             <div class="job-applying">
                 <div class="pos-applying">
-                    <div class="pos-applied">
-                        <label for="position">Course of choice</label><br>
-                        <select name="position" id="position" required>
-                            <option value="" disabled selected>Please Select</option>
-                            <option value="Trainer program">Trainer program</option>
-                            <option value="YCB 200 hour">YCB 200 hour</option>
-                            <option value="YCB 300 hour">YCB 300 hour</option>
-                            <option value="YCB 500 hour">YCB 500 hour</option>
-                        </select>
-                    </div>
                     <div class="pos-applied-hear">
                         <br>
                         <label for="hear">How did you hear about us?</label><br>
@@ -107,7 +97,7 @@
                 </div>
 
                 <div class="submit-form">
-                    <input type="submit" name="btn" id="btn">
+                    <input type="submit" value="Submit" name="btn" id="btn">
                 </div>
             </div>
         </form>
