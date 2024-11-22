@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
+
+.team-section * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.team-section {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(to bottom, #055B0B, #588d69);
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 400;
+}
+
+.team-section .container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 400px;
+  gap: 10px;
+}
+
+.team-section .container > div {
+  margin-top: 20px;
+  flex: 0 0 200px;
+  border-radius: 0.5rem;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+  /* box-shadow: 1px 5px 15px #263930; Subtle shadow color */
+  position: relative;
+  overflow: hidden;
+}
+
+.team-section .container > div:nth-of-type(1) {
+  background: url("/static/assets/trainer.webp") no-repeat 50% / cover;
+}
+.team-section .container > div:nth-of-type(5){
+  background: url("/static/assets/new_trainy.png") no-repeat 50% / cover;
+}
+.team-section .container > div:nth-of-type(2) {
+  background: url("/static/assets/trainer2.webp") no-repeat 50% / cover;
+}
+.team-section .container > div:nth-of-type(3) {
+  background: url("/static/assets/trainer3.webp") no-repeat 50% / cover;
+}
+.team-section .container > div:nth-of-type(4) {
+  background: url("/static/assets/trainer4.webp") no-repeat 50% / cover;
+}
+.team-section .container > div:nth-of-type(6) {
+  background: url("/static/assets/trainer2.webp") no-repeat 50% / cover;
+}
+
+
+.team-section .content {
+  font-size: 1.5rem;
+  color: #ffffff; /* Accent text color */
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  opacity: 0;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+  background: linear-gradient(
+    0deg,
+    #7aab9c 0%, /* Gradient using the purple shade */
+    rgba(255, 255, 255, 0) 60%
+  );
+  transform: translatey(100%);
+  transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
+  visibility: hidden;
+}
+
+.team-section .content span {
+  display: block;
+  margin-top: 5px;
+  font-size: 1.2rem;
+}
+
+.team-section .container > div:hover {
+  flex: 0 0 250px;
+  box-shadow: 1px 3px 15px #54784f; /* Bright hover state shadow */
+  transform: translatey(-30px);
+}
+
+.team-section .container > div:hover .content {
+  opacity: 1;
+  transform: translatey(0%);
+  visibility: visible;
+}
+
+.joinus{
+  /* font-family:"Ubuntu Mono",monospace ;*/
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: larger;
+  color: white;
+}
+/* Carousel Section */
+.custom-carousel-container {
+  height: 600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 500px 100px;
+  grid-template-columns: repeat(16, 1fr);
+  align-items: center;
+  justify-items: center;
+  position: relative;
+  background: linear-gradient(to bottom, #588d69,#07a173);
+  /* border-radius: 15px; */
+  overflow: hidden;
+  /* box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); */
+}
+
+.custom-carousel {
+  grid-row: 1 / 2;
+  grid-column: 1 / -1;
+  width: 100vw;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 600px;
+  --items: 14;
+  --middle: 7;
+  --position: 3;
+  pointer-events: none;
+}
+
+.custom-carousel-item {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  background-color: coral;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  padding: 15px;
+  --r: calc(var(--position) - var(--offset));
+  --abs: max(calc(var(--r) * -1), var(--r));
+  transition: all 0.5s ease-in-out;
+  transform: rotateY(calc(-10deg * var(--r))) translateX(calc(-300px * var(--r)));
+  z-index: calc((var(--position) - var(--abs)));
+}
+
+
+.image-container {
+  width: 100%;
+  height: 200px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+
+.custom-carousel-item h3 {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.custom-carousel-item p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.apply-btn {
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.apply-btn:hover {
+  background-color: #ff3e30;
+}
+
+/* Adjust colors for 14 slides */
+.custom-carousel-item:nth-of-type(1) { --offset: 1; background-color: #90f1ef; }
+.custom-carousel-item:nth-of-type(2) { --offset: 2; background-color: #ff70a6; }
+.custom-carousel-item:nth-of-type(3) { --offset: 3; background-color: #ff9770; }
+.custom-carousel-item:nth-of-type(4) { --offset: 4; background-color: #ffd670; }
+.custom-carousel-item:nth-of-type(5) { --offset: 5; background-color: #e9ff70; }
+.custom-carousel-item:nth-of-type(6) { --offset: 6; background-color: #70ff96; }
+.custom-carousel-item:nth-of-type(7) { --offset: 7; background-color: #70a6ff; }
+.custom-carousel-item:nth-of-type(8) { --offset: 8; background-color: #d2a64f; }
+.custom-carousel-item:nth-of-type(9) { --offset: 9; background-color: #ff70e1; }
+.custom-carousel-item:nth-of-type(10) { --offset: 10; background-color: #ff7070; }
+.custom-carousel-item:nth-of-type(11) { --offset: 11; background-color: #70ffda; }
+.custom-carousel-item:nth-of-type(12) { --offset: 12; background-color: #ff9f70; }
+.custom-carousel-item:nth-of-type(13) { --offset: 13; background-color: #ffea70; }
+.custom-carousel-item:nth-of-type(14) { --offset: 14; background-color: #dfff70; }
+
+.custom-carousel-radio {
+  grid-row: 2 / 3;
+  display: none; /* Hide radio buttons */
+}
+
+/* Navigation Arrows */
+.carousel-prev, .carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  z-index: 100;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-prev {
+  left: 10px;
+}
+
+.carousel-next {
+  right: 10px;
+}
+
+.know-more-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+  padding: 12px 30px;
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.know-more-btn:hover {
+  background-color: #ff3e30;
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}

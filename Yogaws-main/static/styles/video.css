@@ -1,0 +1,68 @@
+/* Video container with sliding animation */
+#video-container {
+  position: fixed;
+  bottom: -100%;
+  right: -100%;
+  width: 250px;
+  height: 170px;
+  z-index: 9999;
+  cursor: pointer;
+  transition: width 0.5s ease, height 0.5s ease, bottom 0.5s ease, right 0.5s ease;
+  animation: slideIn 1s forwards ease-out;
+}
+
+/* Fullscreen mode */
+#video-container.fullscreen {
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 100vw;
+  height: 100vh;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Optional: Add a semi-transparent background to highlight the video */
+}
+
+/* Video size control */
+#minimized-video {
+  width: 90%; /* Make the video take up 90% of the screen width when in fullscreen */
+  height: auto; /* Keep aspect ratio */
+  max-height: 90%; /* Prevent the video from overflowing vertically */
+  object-fit: cover;
+}
+
+/* Close button styling */
+#close-btn {
+  position: absolute;
+  top: 5px;
+  right: 25px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+  z-index: 10000; /* Make sure it's above the video */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#close-btn:hover {
+  background-color: darkred;
+}
+
+/* Keyframes for sliding animation */
+@keyframes slideIn {
+  0% {
+    bottom: -100%;
+    right: -100%;
+  }
+  100% {
+    bottom: 10px;
+    right: 10px;
+  }
+}
