@@ -52,14 +52,14 @@
             </div>
     </section>
 
-    <div id="video-container">
+    <!-- <div id="video-container">
         <button id="close-btn">&times;</button>
         <video id="minimized-video" controls>
-          <source src="/static/assets/enrollment.mp4" type="video/mp4">
-          Your browser does not support the video tag.
+        <source src="/static/assets/enrollment.mp4" type="video/mp4">
+        Your browser does not support the video tag.
         </video>
-      </div>
-      
+    </div> -->
+
 
     <section id="trainers" id = "gohere">
         <div class="team-section">
@@ -134,88 +134,88 @@
             <!-- Carousel Items -->
             <div class="custom-carousel-item">
                 <div class="image-container">
-                    <img src="/static/assets/photos/four.png" alt="Hatha Yoga Pose">
+                    <img src="/static/assets/hathayoga.webp" alt="Hatha Yoga Pose">
                 </div>
                 <h3>Hatha Yoga</h3>
                 <p>Experience the balance of body and mind with traditional Hatha Yoga.</p>
                 <div class="link">
                     <a href="{{ url_for('knowmore') }}">
-                    <button class="apply-btn">Apply Now</button>
+                    <!-- <button class="apply-btn">Apply Now</button> -->
                 </a>
                 </div>
                 
             </div>
             <div class="custom-carousel-item">
                 <div class="image-container">
-                    <img src="/static/assets/photos/thirteen.png" alt="Iyengar Yoga Pose">
+                    <img src="/static/assets/iyengaryoga.webp" alt="Iyengar Yoga Pose">
                 </div>
                 <h3>Iyengar Yoga</h3>
                 <p>Perfect your alignment with the precision of Iyengar Yoga.</p>
-                <button class="apply-btn">Apply Now</button>
+                <!-- <button class="apply-btn">Apply Now</button> -->
             </div>
             <div class="custom-carousel-item">
                 <div class="image-container">
-                    <img src="/static/assets/photos/twelve.png" alt="Ashtanga Yoga Pose">
+                    <img src="/static/assets/ashtangayoga.webp" alt="Ashtanga Yoga Pose">
                 </div>
                 <h3>Ashtanga Yoga</h3>
                 <p>Flow through dynamic sequences with Ashtanga Yoga.</p>
-                <button class="apply-btn">Apply Now</button>
+                <!-- <button class="apply-btn">Apply Now</button> -->
             </div>
             <div class="custom-carousel-item">
                 <div class="image-container">
-                    <img src="/static/assets/photos/two.png" alt="Power Yoga Pose">
+                    <img src="/static/assets/poweryoga.webp" alt="Power Yoga Pose">
                 </div>
                 <h3>Power Yoga</h3>
                 <p>Boost your strength and endurance with Power Yoga.</p>
-                <button class="apply-btn">Apply Now</button>
+                <!-- <button class="apply-btn">Apply Now</button> -->
             </div>
             <div class="custom-carousel-item">
                 <div class="image-container">
-                    <img src="/static/assets/photos/seven.png" alt="Aerial Yoga Pose">
+                    <img src="/static/assets/aerialyoga.webp" alt="Aerial Yoga Pose">
                 </div>
                 <h3>Aerial Yoga</h3>
                 <p>Defy gravity and find balance with Aerial Yoga.</p>
-                <button class="apply-btn">Apply Now</button>
+                <!-- <button class="apply-btn">Apply Now</button> -->
             </div>
             <div class="custom-carousel-item">
                 <div class="image-container">
-                    <img src="/static/assets/photos/seven.png" alt="Aerial Yoga Pose">
+                    <img src="/static/assets/advancedyoga.webp" alt="Aerial Yoga Pose">
                 </div>
                 <h3>Advance Yoga</h3>
                 <p>Defy gravity and find balance with Aerial Yoga.</p>
-                <button class="apply-btn">Apply Now</button>
+                <!-- <button class="apply-btn">Apply Now</button> -->
             </div>
             <div class="custom-carousel-item">
                 <div class="image-container">
-                    <img src="/static/assets/photos/seven.png" alt="Aerial Yoga Pose">
+                    <img src="/static/assets/competitveyoga.webp" alt="Aerial Yoga Pose">
                 </div>
                 <h3>Competetive Yoga</h3>
                 <p>Defy gravity and find balance with Aerial Yoga.</p>
-                <button class="apply-btn">Apply Now</button>
+                <!-- <button class="apply-btn">Apply Now</button> -->
             </div>
             <div class="custom-carousel-item">
                 <div class="image-container">
-                    <img src="/static/assets/photos/seven.png" alt="Aerial Yoga Pose">
+                    <img src="/static/assets/photos/fifteen.png" alt="Aerial Yoga Pose">
                 </div>
                 <h3>Weight Loss Yoga</h3>
                 <p>Defy gravity and find balance with Aerial Yoga.</p>
-                <button class="apply-btn">Apply Now</button>
+                <!-- <button class="apply-btn">Apply Now</button> -->
             </div>
             <div class="custom-carousel-item">
                 <div class="image-container">
-                    <img src="/static/assets/photos/seven.png" alt="Aerial Yoga Pose">
+                    <img src="/static/assets/pregnancyyoga.webp" alt="Aerial Yoga Pose">
                 </div>
                 <h3>Preganancy Yoga</h3>
                 <p>Defy gravity and find balance with Aerial Yoga.</p>
-                <button class="apply-btn">Apply Now</button>
+                <!-- <button class="apply-btn">Apply Now</button> -->
             </div>
             <div class="custom-carousel-item">
                 <div class="image-container">
-                    <img src="/static/assets/photos/seven.png" alt="Aerial Yoga Pose">
+                    <img src="/static/assets/yogatherapy.webp" alt="Aerial Yoga Pose">
                 </div>
                 <h3>Yog Therapy</h3>
                 <p>Defy gravity and find balance with Aerial Yoga.</p>
-                <button class="apply-btn">Apply Now</button>
+                <!-- <button class="apply-btn">Apply Now</button> -->
             </div>
             <!-- Add more items as needed -->
             {% for course in courses %}
@@ -225,7 +225,7 @@
                 </div>
                 <h3>{{ course.name }}</h3>
                 <p>{{ course.description }}</p>
-                <button class="apply-btn">Apply Now</button>
+                <!-- <button class="apply-btn">Apply Now</button> -->
             </div>
             {% endfor %}
         </div>

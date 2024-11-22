@@ -1,98 +1,98 @@
 const product = [
     {
         id: 0,
-        image: "/static/assets/photos/eleven.png",
+        image: "/static/assets/meditation.webp",
         title: 'Meditation',
         price: 120,
         description: 'A practice of focusing the mind and achieving a state of mental clarity and relaxation.'
     },
     {
         id: 1,
-        image: '/static/assets/photos/thirteen.png',
+        image: '/static/assets/iyengaryoga.webp',
         title: 'Iyenger Yoga',
         price: 60,
         description: 'A style of yoga that emphasizes precise alignment and the use of props to aid in achieving postures.'
     },
     {
         id: 2,
-        image: '/static/assets/photos/two.png',
+        image: '/static/assets/advancedyoga.webp',
         title: 'Advanced Yoga',
         price: 230,
         description: 'Yoga practice involving complex postures and techniques for experienced practitioners.'
     },
     {
         id: 3,
-        image: '/static/assets/photos/four.png',
+        image: '/static/assets/ashtangayoga.webp',
         title: 'Ashtanga Yoga',
         price: 100,
         description: 'A dynamic style of yoga consisting of a set sequence of postures performed in a specific order with a focus on breath and movement.'
     },
     {
         id: 4,
-        image: '/static/assets/photos/two.png',
+        image: '/static/assets/competitveyoga.webp',
         title: 'Competitive Yoga',
         price: 230,
         description: 'A practice where individuals perform yoga postures and sequences to compete in events based on technique and form.'
     },
     {
         id: 5,
-        image: '/static/assets/photos/two.png',
+        image: '/static/assets/poweryoga.webp',
         title: 'Power Yoga',
         price: 230,
         description: ' A vigorous and fitness-oriented form of yoga that focuses on strength, flexibility, and endurance.'
     },
     {
         id: 6,
-        image: '/static/assets/photos/two.png',
+        image: '/static/assets/photos/fifteen.png',
         title: 'Weight Loss Yoga',
         price: 230,
         description: 'A yoga practice designed to enhance metabolism and aid in weight management through various poses and sequences.'
     },
     {
         id: 7,
-        image: '/static/assets/photos/two.png',
+        image: '/static/assets/aerialyoga.webp',
         title: 'Aerial Yoga',
         price: 230,
         description: 'A form of yoga performed with the aid of a suspended fabric hammock to support and enhance postures.'
     },
     {
         id: 8,
-        image: '/static/assets/photos/two.png',
+        image: '/static/assets/pregnancyyoga.webp',
         title: 'Pregnancy Yoga',
         price: 230,
         description: 'Yoga tailored for expectant mothers to support physical and emotional well-being during pregnancy.'
     },
     {
         id: 9,
-        image: '/static/assets/photos/two.png',
+        image: '/static/assets/vinyasayoga.webp',
         title: 'Vinyasa Yoga',
         price: 230,
         description: 'A style of yoga characterized by a flowing sequence of poses linked with the breath, creating a smooth and dynamic practice.'
     },
     {
         id: 10,
-        image: '/static/assets/photos/two.png',
+        image: '/static/assets/yogatherapy.webp',
         title: 'Yoga Therapy',
         price: 230,
         description: 'A therapeutic approach to yoga that uses specific postures and techniques to address individual health concerns and promote overall well-being.'
     },
     {
         id: 11,
-        image: '/static/assets/photos/two.png',
+        image: '/static/assets/stressmanagement.webp',
         title: 'Stress Management',
         price: 230,
         description: 'Techniques and practices designed to reduce and manage stress, often incorporating yoga, mindfulness, and relaxation methods.'
     },
     {
         id: 12,
-        image: '/static/assets/photos/two.png',
+        image: '/static/assets/kidsyoga.webp',
         title: 'Kids Yoga',
         price: 230,
         description: 'Yoga designed for children, focusing on playful poses, movement, and relaxation to promote physical and emotional development.'
     },
     {
         id: 13,
-        image: '/static/assets/photos/two.png',
+        image: '/static/assets/hathayoga.webp',
         title: 'Hatha Yoga',
         price: 230,
         description: 'A comprehensive form of yoga aimed at improving strength and flexibility.'
