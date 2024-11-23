@@ -291,3 +291,78 @@ button:hover{
         padding: 10px 20px;
     }
 }
+
+.toggle-container {
+    text-align: center;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.toggle-container label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.toggle-container input[type="checkbox"] {
+    transform: scale(1.2); /* Makes the toggle switch larger */
+    margin-right: 5px;
+}
+
+.toggle-container span {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+
+    .logo img {
+        width: 80px; /* Smaller logo for mobile devices */
+    }
+
+    .cart {
+        width: 70px;
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar {
+        width: 90%;
+        margin: 0 auto;
+        position: static;
+    }
+
+    .box {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    .description-content {
+        font-size: 12px;
+    }
+
+    .cart-item {
+        flex-wrap: wrap;
+        text-align: left;
+    }
+
+    .qty-btn {
+        margin: 5px;
+        font-size: 12px;
+    }
+}
