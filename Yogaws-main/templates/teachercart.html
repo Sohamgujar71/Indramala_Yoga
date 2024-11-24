@@ -3,49 +3,32 @@
     <head>
         <link rel="stylesheet" href="/static/styles/teachercart.css">
         <script src="https://kit.fontawesome.com/92d70a2fd8.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet"
     </head>
     <body>
         <div class="header">
             <div class="logo">
-                <div class="logo">
-                    <img src="/static/assets/website_icon.webp" alt="" srcset="">
-                </div>
+                <img src="/static/assets/website_icon1.webp" alt="">
             </div>
             <div class="header1">
-                <p class="head-txt">TEACHER DASHBOARD</p>
+                <h1 class="head-txt">Yoga Products</h1>
             </div>
-            <div class="notifications">
-                <i class="fa-solid fa-bell"></i>
-                <p id="notification-count">0</p>
-            </div>
+            <div class="cart"><i class="fa-solid fa-cart-shopping"></i><p id="count">0</p></div>
         </div>
-        
+        <div class="toggle-container">
+            <label for="mode-toggle">Mode:</label>
+            <input type="checkbox" id="mode-toggle" />
+            <span id="mode-status">Online</span>
+        </div>
         <div class="container">
-            <div id="root">
-                <div class="teacher-stats">
-                    <h2>Your Statistics</h2>
-                    <div class="stats-grid">
-                        <div class="stat-box">
-                            <h3>Total Classes</h3>
-                            <p id="total-classes">0</p>
-                        </div>
-                        <div class="stat-box">
-                            <h3>Students</h3>
-                            <p id="total-students">0</p>
-                        </div>
-                        <div class="stat-box">
-                            <h3>Rating</h3>
-                            <p id="rating">0.0</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="root"></div>
             <div class="sidebar">
-                <div class="head"><p>Upcoming Classes</p></div>
-                <div id="classList">No upcoming classes</div>
+                <div class="head"><p>My Cart</p></div>
+                <div id="cartItem">Your cart is empty</div>
                 <div class="foot">
-                    <h3>Next Class</h3>
-                    <h2 id="next-class">No classes scheduled</h2>
+                    <h3>Total</h3>
+                    <h2 id="total">Rs 0.00</h2>
                 </div>
             </div>
         </div>
