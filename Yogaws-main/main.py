@@ -130,7 +130,7 @@ def login():
 
 @app.route('/apply', methods=['GET', 'POST'])
 def apply():
-    if request.method == 'POST':
+    if request.method == 'POST':    
         first_name = request.form['fname']
         last_name = request.form['lname']
         dob_day = request.form['dob-date']
@@ -142,7 +142,6 @@ def apply():
         state = request.form['state']
         postal = request.form['postal']
         phone = request.form['phone']
-        position = request.form['position']  # This is the course the instructor is learning
         hear = request.form['hear']
         password = request.form['password']  
 
@@ -159,7 +158,7 @@ def apply():
 
         if existing_instructor:
             flash("Phone number already registered. Please use a different number.", "error")
-            return redirect(url_for('gallery'))  # Redirect back to the application form
+            return redirect(url_for('apply'))  # Redirect back to the application form
 
         # Insert data into the instructors table
         cursor.execute('''
@@ -168,19 +167,19 @@ def apply():
         ''', (first_name, last_name, phone, dob, f"{address}, {address2}, {city}, {state}, {postal}", hear, generate_password_hash(password)))
         
         # Get the TID of the newly inserted instructor
-        new_instructor_id = cursor.lastrowid
+        # new_instructor_id = cursor.lastrowid
 
-        # Insert the position value into the instructor_learning table
-        cursor.execute('''
-            INSERT INTO instructor_learning (TID, Course_name)
-            VALUES (?, ?)
-        ''', (new_instructor_id, position))
+        # # Insert the position value into the instructor_learning table
+        # cursor.execute('''
+        #     INSERT INTO instructor_learning (TID, Course_name)
+        #     VALUES (?, ?)
+        # ''', (new_instructor_id))
 
         # Commit the changes
         db.commit()
         
         flash("Application submitted successfully!", "success")
-        return redirect(url_for('success'))  # Redirect to a success page
+        return render_template('teachercart.html')  # Render teachercart.html after success
 
     return render_template('appl.html')
 
