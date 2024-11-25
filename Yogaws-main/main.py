@@ -1,9 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, g, session
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import timedelta
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # For flashing messages
+app.secret_key = 'indramalayoga'  # For flashing messages
+app.permanent_session_lifetime = timedelta(minutes=30)  # Set session timeout to 30 minutes
+
+@app.before_request
+def make_session_permanent():
+    session.permanent = True
 
 def get_db():
     if 'db' not in g:
@@ -30,11 +36,14 @@ def knowmore():
 
 @app.route('/enroll')
 def enroll():
-    return render_template('addtocart.html')
+    if 'user_id' in session:
+        return render_template('addtocart.html')
+    else:
+        return redirect(url_for('login'))
 
-@app.route('/addtocart')
-def addtocart():
-    return render_template('addtocart.html')
+#@app.route('/addtocart')
+#def addtocart():
+#    return render_template('addtocart.html')
 
 @app.route('/teachercart')
 def teachercart():
@@ -94,7 +103,9 @@ def login():
 
         if user and (user[5], password):  
             session['user_type'] = 'user'
-            session['user_id'] = user[0]  
+            session['user_id'] = user[0] 
+            session['user_name'] = user[1]
+            session['user_lastname'] = user[2]
             return redirect(url_for('success'))
 
         # Check instructors table
@@ -175,6 +186,11 @@ def apply():
 
 @app.route('/instructor_dashboard')
 def instructor_dashboard():
+    # Check if the user is logged in as an instructor
+    if 'user_type' not in session or session['user_type'] != 'instructor':
+        flash("You need to be logged in as an instructor to access this page.", "warning")
+        return redirect(url_for('login'))
+
     conn = get_db()
     cursor = conn.cursor()
 
@@ -235,14 +251,23 @@ def instructor_dashboard():
 
 @app.route('/logout')
 def logout():
-    session.pop('user_id', None)
+    session.clear()
     flash("Logged out successfully.", "success")
     return redirect(url_for('index'))
 
 
 @app.route('/success')
 def success():
-    return render_template('success.html')
+    if 'user_id' not in session:
+        flash("You need to be logged in to access this page.", "warning")
+        return redirect(url_for('login'))
+    
+    # Retrieve user_name and user_lastname from the session
+    user_name = session.get('user_name')
+    user_lastname = session.get('user_lastname')
+    
+    # Pass the variables to the template
+    return render_template('index.html', user_name=user_name, user_lastname=user_lastname)
 
 @app.route('/gallery')
 def gallery():
@@ -254,6 +279,10 @@ def vision():
 
 @app.route('/admin')
 def admin():
+    if 'user_type' not in session or session['user_type'] != 'admin':
+        flash("You need to be logged in as an admin to access this page.", "warning")
+        return redirect(url_for('login'))
+
     db = get_db()
     cursor = db.cursor()
 

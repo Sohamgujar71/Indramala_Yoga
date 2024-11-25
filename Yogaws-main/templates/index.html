@@ -33,7 +33,12 @@
                         </div>
                     </li>
                 </ul>
-                <button class="join-button" id="openModal">register/login</button>
+                {% if session.get('user_name') %}
+                    <span>Welcome, {{ session['user_name'] }}</span>
+                    <button class="logout-button" onclick="location.href='{{ url_for('logout') }}'">Sign Out</button>
+                {% else %}
+                    <button class="join-button" id="openModal">Register/Login</button>
+                {% endif %}
             </header>
         </nav>
     <section class="hero">

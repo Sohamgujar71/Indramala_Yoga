@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Success</title>
 </head>
 <body>
-    <p>this is landing page</p>
+    <p>Welcome, {{ user_name }} {{ user_lastname }}! This is your landing page.</p>
+    <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
 </body>
 </html>
