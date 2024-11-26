@@ -1,3 +1,8 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
 
 .header {
     background-color: white; /* Set background color to white */
@@ -718,6 +723,90 @@ header {
     background: linear-gradient(to bottom, #eceee6 ,#F5EDE1);  
   }
 
+  @media (max-width: 768px) {
+    .stories__grid {
+        grid-template-columns: 1fr; /* Stack cards vertically */
+        gap: 1.5rem; /* Adjust gap between stacked cards */
+        margin-top: 2rem; /* Reduce margin for smaller screens */
+    }
+
+    .stories__content p {
+        font-size: 0.9rem; /* Reduce font size */
+        line-height: 1.2rem; /* Adjust line height */
+        white-space: normal; /* Allow text to wrap */
+        overflow: visible; /* Ensure the entire text is visible */
+    }
+
+    .stories__author {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.5rem; /* Reduce the gap between image and text */
+        padding-left: 1rem; /* Reduce padding to bring it closer */
+        margin-top: 0.5rem; /* Add slight margin for spacing */
+    }
+
+    .stories__author img {
+        width: 60px; /* Reduce author image size */
+        height: 60px; /* Adjust height to match width */
+    }
+
+    .stories__author__details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stories__author__details h4 {
+        font-size: 1rem; /* Adjust author name font size */
+    }
+
+    .stories__author__details h6 {
+        font-size: 0.9rem; /* Adjust author role font size */
+    }
+
+    .section__header {
+        font-size: 2rem; /* Reduce section header font size */
+    }
+
+    .section__subheader {
+        font-size: 0.8rem; /* Reduce section subheader font size */
+    }
+}
+
+@media (max-width: 574px) {
+    .stories__grid {
+        gap: 1rem; /* Further reduce gap for very small screens */
+    }
+
+    .stories__content p {
+        font-size: 0.8rem; /* Further reduce text size */
+        line-height: 1.1rem; /* Adjust line height */
+    }
+
+    .stories__author {
+        gap: 0.5rem; /* Further reduce the gap between image and text */
+        padding-left: 0.5rem; /* Adjust padding */
+    }
+
+    .stories__author img {
+        width: 50px; /* Further reduce image size */
+        height: 50px; /* Match height with width */
+    }
+
+    .section__container {
+        padding: 3rem 1rem; /* Adjust container padding */
+    }
+
+    .section__header {
+        font-size: 1.8rem; /* Smaller header font size */
+    }
+
+    .section__subheader {
+        font-size: 0.7rem; /* Smaller subheader font size */
+    }
+}
+
+
 /* CSS */
 .button-21 {
     align-items: center;
@@ -773,3 +862,35 @@ header {
     margin-top: 10px; /* Added margin to position below the button */
     margin-right: 1rem;
   }
+
+  .stories__content {
+    position: relative;
+    isolation: isolate;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: flex-start; /* Align content to the top */
+    gap: 1rem; /* Maintain a small gap between icon and text */
+    height: auto; /* Remove fixed height to allow content to adjust naturally */
+    padding-left: 1rem; /* Add slight padding to align content nicely */
+}
+
+.stories__content span {
+    padding: 5px 8px; /* Adjust padding for the quote icon */
+    font-size: 1.5rem; /* Slightly reduce the size */
+    color: var(--white);
+    background-color: var(--primary-color);
+    border-radius: 100%;
+}
+
+.stories__content::after {
+    display: none; /* Remove the vertical line if not necessary */
+}
+
+.stories__content p {
+    line-height: 1.5rem;
+    color: var(--text-light);
+    margin: 0; /* Remove extra margin */
+    white-space: normal; /* Allow text to wrap naturally */
+    word-wrap: break-word; /* Prevent long words from overflowing */
+}
+

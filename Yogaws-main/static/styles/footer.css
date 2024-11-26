@@ -1,101 +1,111 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-body{
-	line-height: 1.5;
-	font-family: 'Poppins', sans-serif;
-}
-/* #fff4cc  yellow
-    #24262b  black
-*/
-*{
-	margin:0;
-	padding:0;
-	box-sizing: border-box;
-}
-.container{
-	max-width: 1170px;
-	margin:auto;
-}
-.row{
-	display: flex;
-	flex-wrap: wrap;
-}
-ul{
-	list-style: none;
+
+body {
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
 }
 
-.footer{
-	background-color: #ffffff;
-	border-top: 5px solid #fbf5e9;
+/* Yellow and Black color palette */
+:root {
+    --primary-color: #fff4cc; /* Yellow */
+    --secondary-color: #24262b; /* Black */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1170px;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Footer styling */
+.footer {
+    background-color: #ffffff;
+    border-top: 5px solid #fbf5e9;
     padding: 70px 0;
 }
-.footer-col{
-   width: 25%;
-   padding: 0 15px;
+
+.footer-col {
+    width: 25%;
+    padding: 0 15px;
 }
-.footer-col h4{
-	font-size: 18px;
-	color: #24262b;
-	text-transform: capitalize;
-	margin-bottom: 35px;
-	font-weight: 500;
-	position: relative;
+
+.footer-col h4 {
+    font-size: 18px;
+    color: var(--secondary-color);
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
 }
-.footer-col h4::before{
-	content: '';
-	position: absolute;
-	left:0;
-	bottom: -10px;
-	background-color: #24262b;
-	height: 2px;
-	box-sizing: border-box;
-	width: 50px;
+
+.footer-col h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: var(--secondary-color);
+    height: 2px;
+    width: 50px;
 }
-.footer-col ul li:not(:last-child){
-	margin-bottom: 10px;
+
+.footer-col ul li:not(:last-child) {
+    margin-bottom: 10px;
 }
-.footer-col ul li a{
-	font-size: 16px;
-	text-transform: capitalize;
-	color: #24262b;
-	text-decoration: none;
-	font-weight: 300;
-	color: #24262b;
-	display: block;
-	transition: all 0.3s ease;
+
+.footer-col ul li a {
+    font-size: 16px;
+    text-transform: capitalize;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+    transition: all 0.3s ease;
 }
-.footer-col ul li a:hover{
-	color: #200000;
-	padding-left: 8px;
+
+.footer-col ul li a:hover {
+    color: #200000;
+    padding-left: 8px;
 }
-.footer-col .social-links a{
-	display: inline-block;
-	height: 40px;
-	width: 40px;
-	background-color: rgba(255,255,255,0.2);
-	margin:0 10px 10px 0;
-	text-align: center;
-	line-height: 40px;
-	border-radius: 50%;
-	color: #24262b;
-	transition: all 0.5s ease;
+
+.footer-col .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: var(--secondary-color);
+    transition: all 0.5s ease;
 }
-.footer-col .social-links a:hover{
+
+.footer-col .social-links a:hover {
     color: #000000;
-	background-color: #ecd5ac;
+    background-color: #ecd5ac;
 }
 
-.footer-col .Address{
-    background-color: #ffffff;
-    color: #24262b;
-}
-
-/* Style for floating social links */
+/* Floating Social Links */
 .floating-social-links {
     position: fixed;
-    top: 50%; /* Adjusts it vertically in the center */
-    left: 0; /* Sticks it to the left of the screen */
-    transform: translateY(-50%); /* Aligns the buttons vertically in the center */
-    z-index: 1000; /* Ensures it's on top of other elements */
+    top: 50%; /* Vertically centered */
+    left: 0; /* Sticks to the left */
+    transform: translateY(-50%);
+    z-index: 1000; /* Ensures visibility */
     display: flex;
     flex-direction: column;
     padding: 10px 0;
@@ -105,30 +115,78 @@ ul{
     display: inline-block;
     width: 40px;
     height: 40px;
-    background-color: rgba(255, 255, 255, 0.2); /* Light transparent background */
+    background-color: rgba(255, 255, 255, 0.2); /* Transparent background */
     margin: 5px 0;
     text-align: center;
     line-height: 40px;
     border-radius: 50%;
-    color: #24262b; /* Icon color */
+    color: var(--secondary-color);
     transition: all 0.3s ease;
 }
 
 .floating-social-links a:hover {
-    background-color: #ecd5ac; /* Change color on hover */
-    color: #000000; /* Change text color on hover */
+    background-color: #ecd5ac;
+    color: #000000;
 }
 
+/* Responsive Design */
+@media (max-width: 767px) {
+    .footer-col {
+        width: 50%; /* Two columns on medium screens */
+        margin-bottom: 30px;
+    }
 
-/*responsive*/
-@media(max-width: 767px){
-  .footer-col{
-    width: 50%;
-    margin-bottom: 30px;
+    .footer {
+        padding: 50px 20px;
+        text-align: center; /* Center-align for mobile */
+    }
+
+	.footer-col h4::before {
+		content: none; /* Remove the underline on smaller screens */
+	}
+	
+	.footer-col h4 {
+		font-size: 16px; /* Adjust heading size for smaller screens */
+		margin-bottom: 20px;
+	}
+    .footer-col ul li a {
+        font-size: 14px;
+        padding-left: 0; /* Remove padding on mobile */
+    }
 }
-}
-@media(max-width: 574px){
-  .footer-col{
-    width: 100%;
-}
+
+@media (max-width: 574px) {
+    .footer-col {
+        width: 100%; /* Full width for small screens */
+    }
+
+    .floating-social-links {
+        top: 50%; /* Vertically centered */
+        bottom: auto; /* Reset the bottom position */
+        left: 10px; /* Keep it on the left */
+        transform: translateY(-50%); /* Center vertically */
+        flex-direction: column; /* Ensure vertical layout */
+        justify-content: flex-start; /* Align to start */
+        padding: 10px 0;
+        gap: 0; /* Remove the gap for consistency */
+    }
+
+    .floating-social-links a {
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+    }
+
+    .footer-col .social-links {
+        flex-direction: column; /* Stack the social links vertically */
+        align-items: center; /* Center align the content */
+    }
+
+    .footer-col .social-links img {
+        display: block; /* Ensure the image is displayed */
+        margin: 10px auto; /* Center the image horizontally and add vertical spacing */
+        max-width: 80%; /* Make the image responsive */
+        height: auto; /* Maintain aspect ratio */
+        text-align: center; /* Ensure centering */
+    }
 }
