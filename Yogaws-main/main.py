@@ -13,11 +13,11 @@ def make_session_permanent():
 
 def get_db():
     if 'db' not in g:
-        g.db = sqlite3.connect('./instances/YWS.db')
+        g.db = sqlite3.connect('./Yogaws-main/instances/YWS.db')
     return g.db
 
 @app.teardown_appcontext
-def close_db(exception):
+def close_db(exception):    
     db = g.pop('db', None)
     if db is not None:
         db.close()
@@ -512,7 +512,7 @@ def delete_course(course_id):
 @app.route('/view_all_students')
 def view_all_students():
     # Connect to the database
-    conn = sqlite3.connect('./instances/YWS.db')
+    conn = sqlite3.connect('./Yogaws-main/instances/YWS.db')
     cursor = conn.cursor()
 
     # Query to get the students' first name, last name, and course name from the applicants table

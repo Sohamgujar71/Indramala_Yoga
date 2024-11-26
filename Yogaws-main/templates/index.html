@@ -34,8 +34,8 @@
                     </li>
                 </ul>
                 {% if session.get('user_name') %}
-                    <span>Welcome, {{ session['user_name'] }}</span>
-                    <button class="logout-button" onclick="location.href='{{ url_for('logout') }}'">Sign Out</button>
+                    <button class="button-21" role="button" onclick="location.href='{{ url_for('logout') }}'">Sign Out</button>
+                    <span class="welcome-message">Welcome, {{ session['user_name'] }}</span>
                 {% else %}
                     <button class="join-button" id="openModal">Register/Login</button>
                 {% endif %}
@@ -77,20 +77,6 @@
             </div>
             <div>
                 <div class="content">
-                    <h2>Jayprakash Sharma</h2>
-                    <span>Hatha Yoga Coach</span>
-                    <span>Power Yoga Coach</span>
-                    <span>Advanced Yoga Coach</span>
-                </div>
-            </div>
-            <div>
-                <div class="content">
-                    <h2>Reena Jani</h2>
-                    <span>Traditional Yoga Coach</span>
-                </div>
-            </div>
-            <div>
-                <div class="content">
                     <h2>Nikita Gujrathi</h2>
                     <span>Hatha Yoga Coach</span>
                 </div>
@@ -104,7 +90,28 @@
             <div>
                 <div class="content">
                     <h2>Rashmi Wathare</h2>
-                    <span>Advanced Yoga Coach</span>
+                    <span>Advance Yoga</span>
+                    <span>General Yoga</span>
+                </div>
+            </div>
+            <div>
+                <div class="content">
+                    <h2>Nitu Khemkar</h2>
+                    <span>General Yoga</span>
+                </div>
+            </div>
+            <div>
+                <div class="content">
+                    <h2>Jayprakash Sharma</h2>
+                    <span>Advanced Yoga</span>
+                    <span>Hatha Yoga</span>
+                </div>
+            </div>
+            <div>
+                <div class="content">
+                    <h2>Satyaprakash Sharma</h2>
+                    <span>Yog therapy</span>
+                    <span>General Yoga</span>
                 </div>
             </div>
         </div>
