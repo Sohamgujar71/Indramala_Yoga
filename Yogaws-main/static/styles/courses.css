@@ -214,3 +214,132 @@ hr {
         padding: 12px;
     }
 }
+/* Large Screens (Desktops) */
+@media (min-width: 1024px) {
+    .header {
+        width: 80%;
+    }
+
+    .logo {
+        height: 100px;
+        width: 100px;
+    }
+
+    .cards {
+        gap: 30px;
+    }
+}
+
+/* Medium Screens (Tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .header {
+        flex-direction: row;
+        align-items: center;
+        height: auto;
+        text-align: center;
+        width: 80%;
+    }
+
+    .header1 {
+        position: static;
+        transform: none;
+        margin-top: 10px;
+    }
+
+    .logo img {
+        width: 80px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .button-21 {
+        position: static;
+        margin-top: 10px;
+    }
+}
+
+/* Small Screens (Phones) */
+@media (max-width: 767px) {
+    .header {
+        flex-direction: row;
+        text-align: center;
+        padding: 20px;
+        width: 80%;
+    }
+
+    .logo {
+        height: 80px;
+        width: 80px;
+    }
+
+    .logo img {
+        width: 60px;
+    }
+
+    .header1 {
+        margin-top: 10px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 15px;
+    }
+
+    .button-21 {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+}
+
+/* Extra Small Screens (Very Small Phones) */
+@media (max-width: 480px) {
+    .header {
+        flex-direction: row;
+        padding: 10px;
+    }
+
+    .logo {
+        height: 60px;
+        width: 60px;
+    }
+
+    .logo img {
+        width: 50px;
+    }
+
+    .cards {
+        gap: 10px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    table th, table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .icon-left{
+        display: none;
+    } 
+    .icon-right{
+        display: none;
+    }
+    .middle-icon-left{
+        display: none;
+    } 
+    .middle-icon-right{
+      display: none;
+    }
+    .bottom-icon-left{
+      display: none;
+    }
+    .bottom-icon-right{
+      display: none;
+    }
+  }
