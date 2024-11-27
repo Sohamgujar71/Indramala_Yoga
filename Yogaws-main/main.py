@@ -15,7 +15,7 @@ def make_session_permanent():
 
 def get_db():
     if 'db' not in g:
-        g.db = sqlite3.connect('./Yogaws-main/instances/YWS.db')
+        g.db = sqlite3.connect('./instances/YWS.db')
     return g.db
 
 @app.teardown_appcontext
@@ -335,7 +335,7 @@ def admin():
     cursor = db.cursor()
 
     # Total enrollments (entries in applicants table)
-    cursor.execute('SELECT COUNT(DISTINCT CID) FROM applicants')
+    cursor.execute('SELECT COUNT(DISTINCT UID) FROM applicants')
     total_enrollments = cursor.fetchone()[0]
 
     # Total instructors (entries in instructors table)
@@ -580,6 +580,35 @@ def view_all_students():
     # Pass the data to the template
     return render_template('view_all_students.html', students=students)
 
+@app.route('/process_payment', methods=['POST'])
+def process_payment():
+    data = request.json
+    username = data.get('username')
+    courses = data.get('courses', [])
+
+    db = get_db()
+    cursor = db.cursor()
+
+    # Find the user ID based on the username
+    cursor.execute('SELECT UID FROM users WHERE name || " " || lastname = ?', (username,))
+    user = cursor.fetchone()
+
+    if not user:
+        return jsonify({"success": False, "error": "User not found"})
+
+    user_id = user[0]
+
+    # Insert each course into the applicants table
+    for course_name in courses:
+        cursor.execute('SELECT CID FROM course WHERE Course_name = ?', (course_name,))
+        course = cursor.fetchone()
+
+        if course:
+            course_id = course[0]
+            cursor.execute('INSERT INTO applicants (UID, CID) VALUES (?, ?)', (user_id, course_id))
+
+    db.commit()
+    return jsonify({"success": True})
 
 if __name__ == '__main__':
     app.run(debug=True)

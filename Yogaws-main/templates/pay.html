@@ -39,6 +39,27 @@ var options = {
 
         // Show the success button
         document.getElementById('success-button').style.display = 'block';
+
+        // Send a POST request to the server with the user and course details
+        fetch('/process_payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: "{{ full_username }}",
+                courses: {{ courses|tojson }}
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log("Payment processed successfully.");
+            } else {
+                console.error("Error processing payment:", data.error);
+            }
+        })
+        .catch(error => console.error("Error:", error));
     },
     "prefill": {
         "name": "{{ full_username }}",
