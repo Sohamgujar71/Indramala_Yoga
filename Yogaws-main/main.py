@@ -15,7 +15,7 @@ def make_session_permanent():
 
 def get_db():
     if 'db' not in g:
-        g.db = sqlite3.connect('./instances/YWS.db')
+        g.db = sqlite3.connect('./Yogaws-main/instances/YWS.db')
     return g.db
 
 @app.teardown_appcontext
@@ -28,8 +28,29 @@ def close_db(exception):
 def index():
     return render_template('index.html')
 
-@app.route('/workshop')
+@app.route('/workshop', methods=['GET', 'POST'])
 def workshop():
+    if request.method == 'POST':
+        # Retrieve form data
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        ph_no = request.form['ph_no']
+        comments = request.form.get('comments', '')
+
+        # Insert data into the database
+        db=get_db()
+        cursor = db.cursor()
+        cursor.execute('''
+            INSERT INTO workshop_sign_in (first_name, last_name, Ph_no, Comments)
+            VALUES (?, ?, ?, ?)
+        ''', (first_name, last_name, ph_no, comments))
+        db.commit()
+        db.close()
+
+        # Provide feedback to the user
+        flash('Registration successful!', 'success')
+        return redirect('/workshop')
+
     return render_template('workshop.html')
 
 @app.route('/knowmore')

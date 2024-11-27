@@ -240,9 +240,9 @@
             {% endfor %}
         </div>
 
-        <button class="know-more-btn" id="joinbtn">
-            <a href="{{ url_for('knowmore') }}">Know More</a>
-        </button>
+        <form action="/knowmore" method="GET">
+            <button type="submit" class="know-more-btn">Know More</button>
+        </form>
 
         <!-- Navigation Arrows -->
         <button class="carousel-prev">&#10094;</button>
