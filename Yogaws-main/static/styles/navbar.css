@@ -1,0 +1,146 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px; /* Horizontal padding for consistent spacing */
+  background-color: #fff;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Logo Styling */
+.logo img {
+  height: 5rem;
+}
+
+/* Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly; /* Even spacing between links */
+  flex-grow: 1; /* Allow links to take available space */
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  padding: 10px 15px; /* Padding for clickable area */
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links li a:hover {
+  background-color: #ff7f51;
+  color: #fff;
+  border-color: #ff7f51;
+}
+
+/* Register/Login Button */
+.register-btn {
+  background-color: #ff7f51;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.register-btn:hover {
+  background-color: #ff4f2f;
+}
+
+/* Hamburger Button */
+.hamburger {
+  display: none; /* Hidden above 768px */
+  flex-direction: column;
+  gap: 5px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 2000;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Mobile View: Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+      flex-direction: column; /* Stack items vertically */
+      align-items: flex-start; /* Align logo and hamburger */
+  }
+
+  .hamburger {
+      display: flex; /* Show hamburger button */
+      margin-top: 10px; /* Add spacing below logo */
+  }
+  
+  .logo {
+    top: 10px; /* Keep logo at the top */
+    right: 20px; /* Stay aligned to the upper right corner */
+  }
+
+  .nav-links {
+      display: none; /* Hidden by default on smaller screens */
+      flex-direction: column;
+      width: 100%; /* Full-width menu */
+      padding: 10px 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.show {
+      display: flex; /* Show menu when toggled */
+      gap: 10px; /* Space between vertical links */
+  }
+
+  .register-btn {
+      align-self: center; /* Center the register button on smaller screens */
+  }
+}
+
+@media (min-width: 769px) {
+  .logo img {
+    height: 5rem;
+  }
+  .hamburger {
+      display: none; 
+  }
+
+  .nav-links {
+      display: flex; 
+      gap: 30px; 
+  }
+
+  .navbar {
+      flex-direction: row;
+      align-items: center;
+  }
+}

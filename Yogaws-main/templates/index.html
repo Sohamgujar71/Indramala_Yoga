@@ -8,7 +8,10 @@
         <link rel="stylesheet" href="/static/styles/registration.css">
         <link rel="stylesheet" href="/static/styles/carousel.css">
         <link rel="stylesheet" href="/static/styles/video.css">
-        <link rel="stylesheet" href="/static/styles/mod.css">
+        <link rel="stylesheet" href="/static/styles/home.css">
+        <link rel="stylesheet" href="/static/styles/navbar.css">
+        <link rel="stylesheet" href="/static/styles/teachers.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2.2.2/dist/flickity.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet"
     />
@@ -16,37 +19,33 @@
         <title>Document</title>
     </head>
     <body>
-        <nav class="nav">
-            <header class="header">
-                <img src="/static/assets/website_icon1.webp" alt="Indramala yoga sansthan logo">
-                <ul class="nav-links">
-                    <li><a href="{{ url_for('workshop') }}">Latest Workshop</a></li>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
-                    <li><a href="#holder">Classes</a></li>
-                    <li><a href="#foot">Contact</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropbtn">About Us</a>
-                        <div class="dropdown-content">
-                            <a href="{{ url_for('vision') }}">Our Vision & Mission</a>
-                            <a href="#trainers">Meet Our Team</a>
-                        </div>
-                    </li>
-                </ul>
-                {% if session.get('user_name') %}
-                    <span>Welcome, {{ session['user_name'] }}</span>
-                    <button class="logout-button" onclick="location.href='{{ url_for('logout') }}'">Sign Out</button>
-                {% else %}
-                    <button class="join-button" id="openModal">Register/Login</button>
-                {% endif %}
-            </header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="/static/assets/website_icon1.webp" alt="Logo" />
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="{{ url_for('workshop') }}">Latest Workshop</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
+                <li><a href="#holder">Classes</a></li>
+                <li><a href="#foot">Contact</a></li>
+                <li><a href="{{ url_for('vision') }}">Our vision</a></li>
+            </ul>
+            {% if session.get('user_name') %}
+            <button class="button-21" role="button" onclick="location.href='{{ url_for('logout') }}'">Sign Out</button>
+            <span class="welcome-message">Welcome, {{ session['user_name'] }}</span>
+        {% else %}
+            <button class="register-btn" id="openModal">Register/Login</button>
+        {% endif %}
         </nav>
+    
     <section class="hero">
             <div class="container hero-content">
-                <div class="hero-images">
-                    <!--<img src="/static/assets/img1.png" alt="Yoga pose 1" class="hero-image-left">
-                    <img src="/static/assets/img2.png" alt="Yoga pose 2" class="hero-image-right">-->
-                </div>
                 <div class="hero-text-content">
                     <h1 class="hero-title">Discover the Blissful Journey of Yoga</h1>
                     <p class="hero-text">Embrace the harmonious union of mind, body, and spirit through our comprehensive yoga offerings.</p>
@@ -63,54 +62,62 @@
         </video>
     </div>
 
-
-    <section id="trainers" id = "gohere">
+    <section id="trainers">
         <div class="team-section">
-            <div class="container">
-            <div>
-                <div class="content">
-                    <h2>Suman Singh</h2>
-                    <span>Head Coach</span>
-                    <span>Asst. Yoga Therapist</span>
-                    <span>Meditation Coach</span>
+            <!-- Flickity Carousel Wrapper -->
+            <div class="carousel" data-flickity='{ "cellAlign": "left", "contain": true, "pageDots": false, "prevNextButtons": true, "wrapAround": true }'>
+                <div class="carousel-cell">
+                    <div class="content">
+                        <h2>Suman Singh</h2>
+                        <span>Head Coach</span>
+                        <span>Asst. Yoga Therapist</span>
+                        <span>Meditation Coach</span>
+                    </div>
+                </div>
+                <div class="carousel-cell">
+                    <div class="content">
+                        <h2>Nikita Gujrathi</h2>
+                        <span>Hatha Yoga Coach</span>
+                    </div>
+                </div>
+                <div class="carousel-cell">
+                    <div class="content">
+                        <h2>Sushma Agarwal</h2>
+                        <span>Power Yoga Coach</span>
+                    </div>
+                </div>
+                <div class="carousel-cell">
+                    <div class="content">
+                        <h2>Rashmi Wathare</h2>
+                        <span>Advance Yoga</span>
+                        <span>General Yoga</span>
+                    </div>
+                </div>
+                <div class="carousel-cell">
+                    <div class="content">
+                        <h2>Nitu Khemkar</h2>
+                        <span>General Yoga</span>
+                    </div>
+                </div>
+                <div class="carousel-cell">
+                    <div class="content">
+                        <h2>Jayprakash Sharma</h2>
+                        <span>Advanced Yoga</span>
+                        <span>Hatha Yoga</span>
+                    </div>
+                </div>
+                <div class="carousel-cell">
+                    <div class="content">
+                        <h2>Satyaprakash Sharma</h2>
+                        <span>Yog Therapy</span>
+                        <span>General Yoga</span>
+                    </div>
                 </div>
             </div>
-            <div>
-                <div class="content">
-                    <h2>Jayprakash Sharma</h2>
-                    <span>Hatha Yoga Coach</span>
-                    <span>Power Yoga Coach</span>
-                    <span>Advanced Yoga Coach</span>
-                </div>
-            </div>
-            <div>
-                <div class="content">
-                    <h2>Reena Jani</h2>
-                    <span>Traditional Yoga Coach</span>
-                </div>
-            </div>
-            <div>
-                <div class="content">
-                    <h2>Nikita Gujrathi</h2>
-                    <span>Hatha Yoga Coach</span>
-                </div>
-            </div>
-            <div>
-                <div class="content">
-                    <h2>Sushma Agarwal</h2>
-                    <span>Power Yoga Coach</span>
-                </div>
-            </div>
-            <div>
-                <div class="content">
-                    <h2>Rashmi Wathare</h2>
-                    <span>Advanced Yoga Coach</span>
-                </div>
-            </div>
+            <button class="btn" id="joinbtn"><a href="{{ url_for('apply') }}">Become a Trainer</a></button>
         </div>
-        <button class="btn" id="joinbtn" onclick="location.href='{{ url_for('apply') }}'">Become a Trainer</button>
-    </div>
-</section>
+    </section>
+    
 
 <section id="holder" class="courses">
     <div class="custom-carousel-container">
@@ -257,15 +264,15 @@
 <section id="hello" class="hello-section">
     <div class="hello-img">
         <img src="/static/assets/Founder.webp" alt="Indramala Yoga Sansthan">
-        </div>
-        <div class="hello-container">
-            <h1>Hello from the Founder</h1>
-            <p>Hello! I am Shivprakash Sharma - a yoga coach with expertise in Hatha Yoga, Power Yoga, Vinyasa flow, yoga therapist, 
-                prenatal yoga,Iyengar Yoga, Aerial Yoga, and Traditional Yoga.</p>
+    </div>
+    <div class="hello-container">
+        <h1>Hello from the Founder</h1>
+        <p>Hello! I am Shivprakash Sharma - a yoga coach with expertise in Hatha Yoga, Power Yoga, Vinyasa flow, yoga therapist, 
+           prenatal yoga,Iyengar Yoga, Aerial Yoga, and Traditional Yoga.</p>
 
-            <p>My passion lies in guiding individuals towards holistic well-being through the integration of these diverse yoga practices.
-                Let's embark on a transformative journey to nurture your mind, body, and spirit!</p>
-        </div>  
+        <p>My passion lies in guiding individuals towards holistic well-being through the integration of these diverse yoga practices.
+           Let's embark on a transformative journey to nurture your mind, body, and spirit!</p>
+    </div>  
 
     </section>
 
@@ -331,7 +338,7 @@
 
     <!-- <section class="section__container stories__container" id="stories"></section> -->
     <p class="section__subheader">TESTIMONY</p>
-    <h2 class="section__header">Successful Stories</h2>
+    <h2 class="section__header">Success Stories</h2>
     <div class="stories__grid">
       <div class="stories__card">
         <div class="stories__content">
@@ -503,5 +510,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/flickity@2.2.2/dist/flickity.pkgd.min.js"></script>
 <script src="/static/scripts/main.js" defer></script>
 </html>

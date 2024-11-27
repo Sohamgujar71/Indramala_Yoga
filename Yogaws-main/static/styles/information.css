@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: rgb(224, 244, 252);
+    background-color: rgb(209, 255, 209);
     margin: 0;
     padding: 0;
     display: flex;
@@ -23,7 +23,7 @@ body {
     height: 150px;
     width: 90%;
     top: 0px;
-    background-color: rgb(19, 176, 238);
+    background-color: rgb(0, 157, 0);
     border-radius: 12px;
     margin:  auto; 
     display: flex;
@@ -84,7 +84,7 @@ section {
 h2 {
     font-size: 2rem;
     margin-bottom: 15px;
-    color: rgb(19, 176, 238);
+    color: rgb(0, 157, 0);
 }
 
 .content {
@@ -117,7 +117,7 @@ h2 {
 
 .enroll-button {
     display: inline-block;
-    background-color: rgb(19, 176, 238);
+    background-color: rgb(0, 157, 0);
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
@@ -128,7 +128,7 @@ h2 {
 }
 
 .enroll-button:hover {
-    background-color: #0056b3;
+    background-color: rgb(0, 107, 0);
 }
 
 /* Arrow Buttons */
@@ -142,7 +142,7 @@ h2 {
     z-index: 10;
     height: 40px;
     width: 40px;
-    background-color: rgb(19, 176, 238);
+    background-color: rgb(0, 157, 0);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -158,7 +158,7 @@ h2 {
 }
 
 .arrow:hover {
-    background-color: #0056b3;
+    background-color: rgb(0, 107, 0);
     transition: 0.5s;
 }
 
@@ -199,35 +199,184 @@ h2 {
     width: auto;
 }
 
-/* Responsive Adjustments */
-@media screen and (max-width: 1024px) {
-    section {
-        width: 90%;
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    /* Adjust header for smaller screens */
+    .header {
+        height: 100px; /* Reduce height */
+        padding: 8px;
+    }
+
+    .logo {
+        height: 75px; /* Smaller logo */
+        width: 75px;
+    }
+
+    .logo img {
+        width: 50px; /* Smaller logo image */
+    }
+
+    .head-txt {
+        font-size: 20px; /* Adjust text size */
+    }
+
+    /* Adjust the carousel */
+    .yoga-section {
+        width: 95%; /* Slightly reduce padding for smaller screens */
+    }
+
+    .content {
+        flex-direction: column; /* Stack content vertically */
+        align-items: center;
+    }
+
+    .img {
+        width: 100%; /* Make image take full width */
+        margin-bottom: 10px; /* Add spacing between image and text */
+    }
+
+    .img img {
+        max-width: 100%; /* Responsive image */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .text {
+        text-align: center; /* Center-align text for better readability */
+        padding: 0 10px; /* Add padding for smaller screens */
+    }
+
+    .enroll-button {
+        font-size: 0.8rem; /* Smaller font size */
+        padding: 8px 12px;
+    }
+
+    /* Slick slider adjustments */
+    .slick-slider {
+        padding: 0; /* Remove extra padding for better fit */
+    }
+
+    .slick-dots {
+        bottom: -20px; /* Adjust dots position */
+    }
+
+    .slick-slide {
+        display: block; /* Ensure one slide is visible at a time */
+    }
+
+    .bottom-icon-left{
+        height: 40px;
+        width: 30px;
     }
 }
 
-@media screen and (max-width: 768px) {
-    section {
-        width: 95%;
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+    .header {
+        height: 100px; /* Reduce height */
+        padding: 8px;
+    }
+
+    .logo {
+        height: 75px; /* Smaller logo */
+        width: 75px;
+    }
+
+    .logo img {
+        width: 50px; /* Smaller logo image */
+    }
+
+    .head-txt {
+        font-size: 20px; /* Adjust text size */
+    }
+
+    /* Adjust the carousel */
+    .yoga-section {
+        width: 95%; /* Slightly reduce padding for smaller screens */
+        
+    }
+    
+    .yoga-slider{
+        gap: 10px;
+    }
+
+    .content {
+        flex-direction: column; /* Stack content vertically */
+        align-items: center;
+        
+    }
+
+    .img {
+        width: 100%; /* Make image take full width */
+        margin-bottom: 10px; /* Add spacing between image and text */
+    }
+
+    .img img {
+        max-width: 100%; /* Responsive image */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .text {
+        text-align: center; /* Center-align text for better readability */
+        padding: 0 10px; /* Add padding for smaller screens */
+    }
+
+    .enroll-button {
+        font-size: 0.8rem; /* Smaller font size */
+        padding: 8px 12px;
+    }
+
+    /* Slick slider adjustments */
+    .slick-slider {
+        padding: 0; /* Remove extra padding for better fit */
+    }
+
+    .slick-dots {
+        bottom: -20px; /* Adjust dots position */
+    }
+
+    .slick-slide {
+        display: block; /* Ensure one slide is visible at a time */
     }
 }
 
 @media screen and (max-width: 480px) {
-    section {
-        width: 100%;
-        padding: 15px;
+    /* Further adjustments for very small screens */
+    .header {
+        height: 90px; /* Further reduce height */
+        padding: 5px;
+    }
+
+    .logo {
+        height: 60px;
+        width: 60px;
+    }
+
+    .logo img {
+        width: 40px;
+    }
+
+    .head-txt {
+        font-size: 18px;
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 1.8rem; /* Reduce heading size */
     }
 
     h2 {
-        font-size: 1.75rem;
+        font-size: 1.5rem; /* Reduce subheading size */
     }
 
     .enroll-button {
-        font-size: 0.9rem;
-        padding: 8px 16px;
+        font-size: 0.7rem;
+        padding: 6px 10px;
     }
 }
+
+@media (max-width: 768px) {
+    .bottom-icon-left{
+      display: none;
+    }
+    .bottom-icon-right{
+      display: none;
+    }
+  }
