@@ -261,37 +261,6 @@ button:hover{
     padding-bottom: 25px;
 }
 
-@media (max-width: 850px) {
-    .header, .container {
-        width: 90%;
-    }
-
-    #root {
-        width: 100%;
-        grid-template-columns: 1fr; /* Stack the grid items in a single column */
-    }
-
-    .sidebar {
-        width: 100%;
-        margin-left: 10px;
-    }
-
-    .cart {
-        width: 60px; /* Shrink the cart icon to fit smaller screens */
-        padding: 5px;
-        
-    }
-
-    .cart-item {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    button {
-        padding: 10px 20px;
-    }
-}
-
 .toggle-container {
     text-align: center;
     margin-top: 10px;
@@ -314,37 +283,66 @@ button:hover{
 }
 
 
-@media (max-width: 768px) {
+
+/* Responsive Design */
+@media (max-width: 1024px) {
     .header {
-        flex-direction: column;
+        flex-direction: row;
         height: auto;
         padding: 20px;
     }
 
+    .logo {
+        height: 100px;
+        width: 100px;
+    }
+
     .logo img {
-        width: 80px; /* Smaller logo for mobile devices */
+        width: 80px;
+    }
+
+    .container{
+        margin-top: 20px;
+        gap: 80px;
+        justify-content: center;
+        
     }
 
     .cart {
-        width: 70px;
-        flex-direction: column;
+        bottom: 15px;
+        right: 15px;
+        width: 60px;
         padding: 5px;
     }
 
-    .container {
-        flex-direction: column;
-        align-items: center;
+    #root {
+        width: 100%;
+        grid-template-columns: 1fr; /* Single column for tablets and smaller screens */
     }
 
     .sidebar {
         width: 90%;
         margin: 0 auto;
-        position: static;
+        position: static; /* Inline instead of fixed for smaller devices */
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 15px;
     }
 
-    .box {
-        width: 100%;
-        margin: 0 auto;
+    .logo {
+        height: 75px;
+        width: 75px;
+    }
+
+    .logo img {
+        width: 60px;
+    }
+
+    .cart {
+        width: 50px;
     }
 
     button {
@@ -356,13 +354,47 @@ button:hover{
         font-size: 12px;
     }
 
-    .cart-item {
-        flex-wrap: wrap;
-        text-align: left;
+    /* Tap to Display Content */
+    .box {
+        cursor: pointer;
     }
 
-    .qty-btn {
-        margin: 5px;
+    .box .description-box {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .box.active .description-box {
+        height: auto; /* Show content on tap */
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 10px;
+    }
+
+    .logo {
+        height: 60px;
+        width: 60px;
+    }
+
+    .logo img {
+        width: 50px;
+    }
+
+    .cart {
+        bottom: 10px;
+        right: 10px;
+        width: 45px;
+    }
+
+    button {
         font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .description-content {
+        font-size: 10px;
     }
 }

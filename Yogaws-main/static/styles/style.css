@@ -773,6 +773,78 @@ header {
     }
 }
 
+@media (max-width: 920px) {
+    .hello-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem 1rem;
+        height: auto;
+    }
+
+    .hello-img {
+        width: 100%;
+        height: auto; 
+    }
+
+    .hello-img img {
+        height: auto;
+        max-width: 90%; 
+    }
+
+    .hello-container {
+        width: 100%;
+        padding: 1rem;
+        align-items: center; 
+        text-align: center;
+    }
+
+    .hello-container h1 {
+        font-size: 36px; 
+    }
+
+    .hello-container p {
+        font-size: 16px; 
+        max-width: 100%; 
+    }
+}
+
+@media (max-width: 1100px) {
+    .hello-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem 1rem;
+        height: auto;
+    }
+
+    .hello-img {
+        width: 100%;
+        height: auto; 
+    }
+
+    .hello-img img {
+        height: auto;
+        max-width: 90%; 
+    }
+
+    .hello-container {
+        width: 100%;
+        padding: 1rem;
+        align-items: center; 
+        text-align: center;
+    }
+
+    .hello-container h1 {
+        font-size: 30px; 
+    }
+
+    .hello-container p {
+        font-size: 14px; 
+        max-width: 100%; 
+    }
+}
+
 @media (max-width: 574px) {
     .stories__grid {
         gap: 1rem; /* Further reduce gap for very small screens */
