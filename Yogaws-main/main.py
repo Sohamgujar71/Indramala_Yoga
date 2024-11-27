@@ -38,10 +38,13 @@ def knowmore():
 
 @app.route('/enroll')
 def enroll():
-    if 'user_id' in session:
-        return render_template('addtocart.html')
+    if 'instructor_id' in session:  # Check if instructor_id is in session
+        return render_template('teachercart.html')  # Render teacher-specific cart
+    elif 'user_id' in session:  # Check if user_id is in session
+        return render_template('addtocart.html')  # Render student-specific cart
     else:
-        return redirect(url_for('login'))
+        return redirect(url_for('login'))  # Redirect to login if no session exists
+
 
 @app.route('/create_order', methods=['POST'])
 def create_order():
@@ -88,10 +91,11 @@ def pay():
     amount = session.get('amount')
     user_name = session.get('user_name', '')
     user_lastname = session.get('user_lastname', '')
+    user_phone = session.get('user_phone', '')
     full_username = f"{user_name} {user_lastname}".strip()
 
     # Pass the order details to the template
-    return render_template('pay.html', order_id=order_id, courses=courses, amount=amount, full_username=full_username)
+    return render_template('pay.html', order_id=order_id, courses=courses, amount=amount, full_username=full_username, user_phone=user_phone)
 
 @app.route('/teachercart')
 def teachercart():
@@ -166,7 +170,10 @@ def login():
             if (stored_password, password):
                 # If user is found in 'instructors' table
                 session['user_type'] = 'instructor'
-                session['instructor_id'] = instructor[0]  
+                session['instructor_id'] = instructor[0]
+                session['user_name'] = instructor[1]
+                session['user_lastname'] = instructor[2]
+                session['user_phone'] = instructor[3]  
                 return redirect(url_for('instructor_dashboard'))
 
         # If no matching user is found
@@ -235,7 +242,7 @@ def apply():
 @app.route('/instructor_dashboard')
 def instructor_dashboard():
     # Check if the user is logged in as an instructor
-    if 'user_type' not in session or session['user_type'] != 'instructor':
+    if 'instructor_id' not in session:
         flash("You need to be logged in as an instructor to access this page.", "warning")
         return redirect(url_for('login'))
 
@@ -306,7 +313,7 @@ def logout():
 
 @app.route('/success')
 def success():
-    if 'user_id' not in session:
+    if 'user_id' or 'instructor_id' not in session:
         flash("You need to be logged in to access this page.", "warning")
         return redirect(url_for('login'))
     
@@ -555,30 +562,27 @@ def delete_course(course_id):
     return redirect(url_for('edit_course'))
 
 
+# @app.route('/view_all_students')
+# def view_all_students():
+#     # Connect to the database
+#     conn = sqlite3.connect('./Yogaws-main/instances/YWS.db')
+#     cursor = conn.cursor()
 
+#     # Query to get the students' first name, last name, and course name from the applicants table
+#     # changed by parthk
+#     cursor.execute('''
+#         SELECT users.name, users.lastname, applicants.Course_name
+#         FROM applicants 
+#         JOIN users ON applicants.UID = users.UID
+#     ''')
+#     students = cursor.fetchall()
 
-
-@app.route('/view_all_students')
-def view_all_students():
-    # Connect to the database
-    conn = sqlite3.connect('./Yogaws-main/instances/YWS.db')
-    cursor = conn.cursor()
-
-    # Query to get the students' first name, last name, and course name from the applicants table
-    # changed by parthk
-    cursor.execute('''
-        SELECT users.name, users.lastname, applicants.Course_name
-        FROM applicants 
-        JOIN users ON applicants.UID = users.UID
-    ''')
-    students = cursor.fetchall()
-
-    # Close the connection
-    cursor.close()
-    conn.close()
-    print(students)  # Check if this prints a non-empty list
-    # Pass the data to the template
-    return render_template('view_all_students.html', students=students)
+#     # Close the connection
+#     cursor.close()
+#     conn.close()
+#     print(students)  # Check if this prints a non-empty list
+#     # Pass the data to the template
+#     return render_template('view_all_students.html', students=students)
 
 @app.route('/process_payment', methods=['POST'])
 def process_payment():
