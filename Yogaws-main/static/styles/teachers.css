@@ -1,0 +1,160 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Team Section Styles */
+.team-section {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(to bottom, #055B0B, #588d69);
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 400;
+  padding: 20px;
+}
+
+/* Flickity Carousel Styles */
+.carousel {
+  width: 100%;
+  display: inline;
+  gap: 20%;
+  /* Adds some space between carousel items */
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.carousel-cell:nth-of-type(1) {
+  background-image: url('/static/assets/trainer.webp');
+  background-position: center;
+  background-size: cover;
+}
+
+.carousel-cell:nth-of-type(2) {
+  background-image: url('/static/assets/trainer2.webp');
+  background-position: center;
+  background-size: cover;
+}
+
+.carousel-cell:nth-of-type(3) {
+  background-image: url('/static/assets/trainer3.webp');
+  background-position: center;
+  background-size: cover;
+}
+.carousel-cell:nth-of-type(4) {
+  background-image: url('/static/assets/trainer4.webp');
+  background-position: center;
+  background-size: cover;
+}
+.carousel-cell:nth-of-type(5) {
+  background-image: url('/static/assets/new_trainy.png');
+  background-position: center;
+  background-size: cover;
+}
+.carousel-cell:nth-of-type(6) {
+  background-image: url('/static/assets/newtrainer2.jpg');
+  background-position: center;
+  background-size: cover;
+}
+.carousel-cell:nth-of-type(7) {
+  background-image: url('/static/assets/newtrainer1.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+/* Carousel Cell Styles */
+.carousel-cell {
+  width: 150px;    /* Fixed width of 150px for each card */
+  height: 400px;   /* Fixed height of 400px for each card */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Hover effect */
+/* .carousel-cell:hover {
+  width: 250px; 
+  box-shadow: 1px 3px 15px #54784f; 
+  transform: translateY(-30px); 
+  transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
+} */
+
+/* Content inside Carousel Cards */
+.carousel-cell .content {
+  font-size: 1.5rem;
+  color: #ffffff; /* Accent text color */
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  opacity: 0;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+  background: linear-gradient(
+    0deg,
+    #7aab9c 0%, /* Gradient using the purple shade */
+    rgba(255, 255, 255, 0) 60%
+  );
+  transform: translateY(100%);
+  transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
+  visibility: hidden;
+}
+
+/* Hover Effects */
+.carousel-cell:hover {
+  box-shadow: 1px 3px 15px #54784f; /* Bright hover state shadow */
+}
+
+.carousel-cell:hover .content {
+  opacity: 1;
+  transform: translateY(0%);
+  visibility: visible;
+}
+
+/* Join Button Styles */
+#joinbtn {
+  background-color: #f28b60;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  text-align: center;
+  display: inline-block;
+  transition: background-color 250ms;
+  margin-top: 20px;
+}
+
+#joinbtn:hover {
+  background-color: #fb8332;
+}
+
+#joinbtn a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Mobile Styles: One Card per Swipe */
+@media (max-width: 768px) {
+  .carousel-cell {
+    width: 100%; /* One card visible at a time */
+  }
+
+  .carousel .flickity-button {
+    display: none; /* Optionally hide Flickity controls on mobile */
+  }
+}
+
+/* Desktop Styles: Multiple Cards Visible */
+@media (min-width: 769px) {
+  .carousel-cell {
+    width: 20%; /* Multiple cards visible at once */
+  }
+}

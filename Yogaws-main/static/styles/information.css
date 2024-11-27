@@ -371,3 +371,12 @@ h2 {
         padding: 6px 10px;
     }
 }
+
+@media (max-width: 768px) {
+    .bottom-icon-left{
+      display: none;
+    }
+    .bottom-icon-right{
+      display: none;
+    }
+  }
