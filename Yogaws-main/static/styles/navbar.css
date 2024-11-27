@@ -3,10 +3,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
 }
 
-/* Body Styling */
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -46,140 +44,91 @@ body {
 .nav-links {
   display: flex; /* Flexbox for desktop to align the links horizontally */
   list-style: none;
-  justify-content: space-between; /* Evenly spaced links */
+  justify-content: space-evenly; /* Evenly spaced links */
   flex-grow: 1;
   margin-left: 20px;
-  margin-right: 100px;
+  margin-right: 20px;
+ 
 }
 
 .nav-links li a {
   text-decoration: none;
-  color: #f28c72;
-}
-
-h1, h2 {
-  color: #f28c72;
-  font-weight: 600;
-}
-
-h3 {
-  color: #f28c72;
-}
-/* Instructor Card Container */
-.instructor-card {
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  max-width: 600px;
-  width: 100%;
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.instructor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Heading Styling */
-.instructor-card h2 {
-  font-size: 24px;
-  color: #007acc;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #007acc;
-  padding-bottom: 10px;
-}
-
-/* Instructor Details Section */
-.instructor-details {
-  margin-bottom: 20px;
-}
-
-.instructor-details strong {
-  font-size: 18px;
   color: #333;
-  margin-bottom: 10px;
-  display: inline-block;
-}
-
-/* Course and Student Lists */
-.instructor-details ul {
-  list-style-type: none;
-  padding-left: 15px;
-  margin-top: 10px;
-}
-
-.instructor-details ul ul {
-  padding-left: 20px;
-}
-
-.instructor-details ul li {
-  margin-bottom: 10px;
   font-size: 16px;
-  color: #555;
-  line-height: 1.5;
-  position: relative;
-  padding-left: 20px;
+  padding: 10px 15px; /* Clickable area for links */
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
 }
 
-.instructor-details ul li:before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: #007acc;
-  font-size: 18px;
+.nav-links li a:hover {
+  background-color: #ff7f51;
+  color: #fff;
+  border-color: #ff7f51;
 }
 
-@media (min-width: 1024px) {
-  .instructor-card {
-      max-width: 700px;
-      padding: 30px;
-  }
-
-  .instructor-card h2 {
-      font-size: 28px;
-  }
-
-  .instructor-details strong {
-      font-size: 20px;
-  }
-
-  .instructor-details ul li {
-      font-size: 18px;
-  }
+/* Register Button Styling */
+.register-btn {
+  background-color: #ff7f51;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+  margin-left: 20px; /* Space between button and hamburger */
 }
 
-/* Medium Screens (Tablets) */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .instructor-card {
-      max-width: 90%;
-      padding: 20px;
-  }
-
-  .instructor-card h2 {
-      font-size: 24px;
-  }
-
-  .instructor-details strong {
-      font-size: 18px;
-  }
-
-  .instructor-details ul li {
-      font-size: 16px;
-  }
+.register-btn:hover {
+  background-color: #ff4f2f;
 }
 
-/* Small Screens (Phones) */
-@media (max-width: 767px) {
-  body {
-      padding: 10px;
+/* Mobile Adjustments */
+.hamburger {
+  display: none; /* Hide hamburger by default on larger screens */
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 10px 20px; /* Reduce padding for smaller screens */
+    justify-content: space-between; /* Keep the space between elements */
   }
 
-  .instructor-card {
-      max-width: 100%;
-      padding: 15px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  .hamburger {
+    display: flex; /* Show hamburger on smaller screens */
+    flex-direction: column;
+    gap: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    left: 20px; /* Align hamburger to the extreme left */
+    z-index: 2000; /* Ensure hamburger appears above everything else */
+  }
+
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-links {
+    display: none; /* Hidden by default */
+    flex-direction: column; /* Stack links vertically */
+    gap: 10px;
+    position: absolute;
+    top: 60px; /* Position below the navbar */
+    left: 20px; /* Align menu near hamburger */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1500; /* Ensure menu appears above everything else */
   }
 
   .nav-links.show {
@@ -222,6 +171,6 @@ h3 {
   }
 
   .hamburger {
-    display: none; /* Hide the hamburger on desktop */
+    display: none; /* Hide the hamburger on desktop */
   }
 }
