@@ -8,18 +8,31 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color: #f8f9fa;
+  background-color: #f5ede1;
 }
 
 /* Navbar Styling */
+/* General navbar styling */
 .navbar {
-  display: flex; /* Flexbox for horizontal alignment */
-  align-items: center; /* Vertically center all items */
-  justify-content: space-between; /* Space between logo, links, and button */
-  padding: 10px 40px; /* Adjust padding for spacing */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
   z-index: 1000;
+  transition: height 0.3s ease;
+}
+
+/* Adjust height for smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+    height: 80px; /* Increase height for smaller screens */
+    padding: 15px 20px;
+  }
 }
 
 /* Logo Styling */
@@ -29,16 +42,12 @@ body {
 
 /* Links Section Styling */
 .nav-links {
-  display: flex; /* Flexbox for links in one line */
-  justify-content: center; /* Center links horizontally */
-  align-items: center; /* Align links vertically */
-  flex-grow: 1; /* Allow links to take up remaining space */
+  display: flex; /* Flexbox for desktop to align the links horizontally */
   list-style: none;
-  margin: 0;
-}
-
-.nav-links li {
-  margin: 0 15px; /* Space between links */
+  justify-content: space-between; /* Evenly spaced links */
+  flex-grow: 1;
+  margin-left: 20px;
+  margin-right: 100px;
 }
 
 .nav-links li a {
@@ -126,7 +135,7 @@ body {
   }
 
   .logo {
-    display: none; /* Hide logo on small screens */
+    display: none; /* Hide logo on smaller screens */
   }
 
   /* Register/Login button and hamburger on mobile: same line */
@@ -147,14 +156,20 @@ body {
   }
 }
 
+/* Desktop Adjustments */
 @media (min-width: 1025px) {
   .nav-links {
     display: flex; /* Ensure links are always visible on larger screens */
-    justify-content: space-evenly;
+    justify-content: space-between; /* Spread links evenly across the navbar */
+    width: auto; /* Allow links to adjust based on content */
   }
 
   .register-btn {
     margin-left: auto; /* Keep register button to the extreme right */
     margin-right: 20px; /* Add margin to the right */
+  }
+
+  .hamburger {
+    display: none; /* Hide the hamburger on desktop */
   }
 }

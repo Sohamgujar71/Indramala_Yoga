@@ -1,0 +1,166 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #fff5f1;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+    background-color: #e97659;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Logo Section */
+.logo {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 80px;
+}
+
+/* Dashboard Title */
+.header1 {
+    flex: 1;
+    text-align: center;
+}
+
+.head-txt {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* Sign-Out Button */
+.sign-out-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #f28c72;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sign-out-btn:hover {
+    background-color: #e06941;
+}
+
+/* Instructor Card Styling */
+.instructor-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    text-align: left;
+    margin-top: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instructor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Instructor Card Heading */
+.instructor-card h2 {
+    font-size: 24px;
+    color: #e97659;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e97659;
+    padding-bottom: 10px;
+}
+
+/* Instructor Details */
+.instructor-details {
+    margin-bottom: 20px;
+}
+
+.instructor-details strong {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+/* Lists */
+.instructor-details ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.instructor-details ul ul {
+    padding-left: 20px;
+}
+
+.instructor-details ul li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.instructor-details ul li:before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #e97659;
+    font-size: 18px;
+}
+
+/* Media Queries */
+@media (max-width: 767px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    .header1 {
+        margin-bottom: 10px;
+    }
+
+    .sign-out-btn {
+        width: 100%;
+    }
+}

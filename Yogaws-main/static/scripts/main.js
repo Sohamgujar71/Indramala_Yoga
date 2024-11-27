@@ -1,77 +1,79 @@
-document.getElementById('openModal').addEventListener('click', function(event) {
+ // Toggle nav links on hamburger click
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  });
+
+  // Modal handling
+  document.getElementById('openModal').addEventListener('click', function(event) {
     event.preventDefault();
     document.getElementById('modal').style.display = 'flex';
-});
+  });
 
-document.querySelector('.close-button').addEventListener('click', function() {
+  document.querySelector('.close-button').addEventListener('click', function() {
     document.getElementById('modal').style.display = 'none';
-});
+  });
 
-window.addEventListener('click', function(event) {
+  window.addEventListener('click', function(event) {
     if (event.target === document.getElementById('modal')) {
-        document.getElementById('modal').style.display = 'none';
+      document.getElementById('modal').style.display = 'none';
     }
-});
+  });
 
-document.addEventListener('DOMContentLoaded', () => {
+  // Navbar hide on scroll down
+  document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('nav');
     let lastScrollTop = 0;
 
     window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        if (scrollTop > lastScrollTop) {
-            // User is scrolling down
-            navbar.classList.add('hide');
-        } else {
-            // User is scrolling up
-            navbar.classList.remove('hide');
-        }
+      if (scrollTop > lastScrollTop) {
+        navbar.classList.add('hide');
+      } else {
+        navbar.classList.remove('hide');
+      }
 
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile or negative scrolling
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     });
-});
+  });
 
-function validateForm() {
+  // Password validation
+  function validateForm() {
     var password = document.getElementById("password").value;
     var confirmPassword = document.getElementById("confirmpassword").value;
 
     if (password !== confirmPassword) {
-        alert("Passwords do not match!");
-        return false;
+      alert("Passwords do not match!");
+      return false;
     } else {
-        return true;
+      return true;
     }
-}
+  }
 
-document.getElementById('video-container').addEventListener('click', function() {
+  // Video container handling
+  document.getElementById('video-container').addEventListener('click', function() {
     const videoContainer = this;
-  
-    // Toggle full screen mode
-    if (!videoContainer.classList.contains('fullscreen')) {
-      videoContainer.classList.add('fullscreen');
-    } else {
-      videoContainer.classList.remove('fullscreen');
-    }
+
+    // Toggle fullscreen mode
+    videoContainer.classList.toggle('fullscreen');
   });
-  
-  // Close button functionality
+
   document.getElementById('close-btn').addEventListener('click', function(event) {
-    event.stopPropagation(); // Prevent triggering the fullscreen toggle
-    
+    event.stopPropagation();
     const videoContainer = document.getElementById('video-container');
     const video = document.getElementById('minimized-video');
-    
-    // Pause the video before closing
+
     video.pause();
-    
-    // Optionally reset the video playback to the start
     video.currentTime = 0;
-    
-    // Hide the video container
     videoContainer.style.display = 'none';
   });
-  
+
+  // Floating links visibility based on footer
   window.addEventListener('scroll', function() {
     const footer = document.querySelector('.footer');
     const floatingLinks = document.querySelector('.floating-social-links');
@@ -79,17 +81,9 @@ document.getElementById('video-container').addEventListener('click', function() 
     const footerRect = footer.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    // Check if the footer is in the viewport
     if (footerRect.top <= windowHeight) {
-        floatingLinks.style.display = 'none'; // Hide links
+      floatingLinks.style.display = 'none';
     } else {
-        floatingLinks.style.display = 'flex'; // Show links
+      floatingLinks.style.display = 'flex';
     }
-});
-
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-});
+  });
