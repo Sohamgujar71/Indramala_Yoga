@@ -3,158 +3,229 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
+/* Body Styling */
 body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #f8f9fa;
-}
-
-/* Navbar Styling */
-.navbar {
-  display: flex; /* Flexbox for horizontal alignment */
-  align-items: center; /* Vertically center all items */
-  justify-content: space-between; /* Space between logo, links, and button */
-  padding: 10px 40px; /* Adjust padding for spacing */
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-/* Logo Styling */
-.logo img {
-  height: 5rem; /* Adjust logo size */
-}
-
-/* Links Section Styling */
-.nav-links {
-  display: flex; /* Flexbox for links in one line */
-  justify-content: center; /* Center links horizontally */
-  align-items: center; /* Align links vertically */
-  flex-grow: 1; /* Allow links to take up remaining space */
-  list-style: none;
-  margin: 0;
-}
-
-.nav-links li {
-  margin: 0 15px; /* Space between links */
-}
-
-.nav-links li a {
-  text-decoration: none;
   color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff5f1;
+}
+
+
+.header {
+  height: 150px;
+  width: 80%;
+  background-color: #e97659;
+  border-radius: 12px;
+  margin: 30px auto; 
+  display: flex;
+  align-items: center;
+  display: flex;
+  flex-direction: row; 
+  padding: 12px;
+  position: relative; 
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header .sign-out-btn:hover {
+  background-color: #e06941; /* Darker orange on hover */
+  color: white;
+}
+
+.logo {
+  height: 125px;
+  width: 125px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  margin-left: 15px;
+  width: 100px; 
+}
+
+.header1 {
+  position: absolute; 
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center; 
+}
+
+.head-txt {
+  color: white; 
+  font-size: 24px; 
+}
+
+a {
+  text-decoration: none;
+  color: #f28c72;
+}
+
+h1, h2 {
+  color: #f28c72;
+  font-weight: 600;
+}
+
+h3 {
+  color: #f28c72;
+}
+/* Instructor Card Container */
+.instructor-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instructor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading Styling */
+.instructor-card h2 {
+  font-size: 24px;
+  color: #007acc;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #007acc;
+  padding-bottom: 10px;
+}
+
+/* Instructor Details Section */
+.instructor-details {
+  margin-bottom: 20px;
+}
+
+.instructor-details strong {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+/* Course and Student Lists */
+.instructor-details ul {
+  list-style-type: none;
+  padding-left: 15px;
+  margin-top: 10px;
+}
+
+.instructor-details ul ul {
+  padding-left: 20px;
+}
+
+.instructor-details ul li {
+  margin-bottom: 10px;
   font-size: 16px;
-  padding: 10px 15px; /* Clickable area for links */
-  border: 1px solid transparent;
-  border-radius: 4px;
-  transition: all 0.3s ease-in-out;
+  color: #555;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 20px;
 }
 
-.nav-links li a:hover {
-  background-color: #ff7f51;
-  color: #fff;
-  border-color: #ff7f51;
+.instructor-details ul li:before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #007acc;
+  font-size: 18px;
 }
 
-/* Register Button Styling */
-.register-btn {
-  background-color: #ff7f51;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease-in-out;
-  margin-left: 20px; /* Space between button and hamburger */
-}
-
-.register-btn:hover {
-  background-color: #ff4f2f;
-}
-
-/* Mobile Adjustments */
-.hamburger {
-  display: none; /* Hide hamburger by default on larger screens */
-}
-
-@media (max-width: 1024px) {
-  .navbar {
-    padding: 10px 20px; /* Reduce padding for smaller screens */
-    justify-content: space-between; /* Keep the space between elements */
+@media (min-width: 1024px) {
+  .instructor-card {
+      max-width: 700px;
+      padding: 30px;
   }
 
-  .hamburger {
-    display: flex; /* Show hamburger on smaller screens */
-    flex-direction: column;
-    gap: 5px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 10px;
-    position: absolute;
-    left: 20px; /* Align hamburger to the extreme left */
-    z-index: 2000; /* Ensure hamburger appears above everything else */
+  .instructor-card h2 {
+      font-size: 28px;
   }
 
-  .hamburger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    border-radius: 2px;
-    transition: all 0.3s ease-in-out;
+  .instructor-details strong {
+      font-size: 20px;
   }
 
-  .nav-links {
-    display: none; /* Hidden by default */
-    flex-direction: column; /* Stack links vertically */
-    gap: 10px;
-    position: absolute;
-    top: 60px; /* Position below the navbar */
-    left: 20px; /* Align menu near hamburger */
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1500; /* Ensure menu appears above everything else */
-  }
-
-  .nav-links.show {
-    display: flex; /* Show the menu when toggled */
-  }
-
-  .logo {
-    display: none; /* Hide logo on small screens */
-  }
-
-  /* Register/Login button and hamburger on mobile: same line */
-  .navbar {
-    display: flex;
-    align-items: center; /* Align all items vertically in the center */
-  }
-
-  /* Adjust the space between hamburger and register button */
-  .register-btn {
-    margin-left: 10px; /* Reduce space between hamburger and button */
-  }
-
-  /* Align hamburger and button properly */
-  .hamburger,
-  .register-btn {
-    margin-left: auto; /* Push both hamburger and register button to the right */
+  .instructor-details ul li {
+      font-size: 18px;
   }
 }
 
-@media (min-width: 1025px) {
-  .nav-links {
-    display: flex; /* Ensure links are always visible on larger screens */
-    justify-content: space-evenly;
+/* Medium Screens (Tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .instructor-card {
+      max-width: 90%;
+      padding: 20px;
   }
 
-  .register-btn {
-    margin-left: auto; /* Keep register button to the extreme right */
-    margin-right: 20px; /* Add margin to the right */
+  .instructor-card h2 {
+      font-size: 24px;
+  }
+
+  .instructor-details strong {
+      font-size: 18px;
+  }
+
+  .instructor-details ul li {
+      font-size: 16px;
+  }
+}
+
+/* Small Screens (Phones) */
+@media (max-width: 767px) {
+  body {
+      padding: 10px;
+  }
+
+  .instructor-card {
+      max-width: 100%;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .instructor-card h2 {
+      font-size: 20px;
+  }
+
+  .instructor-details strong {
+      font-size: 16px;
+  }
+
+  .instructor-details ul li {
+      font-size: 14px;
+      line-height: 1.4;
+  }
+}
+
+/* Extra Small Screens (Very Small Phones) */
+@media (max-width: 480px) {
+  .instructor-card {
+      padding: 10px;
+  }
+
+  .instructor-card h2 {
+      font-size: 18px;
+  }
+
+  .instructor-details strong {
+      font-size: 14px;
+  }
+
+  .instructor-details ul li {
+      font-size: 12px;
   }
 }
