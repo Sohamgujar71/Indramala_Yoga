@@ -1,11 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, g, session
+from flask import Flask, render_template, request, redirect, url_for, flash, g, session, jsonify
 import sqlite3
+import razorpay
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
 
 app = Flask(__name__)
 app.secret_key = 'indramalayoga'  # For flashing messages
 app.permanent_session_lifetime = timedelta(minutes=30)  # Set session timeout to 30 minutes
+client = razorpay.Client(auth=("rzp_test_EJa6zI3VKH91qU", "aBL7GC5PGWoHSTQJuyu6bfGa"))
 
 @app.before_request
 def make_session_permanent():
@@ -41,9 +43,55 @@ def enroll():
     else:
         return redirect(url_for('login'))
 
-#@app.route('/addtocart')
-#def addtocart():
-#    return render_template('addtocart.html')
+@app.route('/create_order', methods=['POST'])
+def create_order():
+    # Retrieve customer details from the session
+    user_name = session.get('user_name', '')
+    user_lastname = session.get('user_lastname', '')
+    user_phone = session.get('user_phone', '')
+    full_username = f"{user_name} {user_lastname}".strip()
+
+    data = request.json
+    amount = data.get('amount')  # Amount in paisa
+    courses = data.get('courses', [])  # Retrieve courses from the request
+
+    if amount and courses:
+        try:
+            # Create an order
+            order_data = {
+                "amount": amount,  # Amount in paisa
+                "currency": "INR",
+                "receipt": "order_rcptid_11",
+                "notes": {  # Custom notes (optional) for the Razorpay dashboard
+                    "customer_name": full_username,
+                    "customer_phone": user_phone,
+                },
+            }
+            order = client.order.create(data=order_data)
+
+            # Store order details in session
+            session['order_id'] = order['id']
+            session['courses'] = courses
+            session['amount'] = amount
+
+            # Return a JSON response with the order ID
+            return jsonify({"success": True, "order_id": order['id']})
+        except Exception as e:
+            return jsonify({"success": False, "error": str(e)})
+    return jsonify({"success": False, "error": "Invalid amount or courses"})
+
+@app.route('/pay')
+def pay():
+    # Retrieve order details from the session
+    order_id = session.get('order_id')
+    courses = session.get('courses', [])
+    amount = session.get('amount')
+    user_name = session.get('user_name', '')
+    user_lastname = session.get('user_lastname', '')
+    full_username = f"{user_name} {user_lastname}".strip()
+
+    # Pass the order details to the template
+    return render_template('pay.html', order_id=order_id, courses=courses, amount=amount, full_username=full_username)
 
 @app.route('/teachercart')
 def teachercart():
@@ -106,6 +154,7 @@ def login():
             session['user_id'] = user[0] 
             session['user_name'] = user[1]
             session['user_lastname'] = user[2]
+            session['user_phone'] = user[3]
             return redirect(url_for('success'))
 
         # Check instructors table
