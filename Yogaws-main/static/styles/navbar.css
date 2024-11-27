@@ -8,40 +8,44 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
+  background-color: #f8f9fa;
 }
 
 /* Navbar Styling */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 40px; /* Horizontal padding for consistent spacing */
+  display: flex; /* Flexbox for horizontal alignment */
+  align-items: center; /* Vertically center all items */
+  justify-content: space-between; /* Space between logo, links, and button */
+  padding: 10px 40px; /* Adjust padding for spacing */
   background-color: #fff;
-  position: relative;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
 /* Logo Styling */
 .logo img {
-  height: 5rem;
+  height: 5rem; /* Adjust logo size */
 }
 
-/* Links */
+/* Links Section Styling */
 .nav-links {
-  display: flex;
+  display: flex; /* Flexbox for links in one line */
+  justify-content: center; /* Center links horizontally */
+  align-items: center; /* Align links vertically */
+  flex-grow: 1; /* Allow links to take up remaining space */
   list-style: none;
-  justify-content: space-evenly; /* Even spacing between links */
-  flex-grow: 1; /* Allow links to take available space */
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 0;
+}
+
+.nav-links li {
+  margin: 0 15px; /* Space between links */
 }
 
 .nav-links li a {
   text-decoration: none;
   color: #333;
   font-size: 16px;
-  padding: 10px 15px; /* Padding for clickable area */
+  padding: 10px 15px; /* Clickable area for links */
   border: 1px solid transparent;
   border-radius: 4px;
   transition: all 0.3s ease-in-out;
@@ -53,7 +57,7 @@ body {
   border-color: #ff7f51;
 }
 
-/* Register/Login Button */
+/* Register Button Styling */
 .register-btn {
   background-color: #ff7f51;
   color: #fff;
@@ -63,84 +67,94 @@ body {
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease-in-out;
+  margin-left: 20px; /* Space between button and hamburger */
 }
 
 .register-btn:hover {
   background-color: #ff4f2f;
 }
 
-/* Hamburger Button */
+/* Mobile Adjustments */
 .hamburger {
-  display: none; /* Hidden above 768px */
-  flex-direction: column;
-  gap: 5px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 10px;
-  z-index: 2000;
+  display: none; /* Hide hamburger by default on larger screens */
 }
 
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: #333;
-  border-radius: 2px;
-  transition: background-color 0.3s ease-in-out;
-}
-
-/* Mobile View: Adjustments for smaller screens */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .navbar {
-      flex-direction: column; /* Stack items vertically */
-      align-items: flex-start; /* Align logo and hamburger */
+    padding: 10px 20px; /* Reduce padding for smaller screens */
+    justify-content: space-between; /* Keep the space between elements */
   }
 
   .hamburger {
-      display: flex; /* Show hamburger button */
-      margin-top: 10px; /* Add spacing below logo */
+    display: flex; /* Show hamburger on smaller screens */
+    flex-direction: column;
+    gap: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    left: 20px; /* Align hamburger to the extreme left */
+    z-index: 2000; /* Ensure hamburger appears above everything else */
   }
-  
-  .logo {
-    top: 10px; /* Keep logo at the top */
-    right: 20px; /* Stay aligned to the upper right corner */
+
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
   }
 
   .nav-links {
-      display: none; /* Hidden by default on smaller screens */
-      flex-direction: column;
-      width: 100%; /* Full-width menu */
-      padding: 10px 20px;
-      background-color: #fff;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden by default */
+    flex-direction: column; /* Stack links vertically */
+    gap: 10px;
+    position: absolute;
+    top: 60px; /* Position below the navbar */
+    left: 20px; /* Align menu near hamburger */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1500; /* Ensure menu appears above everything else */
   }
 
   .nav-links.show {
-      display: flex; /* Show menu when toggled */
-      gap: 10px; /* Space between vertical links */
+    display: flex; /* Show the menu when toggled */
   }
 
+  .logo {
+    display: none; /* Hide logo on small screens */
+  }
+
+  /* Register/Login button and hamburger on mobile: same line */
+  .navbar {
+    display: flex;
+    align-items: center; /* Align all items vertically in the center */
+  }
+
+  /* Adjust the space between hamburger and register button */
   .register-btn {
-      align-self: center; /* Center the register button on smaller screens */
+    margin-left: 10px; /* Reduce space between hamburger and button */
+  }
+
+  /* Align hamburger and button properly */
+  .hamburger,
+  .register-btn {
+    margin-left: auto; /* Push both hamburger and register button to the right */
   }
 }
 
-@media (min-width: 769px) {
-  .logo img {
-    height: 5rem;
-  }
-  .hamburger {
-      display: none; 
-  }
-
+@media (min-width: 1025px) {
   .nav-links {
-      display: flex; 
-      gap: 30px; 
+    display: flex; /* Ensure links are always visible on larger screens */
+    justify-content: space-evenly;
   }
 
-  .navbar {
-      flex-direction: row;
-      align-items: center;
+  .register-btn {
+    margin-left: auto; /* Keep register button to the extreme right */
+    margin-right: 20px; /* Add margin to the right */
   }
 }
