@@ -5,6 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
 
 app = Flask(__name__)
+application=app
 app.secret_key = 'indramalayoga'  # For flashing messages
 app.permanent_session_lifetime = timedelta(minutes=30)  # Set session timeout to 30 minutes
 client = razorpay.Client(auth=("rzp_test_EJa6zI3VKH91qU", "aBL7GC5PGWoHSTQJuyu6bfGa"))
@@ -15,7 +16,7 @@ def make_session_permanent():
 
 def get_db():
     if 'db' not in g:
-        g.db = sqlite3.connect('./Yogaws-main/instances/YWS.db')
+        g.db = sqlite3.connect('./instances/YWS.db')
     return g.db
 
 @app.teardown_appcontext
@@ -334,7 +335,7 @@ def logout():
 
 @app.route('/success')
 def success():
-    if 'user_id' or 'instructor_id' not in session:
+    if 'user_id' not in session:
         flash("You need to be logged in to access this page.", "warning")
         return redirect(url_for('login'))
     

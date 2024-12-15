@@ -30,7 +30,7 @@ body {
 /* Adjust height for smaller screens */
 @media (max-width: 768px) {
   .navbar {
-    height: 80px; /* Increase height for smaller screens */
+    height: 110px; /* Increase height for smaller screens */
     padding: 15px 20px;
   }
 }
@@ -38,6 +38,7 @@ body {
 /* Logo Styling */
 .logo img {
   height: 5rem; /* Adjust logo size */
+  margin-top: 1rem;
 }
 
 /* Links Section Styling */
@@ -48,7 +49,6 @@ body {
   flex-grow: 1;
   margin-left: 20px;
   margin-right: 20px;
- 
 }
 
 .nav-links li a {
@@ -91,8 +91,14 @@ body {
 
 @media (max-width: 1024px) {
   .navbar {
-    padding: 10px 20px; /* Reduce padding for smaller screens */
-    justify-content: space-between; /* Keep the space between elements */
+    display: flex;
+    justify-content: space-between; /* Keep elements spaced in the navbar */
+    align-items: center;
+    padding: 10px 20px;
+  }
+
+  .logo {
+    margin-left: 10px; /* Align logo to the left */
   }
 
   .hamburger {
@@ -104,10 +110,14 @@ body {
     cursor: pointer;
     padding: 10px;
     position: absolute;
-    left: 20px; /* Align hamburger to the extreme left */
+    top: 10px; /* Align hamburger to the top */
+    right: 20px; /* Align hamburger to the extreme right */
     z-index: 2000; /* Ensure hamburger appears above everything else */
   }
 
+  .register-btn {
+    margin-bottom: 2rem;
+  }
   .hamburger span {
     display: block;
     width: 25px;
@@ -123,37 +133,29 @@ body {
     gap: 10px;
     position: absolute;
     top: 60px; /* Position below the navbar */
-    left: 20px; /* Align menu near hamburger */
+    right: 20px; /* Align with hamburger */
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1500; /* Ensure menu appears above everything else */
+    z-index: 1600; /* Ensure menu appears above everything else */
   }
 
   .nav-links.show {
     display: flex; /* Show the menu when toggled */
   }
 
-  .logo {
-    display: none; /* Hide logo on smaller screens */
-  }
-
-  /* Register/Login button and hamburger on mobile: same line */
-  .navbar {
-    display: flex;
-    align-items: center; /* Align all items vertically in the center */
-  }
-
-  /* Adjust the space between hamburger and register button */
   .register-btn {
-    margin-left: 10px; /* Reduce space between hamburger and button */
-  }
-
-  /* Align hamburger and button properly */
-  .hamburger,
-  .register-btn {
-    margin-left: auto; /* Push both hamburger and register button to the right */
+    position: absolute;
+    top: 60px; /* Position below the hamburger */
+    right: 5px; /* Align with the hamburger */
+    background-color: #ff7f51;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    z-index: 1500; /* Ensure it appears above other elements */
   }
 }
 
@@ -171,6 +173,6 @@ body {
   }
 
   .hamburger {
-    display: none; /* Hide the hamburger on desktop */
+    display: none; /* Hide the hamburger on desktop */
   }
 }

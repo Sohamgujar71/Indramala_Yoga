@@ -146,10 +146,6 @@
   .carousel-cell {
     width: 100%; /* One card visible at a time */
   }
-
-  .carousel .flickity-button {
-    display: none; /* Optionally hide Flickity controls on mobile */
-  }
 }
 
 /* Desktop Styles: Multiple Cards Visible */
