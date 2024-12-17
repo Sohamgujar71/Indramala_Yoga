@@ -8,8 +8,10 @@
 /* Team Section Styles */
 .team-section {
   min-height: 100vh;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(to bottom, #055B0B, #588d69);
   font-family: "Ubuntu Mono", monospace;
   font-weight: 400;
@@ -19,53 +21,12 @@
 /* Flickity Carousel Styles */
 .carousel {
   width: 100%;
-  display: inline;
-  gap: 20%;
-  /* Adds some space between carousel items */
-  padding: 10px;
   margin-top: 20px;
+  overflow: hidden;
 }
 
-.carousel-cell:nth-of-type(1) {
-  background-image: url('/static/assets/trainer.webp');
-  background-position: center;
-  background-size: cover;
-}
-
-.carousel-cell:nth-of-type(2) {
-  background-image: url('/static/assets/trainer2.webp');
-  background-position: center;
-  background-size: cover;
-}
-
-.carousel-cell:nth-of-type(3) {
-  background-image: url('/static/assets/trainer3.webp');
-  background-position: center;
-  background-size: cover;
-}
-.carousel-cell:nth-of-type(4) {
-  background-image: url('/static/assets/trainer4.webp');
-  background-position: center;
-  background-size: cover;
-}
-.carousel-cell:nth-of-type(5) {
-  background-image: url('/static/assets/new_trainy.png');
-  background-position: center;
-  background-size: cover;
-}
-.carousel-cell:nth-of-type(6) {
-  background-image: url('/static/assets/newtrainer2.jpg');
-  background-position: center;
-  background-size: cover;
-}
-.carousel-cell:nth-of-type(7) {
-  background-image: url('/static/assets/newtrainer1.jpg');
-  background-position: center;
-  background-size: cover;
-}
-
-/* Carousel Cell Styles */
 .carousel-cell {
+  margin: 0 10px;
   width: 150px;    /* Fixed width of 150px for each card */
   height: 400px;   /* Fixed height of 400px for each card */
   background-size: cover;
@@ -75,27 +36,31 @@
   align-items: center;
   border-radius: 8px;
   overflow: hidden;
+  position: relative;
 }
 
-/* Hover effect */
-/* .carousel-cell:hover {
-  width: 250px; 
-  box-shadow: 1px 3px 15px #54784f; 
-  transform: translateY(-30px); 
-  transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
-} */
+.carousel-cell:nth-of-type(1) {
+  background-image: url('/static/assets/nitu_khemkar.png');
+} 
+.carousel-cell:nth-of-type(2) {
+  background-image: url('/static/assets/jay.jpg');
+}
+.carousel-cell:nth-of-type(3) {
+  background-image: url('/static/assets/satya.jpg');
+}
 
 /* Content inside Carousel Cards */
 .carousel-cell .content {
+  height: 100%;
+  width: 100%;
   font-size: 1.5rem;
   color: #ffffff; /* Accent text color */
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 15px;
   opacity: 0;
-  flex-direction: column;
-  height: 100%;
-  justify-content: flex-end;
   background: linear-gradient(
     0deg,
     #7aab9c 0%, /* Gradient using the purple shade */
@@ -113,8 +78,15 @@
 
 .carousel-cell:hover .content {
   opacity: 1;
-  transform: translateY(0%);
+  transform: translateY(10%);
   visibility: visible;
+}
+
+.content h2{
+  color: rgb(183, 71, 183);
+}
+.content span{
+  color: rgb(0,0,0);
 }
 
 /* Join Button Styles */
@@ -146,11 +118,17 @@
   .carousel-cell {
     width: 100%; /* One card visible at a time */
   }
+  .carousel .flickity-button {
+    display: block; /* Show Flickity controls on mobile */
+  }
 }
 
 /* Desktop Styles: Multiple Cards Visible */
 @media (min-width: 769px) {
   .carousel-cell {
-    width: 20%; /* Multiple cards visible at once */
+    width: 25%; /* Multiple cards visible at once */
+  }
+  .carousel .flickity-button {
+    display: none; /* Show Flickity controls on mobile */
   }
 }
