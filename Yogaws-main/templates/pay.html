@@ -2,96 +2,314 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/static/styles/pay.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico">
-    <title>Payment</title>
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .invoice-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            width: 40px; /* Adjust logo size */
+            height: 40px;
+            margin-right: 15px; /* Space between logo and title */
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .header p {
+            margin: 5px 0 0;
+            color: #555;
+        }
+
+        .invoice-details {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .invoice-details div {
+            flex: 1;
+        }
+
+        .invoice-details div:not(:last-child) {
+            margin-right: 20px;
+        }
+
+        .invoice-details h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .invoice-details p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .invoice-table th, .invoice-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .invoice-table th {
+            background: #f4f4f4;
+            font-weight: bold;
+        }
+
+        .total {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .total h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+
+        .receipt-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        #rzp-button1 {
+            background-color: #3399cc;
+            color: #fff;
+        }
+
+        #success-button {
+            background-color: #4CAF50;
+            color: #fff;
+            display: none;
+        }
+
+        #cancel-button {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        #download-button {
+            background-color: #ff9800;
+            color: #fff;
+            display: none;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
 </head>
 <body>
-    <h1>Order Details</h1>
-    <p>Order ID: {{ order_id }}</p>
-    <p>Customer Name: {{ full_username }}</p>
-    <p>Total Amount: Rs {{ amount / 100 }}.00</p>
-    <h2>Courses:</h2>
-    <ul>
-        {% for course in courses %}
-            <li>{{ course }}</li>
-        {% endfor %}
-    </ul>
-    <button id="rzp-button1">Confirm payment</button>
-    <button id="success-button" style="display: none;">Go to Home Page</button>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script>
-var options = {
-    "key": "rzp_test_EJa6zI3VKH91qU", // Enter the Key ID generated from the Dashboard
-    "amount": "5000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-    "currency": "INR",
-    "name": "Indramala Yoga Sansthan",
-    "description": "Test Transaction",
-    "image": "https://example.com/your_logo",
-    "order_id": "{{ order_id }}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    "handler": function (response){
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
+    <div class="invoice-container">
+        <div class="header">
+            <img src="/static/assets/website_icon.webp" alt="Logo">
+            <div>
+                <h1>Invoice</h1>
+                <p>Indramala Yoga Sansthan</p>
+            </div>
+        </div>
 
-        // Hide the confirm payment button
-        document.getElementById('rzp-button1').style.display = 'none';
+        <div class="invoice-details">
+            <div>
+                <h3>Invoice To</h3>
+                <p>{{ full_username }}</p>
+                <p>{{ user_address_line_1 }}</p>
+                <p>{{ user_address_line_2 }}</p>
+            </div>
+            <div>
+                <h3>Order ID</h3>
+                <p>{{ order_id }}</p>
+            </div>
+        </div>
 
-        // Show the success button
-        document.getElementById('success-button').style.display = 'block';
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                    <tr>
+                        <td>{{ course }}</td>
+                        <td>Rs {{ amount / 100 }}</td>
+                        <td>1</td>
+                        <td>Rs {{ amount / 100 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-        // Send a POST request to the server with the user and course details
-        fetch('/process_payment', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
+        <div class="total">
+            <h2>Total: Rs {{ amount / 100 }}</h2>
+        </div>
+
+        <div class="receipt-buttons">
+            <button id="rzp-button1">Confirm Payment</button>
+            <button id="success-button">Go to Home Page</button>
+            <button id="cancel-button">Cancel Order</button>
+            <button id="download-button">Download Receipt</button>
+        </div>
+
+        <div class="footer">
+            <p>Thank You For Choosing Us!</p>
+        </div>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script>
+        var options = {
+            "key": "rzp_test_EJa6zI3VKH91qU",
+            "amount": "{{ amount }}",
+            "currency": "INR",
+            "name": "Indramala Yoga Sansthan",
+            "description": "Test Transaction",
+            "image": "/static/assets/website_icon.webp",
+            "order_id": "{{ order_id }}",
+            "handler": function (response) {
+                alert("Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
+                document.getElementById('rzp-button1').style.display = 'none';
+                document.getElementById('success-button').style.display = 'block';
+                document.getElementById('download-button').style.display = 'inline-block';
             },
-            body: JSON.stringify({
-                username: "{{ full_username }}",
-                courses: {{ courses|tojson }}
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                console.log("Payment processed successfully.");
-            } else {
-                console.error("Error processing payment:", data.error);
+            "prefill": {
+                "name": "{{ full_username }}",
+                "contact": "{{ user_phone }}"
+            },
+            "theme": {
+                "color": "#3399cc"
             }
-        })
-        .catch(error => console.error("Error:", error));
-    },
-    "prefill": {
-        "name": "{{ full_username }}",
-        "contact": "{{ user_phone }}"
-    },
-    "notes": {
-        "address": "Razorpay Corporate Office"
-    },
-    "theme": {
-        "color": "#3399cc"
-    }
-};
-var rzp1 = new Razorpay(options);
-rzp1.on('payment.failed', function (response){
-        alert(response.error.code);
-        alert(response.error.description);
-        alert(response.error.source);
-        alert(response.error.step);
-        alert(response.error.reason);
-        alert(response.error.metadata.order_id);
-        alert(response.error.metadata.payment_id);
-});
-document.getElementById('rzp-button1').onclick = function(e){
-    rzp1.open();
-    e.preventDefault();
-}
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.on('payment.failed', function (response) {
+            alert("Payment Failed!\nReason: " + response.error.reason);
+        });
 
-// Add event listener for the success button
-document.getElementById('success-button').onclick = function() {
-    window.location.href = '/success';
-}
-</script>
+        document.getElementById('rzp-button1').onclick = function (e) {
+            rzp1.open();
+            e.preventDefault();
+        };
+
+        document.getElementById('success-button').onclick = function () {
+            window.location.href = '/success';
+        };
+
+        document.getElementById('cancel-button').onclick = function () {
+            window.location.href = '/enroll';
+        };
+
+        document.getElementById('download-button').onclick = function () {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+        
+            // Business Name and Logo
+            doc.setFontSize(16);
+            doc.setFont("helvetica", "bold");
+            doc.text("Indramala Yoga Sansthan", 20, 20);
+            doc.setFontSize(12);
+            doc.setFont("helvetica", "normal");
+            doc.text("Website: www.indramalayoga.com", 20, 30);
+            doc.text("Email: support@indramalayoga.com", 20, 40);
+            doc.line(20, 45, 190, 45); // Horizontal line
+        
+            // Customer Details Section
+            doc.setFontSize(14);
+            doc.text("Invoice To:", 20, 55);
+            doc.setFontSize(12);
+            doc.text("Name: {{ full_username }}", 20, 65);
+        
+            // Order Details Section
+            doc.setFontSize(14);
+            doc.text("Order Details:", 20, 90);
+            doc.setFontSize(12);
+            doc.text("Order ID: {{ order_id }}", 20, 100);
+        
+            // Table Section
+            const tableData = [];
+            {% for course in courses %}
+                tableData.push(['{{ course }}', 'Rs {{ amount / 100 }}', '1', 'Rs {{ amount / 100 }}']);
+            {% endfor %}
+        
+            doc.autoTable({
+                startY: 110,
+                head: [['Product', 'Price', 'Quantity', 'Total']],
+                body: tableData,
+                theme: 'striped',
+                styles: {
+                    cellPadding: 4,
+                    fontSize: 10
+                },
+                headStyles: {
+                    fillColor: [0, 102, 204], // Blue color for header
+                    textColor: [255, 255, 255], // White text
+                },
+                margin: { left: 20, right: 20 }
+            });
+        
+            // Total Amount Section
+            const finalY = doc.lastAutoTable.finalY + 10; // Position after table
+            doc.setFontSize(14);
+            doc.text(`Total: Rs {{ amount / 100 }}`, 20, finalY);
+        
+            // Footer Section
+            doc.setFontSize(12);
+            doc.setTextColor(100);
+            doc.text("Thank you for your purchase!", 20, finalY + 20);
+            doc.text("For queries, contact: support@indramalayoga.com", 20, finalY + 30);
+        
+            // Save the PDF
+            doc.save("invoice_receipt.pdf");
+        };        
+    </script>
 </body>
 </html>

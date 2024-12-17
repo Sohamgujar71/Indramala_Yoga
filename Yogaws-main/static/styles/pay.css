@@ -1,79 +1,72 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff7e6;
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    height: 100vh;
-}
-
-.order-info {
-    width: 300px; /* Fixed width */
-    height: 300px; /* Fixed height to make it square */
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    background-color: #f9f9f9;
+}
+.receipt-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.receipt-header {
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 20px;
 }
-
-h1 {
-    color: #f1832a;
-    margin-bottom: 10px;
-}
-
-p, h2, li {
-    font-size: 16px;
+.receipt-header h1 {
+    margin: 0;
     color: #333;
+}
+.receipt-details {
+    margin-bottom: 20px;
+}
+.receipt-details p {
     margin: 5px 0;
+    color: #555;
 }
-
-ul {
-    list-style-type: none;
-    padding: 0;
+.receipt-courses {
+    margin-bottom: 20px;
 }
-
+.receipt-courses ul {
+    padding-left: 20px;
+}
+.receipt-courses li {
+    margin: 5px 0;
+    color: #333;
+}
+.receipt-buttons {
+    text-align: center;
+}
 button {
-    background-color: #f7b636;
-    color: white;
-    border: none;
     padding: 10px 20px;
+    font-size: 16px;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 20px;
+    margin: 5px;
 }
-
-button:hover {
-    background-color: #fa7921;
+#rzp-button1 {
+    background-color: #3399cc;
+    color: #fff;
 }
-
 #success-button {
+    background-color: #4CAF50;
+    color: #fff;
+    display: none;
+}
+#cancel-button {
+    background-color: #f44336;
+    color: #fff;
+}
+#download-button {
+    background-color: #ff9800;
+    color: #fff;
     display: none; /* Initially hidden */
 }
-
-@media (max-width: 768px) {
-    .order-info {
-        width: 90%; /* Adjust width for smaller screens */
-        height: auto; /* Allow height to adjust */
-    }
-
-    h1 {
-        font-size: 20px;
-    }
-
-    p, h2, li {
-        font-size: 14px;
-    }
-
-    button {
-        padding: 8px 16px;
-    }
+button:hover {
+    opacity: 0.9;
 }

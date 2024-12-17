@@ -119,6 +119,8 @@ def pay():
     # Pass the order details to the template
     return render_template('pay.html', order_id=order_id, courses=courses, amount=amount, full_username=full_username, user_phone=user_phone)
 
+
+
 @app.route('/teachercart')
 def teachercart():
     return render_template('teachercart.html')

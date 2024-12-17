@@ -18,7 +18,7 @@ const product = [
     {
         id: 2,
         image: '/static/assets/advancedyoga.webp',
-        title: 'Advanced Yoga',
+        title: 'Advance Yoga',
         onlinePrice: 230,
         offlinePrice: 200,
         description: 'Yoga practice involving complex postures and techniques for experienced practitioners.'
