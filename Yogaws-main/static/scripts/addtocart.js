@@ -2,58 +2,58 @@ const product = [
     {
         id: 0,
         image: "/static/assets/meditation.webp",
-        title: 'Meditation',
+        title: 'General Yoga',
         onlinePrice: 120,
         offlinePrice: 100,
-        description: 'A practice of focusing the mind and achieving a state of mental clarity and relaxation.'
+        description: "1. Minor muscle excercise<br>2.Major muscle excercise<br>3. Sun/Moon Salutations<br>4. General Asanas<br>5. Pranayama<br>6. Bandha<br>7. Mudras<br>8. Shanti Path"
     },
     {
         id: 1,
-        image: '/static/assets/iyengaryoga.webp',
-        title: 'Iyenger Yoga',
+        image: '/static/assets/advancedyoga.webp',
+        title: 'Advance Yoga',
         onlinePrice: 60,
         offlinePrice: 50,
-        description: 'A style of yoga that emphasizes precise alignment and the use of props to aid in achieving postures.'
+        description: '1. Minor muscle excercise<br>2.Major muscle excercise<br>3. Sun/Moon Salutations<br>4. Advanced Asanas<br>5. Hatha Yoga<br>6. Power Yoga<br>7. Vinyasa<br>8. Tratak<br>9. Bandha<br>10. Mudras <br>11. Deep Breathing<br>12. Yog Nidra<br>13. Meditation<br>14. Shata Karma<br>15. Shanti Path'
     },
     {
         id: 2,
-        image: '/static/assets/advancedyoga.webp',
-        title: 'Advance Yoga',
+        image: '/static/assets/pranayam.webp',
+        title: 'Pranayam',
         onlinePrice: 230,
         offlinePrice: 200,
-        description: 'Yoga practice involving complex postures and techniques for experienced practitioners.'
+        description: '1. Anulom-Vilom<br>2.Surya Bhedi<br>3. Chandra Bhedi<br>4. Bhastrika<br>5. Bhramari<br>6. Ujjayi<br>7. Kapal Bhati'
     },
     {
         id: 3,
-        image: '/static/assets/ashtangayoga.webp',
-        title: 'Ashtanga Yoga',
+        image: '/static/assets/kidsyoga.webp',
+        title: 'Kids Yoga',
         onlinePrice: 100,
         offlinePrice: 80,
-        description: 'A dynamic style of yoga consisting of a set sequence of postures performed in a specific order with a focus on breath and movement.'
+        description: ''
     },
     {
         id: 4,
-        image: '/static/assets/competitveyoga.webp',
-        title: 'Competitive Yoga',
+        image: '/static/assets/medicalyoga.webp',
+        title: 'Medical Yoga',
         onlinePrice: 230,
         offlinePrice: 200,
-        description: 'A practice where individuals perform yoga postures and sequences to compete in events based on technique and form.'
+        description: ''
     },
     {
         id: 5,
         image: '/static/assets/poweryoga.webp',
-        title: 'Power Yoga',
+        title: 'Yog Therapy',
         onlinePrice: 230,
         offlinePrice: 200,
-        description: ' A vigorous and fitness-oriented form of yoga that focuses on strength, flexibility, and endurance.'
+        description: ''
     },
     {
         id: 6,
-        image: '/static/assets/photos/fifteen.png',
+        image: '/static/assets/weightlossyoga.webp',
         title: 'Weight Loss Yoga',
         onlinePrice: 230,
         offlinePrice: 200,
-        description: 'A yoga practice designed to enhance metabolism and aid in weight management through various poses and sequences.'
+        description: ''
     },
     {
         id: 7,
@@ -61,55 +61,15 @@ const product = [
         title: 'Aerial Yoga',
         onlinePrice: 230,
         offlinePrice: 200,
-        description: 'A form of yoga performed with the aid of a suspended fabric hammock to support and enhance postures.'
+        description: ''
     },
     {
         id: 8,
         image: '/static/assets/pregnancyyoga.webp',
-        title: 'Pregnancy Yoga',
+        title: 'Prenatal Yoga',
         onlinePrice: 230,
         offlinePrice: 200,
-        description: 'Yoga tailored for expectant mothers to support physical and emotional well-being during pregnancy.'
-    },
-    {
-        id: 9,
-        image: '/static/assets/vinyasayoga.webp',
-        title: 'Vinyasa Yoga',
-        onlinePrice: 230,
-        offlinePrice: 200,
-        description: 'A style of yoga characterized by a flowing sequence of poses linked with the breath, creating a smooth and dynamic practice.'
-    },
-    {
-        id: 10,
-        image: '/static/assets/yogatherapy.webp',
-        title: 'Yoga Therapy',
-        onlinePrice: 230,
-        offlinePrice: 200,
-        description: 'A therapeutic approach to yoga that uses specific postures and techniques to address individual health concerns and promote overall well-being.'
-    },
-    {
-        id: 11,
-        image: '/static/assets/stressmanagement.webp',
-        title: 'Stress Management',
-        onlinePrice: 230,
-        offlinePrice: 200,
-        description: 'Techniques and practices designed to reduce and manage stress, often incorporating yoga, mindfulness, and relaxation methods.'
-    },
-    {
-        id: 12,
-        image: '/static/assets/kidsyoga.webp',
-        title: 'Kids Yoga',
-        onlinePrice: 230,
-        offlinePrice: 200,
-        description: 'Yoga designed for children, focusing on playful poses, movement, and relaxation to promote physical and emotional development.'
-    },
-    {
-        id: 13,
-        image: '/static/assets/hathayoga.webp',
-        title: 'Hatha Yoga',
-        onlinePrice: 230,
-        offlinePrice: 200,
-        description: 'A comprehensive form of yoga aimed at improving strength and flexibility.'
+        description: ''
     }
 ];
 
@@ -264,4 +224,33 @@ function submitPayment() {
         console.error("Error:", error);
         alert("An error occurred while creating the order.");
     });
+}
+
+function updateClassFrequencyOptions() {
+    const paymentManner = document.getElementById('payment-manner').value;
+    const classFrequencyDropdown = document.getElementById('class-frequency');
+    const monthlyclassFrequencyDropdown = document.getElementById('month-frequency');
+
+    if (paymentManner === 'monthly') {
+        // Disable class frequency dropdown and enable monthly frequency dropdown
+        classFrequencyDropdown.disabled = true;
+        classFrequencyDropdown.innerHTML = ''; // Clear options
+        
+        monthlyclassFrequencyDropdown.disabled = false;
+        monthlyclassFrequencyDropdown.innerHTML = `
+            <option value="4-sessions">4-sessions</option>
+            <option value="8-sessions">8-sessions</option>
+            <option value="12-sessions">12-sessions</option>
+        `;
+    } else {
+        // Enable class frequency dropdown and disable monthly frequency dropdown
+        classFrequencyDropdown.disabled = false;
+        classFrequencyDropdown.innerHTML = `
+            <option value="regular">Regular</option>
+            <option value="alternate">Alternate</option>
+        `;
+        
+        monthlyclassFrequencyDropdown.disabled = true;
+        monthlyclassFrequencyDropdown.innerHTML = ''; // Clear options
+    }
 }

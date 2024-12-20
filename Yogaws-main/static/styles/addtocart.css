@@ -249,7 +249,7 @@ button:hover{
     padding: 10px;
     border-radius: 12px;
     font-size: 14px;
-    text-align: center;
+    text-align: left;
 }
 
 .qty-btn{
@@ -264,6 +264,7 @@ button:hover{
 .toggle-container {
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 10px;
     font-family: Arial, sans-serif;
 }
 
@@ -351,6 +352,7 @@ button:hover{
     }
 
     .description-content {
+
         font-size: 12px;
     }
 

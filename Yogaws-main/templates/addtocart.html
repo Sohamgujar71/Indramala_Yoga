@@ -22,10 +22,30 @@
             </div>
         </div>
         <div class="toggle-container">
-            <label for="mode-toggle">Mode:</label>
-            <input type="checkbox" id="mode-toggle" checked />
-            <span id="mode-status">Online</span>
+            <label for="payment-manner">Payment Manner:</label>
+            <select id="payment-manner" onchange="updateClassFrequencyOptions()">
+                <option value="" disabled selected>Select Payment Manner</option>
+                <option value="monthly">Monthly</option>
+                <option value="quarterly">Quarterly</option>
+                <option value="half-yearly">Half Yearly</option>
+                <option value="yearly">Yearly</option>
+            </select>
+        
+            <label for="class-frequency" style="margin-left: 15px;">Class Frequency:</label>
+            <select id="class-frequency" disabled>
+                <option value="" disabled selected>Select Class Frequency</option>
+                <option value="regular">Regular</option>
+                <option value="monthly">Monthly</option>
+            </select>
+            <label for="month-frequency" style="margin-left: 15px;">Month Frequency:</label>
+            <select id="month-frequency" disabled>
+                <option value="" disabled selected>Select Month Frequency</option>
+                <option value="4-sessions">4-sessions</option>
+                <option value="8-sessions">8-sessions</option>
+                <option value="12-sessions">12-sessions</option>
+            </select>
         </div>
+        
         <div class="container">
             <div id="root"></div>
             <div class="sidebar">
