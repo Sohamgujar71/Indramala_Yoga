@@ -22,9 +22,13 @@
     <section class="main-body">
         <div class="heading">
             <h1>Join Our Team</h1>
-            <p>We're excited to have you apply! Please fill out the form below.</p>
+            <p>We're excited to have you apply! Please fill out the form below to buy our courses.</p>
             <hr>
         </div>
+        <div class="know-courses">
+            <button type="button" id="courses-btn" onclick="window.location.href='{{ url_for('knowabtcourses') }}'" class="hero-button">Explore Our Couses</button>
+        </div>
+        
         <form action="{{ url_for('apply') }}" method="post">
             <div class="app-form">
                 <label for="fname">Full Name</label><br>

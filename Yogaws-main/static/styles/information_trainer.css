@@ -1,0 +1,380 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff6e5; /* Light orange background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.header {
+    height: 150px;
+    width: 90%;
+    top: 0px;
+    background-color: #ff9f43; /* Medium orange */
+    border-radius: 12px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px;
+    position: relative;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    height: 125px;
+    width: 125px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    margin-left: 15px;
+    width: 100px;
+}
+
+.header1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.head-txt {
+    color: white;
+    font-size: 24px;
+}
+
+.yoga-section {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #333;
+}
+
+section {
+    background-color: #fff; /* White section background */
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #ff7f0e; /* Dark orange headings */
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text {
+    flex: 1;
+    text-align: left;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.enroll-button {
+    display: inline-block;
+    background-color: #ff7f0e; /* Orange button */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.enroll-button:hover {
+    background-color: #e56b00; /* Darker orange */
+}
+
+/* Arrow Buttons */
+.arrow {
+    position: fixed;
+    top: 55%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+    height: 40px;
+    width: 40px;
+    background-color: #ff9f43; /* Medium orange */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow-left {
+    left: 10px;
+}
+
+.arrow-right {
+    right: 10px;
+}
+
+.arrow:hover {
+    background-color: #e56b00;
+    transition: 0.5s;
+}
+
+/* Slick Slider */
+.slick-slide {
+    display: flex;
+    justify-content: center;
+}
+
+.slick-list {
+    padding: 0 30px;
+}
+
+.slick-dots {
+    bottom: -30px;
+}
+
+.slick-prev,
+.slick-next {
+    display: none !important; /* Hide default arrows */
+}
+
+.bottom-icon-left, .bottom-icon-right {
+    position: absolute;
+    bottom: 0;
+}
+
+.bottom-icon-left {
+    left: 0;
+}
+
+.bottom-icon-right {
+    right: 0;
+}
+
+.bottom-icon-left img, .bottom-icon-right img {
+    height: 90px;
+    width: auto;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    /* Adjust header for smaller screens */
+    .header {
+        height: 100px; /* Reduce height */
+        padding: 8px;
+    }
+
+    .logo {
+        height: 75px; /* Smaller logo */
+        width: 75px;
+    }
+
+    .logo img {
+        width: 50px; /* Smaller logo image */
+    }
+
+    .head-txt {
+        font-size: 20px; /* Adjust text size */
+    }
+
+    /* Adjust the carousel */
+    .yoga-section {
+        width: 95%; /* Slightly reduce padding for smaller screens */
+    }
+
+    .content {
+        flex-direction: column; /* Stack content vertically */
+        align-items: center;
+    }
+
+    .img {
+        width: 100%; /* Make image take full width */
+        margin-bottom: 10px; /* Add spacing between image and text */
+    }
+
+    .img img {
+        max-width: 100%; /* Responsive image */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .text {
+        text-align: center; /* Center-align text for better readability */
+        padding: 0 10px; /* Add padding for smaller screens */
+    }
+
+    .enroll-button {
+        font-size: 0.8rem; /* Smaller font size */
+        padding: 8px 12px;
+    }
+
+    /* Slick slider adjustments */
+    .slick-slider {
+        padding: 0; /* Remove extra padding for better fit */
+    }
+
+    .slick-dots {
+        bottom: -20px; /* Adjust dots position */
+    }
+
+    .slick-slide {
+        display: block; /* Ensure one slide is visible at a time */
+    }
+
+    .bottom-icon-left {
+        height: 40px;
+        width: 30px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+    .header {
+        height: 100px; /* Reduce height */
+        padding: 8px;
+    }
+
+    .logo {
+        height: 75px; /* Smaller logo */
+        width: 75px;
+    }
+
+    .logo img {
+        width: 50px; /* Smaller logo image */
+    }
+
+    .head-txt {
+        font-size: 20px; /* Adjust text size */
+    }
+
+    /* Adjust the carousel */
+    .yoga-section {
+        width: 95%; /* Slightly reduce padding for smaller screens */
+    }
+
+    .yoga-slider {
+        gap: 10px;
+    }
+
+    .content {
+        flex-direction: column; /* Stack content vertically */
+        align-items: center;
+    }
+
+    .img {
+        width: 100%; /* Make image take full width */
+        margin-bottom: 10px; /* Add spacing between image and text */
+    }
+
+    .img img {
+        max-width: 100%; /* Responsive image */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .text {
+        text-align: center; /* Center-align text for better readability */
+        padding: 0 10px; /* Add padding for smaller screens */
+    }
+
+    .enroll-button {
+        font-size: 0.8rem; /* Smaller font size */
+        padding: 8px 12px;
+    }
+
+    /* Slick slider adjustments */
+    .slick-slider {
+        padding: 0; /* Remove extra padding for better fit */
+    }
+
+    .slick-dots {
+        bottom: -20px; /* Adjust dots position */
+    }
+
+    .slick-slide {
+        display: block; /* Ensure one slide is visible at a time */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    .header {
+        height: 90px; /* Further reduce height */
+        padding: 5px;
+    }
+
+    .logo {
+        height: 60px;
+        width: 60px;
+    }
+
+    .logo img {
+        width: 40px;
+    }
+
+    .head-txt {
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Reduce heading size */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Reduce subheading size */
+    }
+
+    .enroll-button {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .bottom-icon-left {
+        display: none;
+    }
+    .bottom-icon-right {
+        display: none;
+    }
+}

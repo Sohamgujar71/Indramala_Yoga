@@ -87,3 +87,47 @@
       floatingLinks.style.display = 'flex';
     }
   });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.getElementById('navLinks');
+    const hamburger = document.getElementById('hamburger');
+    let lastScrollTop = 0;
+    let isMenuOpen = false; // Track whether the menu is open via hamburger click
+  
+    // Only apply the scroll hide behavior on mobile screens
+    const isMobile = window.innerWidth <= 1024; // Check if the screen width is 1024px or less
+  
+    if (isMobile) {
+      // Initially hide the navLinks on mobile
+      navLinks.classList.add('hide');
+  
+      // Handle scroll to hide the nav menu on scroll down for mobile screens only
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+        if (scrollTop > lastScrollTop) {
+          // Hide nav menu only on scroll down
+          navLinks.classList.add('hide');
+        } else {
+          // Don't show the menu when scrolling up unless hamburger is clicked
+          if (!isMenuOpen) {
+            navLinks.classList.add('hide');
+          }
+        }
+  
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Update last scroll position
+      });
+    }
+  
+    // Handle hamburger click to toggle the menu visibility
+    hamburger.addEventListener('click', () => {
+      isMenuOpen = !isMenuOpen; // Toggle the menu open/close state
+  
+      if (isMenuOpen) {
+        navLinks.classList.remove('hide'); // Show the menu when hamburger is clicked
+      } else {
+        navLinks.classList.add('hide'); // Hide the menu when hamburger is clicked again
+      }
+    });
+  });
+  

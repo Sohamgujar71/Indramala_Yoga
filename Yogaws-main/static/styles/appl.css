@@ -36,8 +36,6 @@ section {
 .heading {
     text-align: center;
     color: #fff;
-    margin-bottom: 20px;
-    padding: 15px;
     border-radius: 10px;
 }
 
@@ -176,4 +174,29 @@ select option {
 .submit-form input:hover {
     background: #f7b636;
     transform: translateY(-2px);
+}
+
+.know-courses {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#courses-btn {
+    background-color: #f58a63; /* Your orange button color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#courses-btn:hover {
+    background-color: #e6734a; /* Slightly darker orange for hover effect */
+}
+.heading {
+    text-align: center;
+    color: #fff;
+    border-radius: 10px;
 }

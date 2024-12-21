@@ -176,3 +176,27 @@ body {
     display: none; /* Hide the hamburger on desktop */
   }
 }
+
+.nav-links.hide {
+  display: none; /* Hide the menu by default */
+}
+
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none; /* Ensure nav-links are hidden by default on mobile */
+  }
+
+  .hamburger {
+    display: flex; /* Show hamburger on smaller screens */
+  }
+}
+
+@media (min-width: 1025px) {
+  .nav-links {
+    display: flex; /* Always show nav links on larger screens */
+  }
+
+  .hamburger {
+    display: none; /* Hide hamburger on larger screens */
+  }
+}

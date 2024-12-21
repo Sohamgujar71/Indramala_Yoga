@@ -16,7 +16,7 @@ def make_session_permanent():
 
 def get_db():
     if 'db' not in g:
-        g.db = sqlite3.connect('./instances/YWS.db')
+        g.db = sqlite3.connect('C:/Users/gujar/Downloads/Yogaws-main (6)/Indramala_Yoga/Yogaws-main/instances/YWS.db')
     return g.db
 
 @app.teardown_appcontext
@@ -57,6 +57,10 @@ def workshop():
 @app.route('/knowmore')
 def knowmore():
     return render_template('information.html')
+
+@app.route('/knowabtcourses')
+def knowabtcourses():
+    return render_template('knowabtcourses.html')
 
 @app.route('/enroll')
 def enroll():
