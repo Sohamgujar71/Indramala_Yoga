@@ -55,23 +55,36 @@
     }
   }
 
-  // Video container handling
-  document.getElementById('video-container').addEventListener('click', function() {
+  document.getElementById('video-container').addEventListener('click', function () {
     const videoContainer = this;
 
     // Toggle fullscreen mode
     videoContainer.classList.toggle('fullscreen');
-  });
+});
 
-  document.getElementById('close-btn').addEventListener('click', function(event) {
-    event.stopPropagation();
-    const videoContainer = document.getElementById('video-container');
-    const video = document.getElementById('minimized-video');
+document.getElementById('close-btn').addEventListener('click', function (event) {
+  event.stopPropagation();
+  const videoContainer = document.getElementById('video-container');
+  const iframe = document.getElementById('embedded-video');
+  const videoSrc = iframe.src;
+  iframe.src = ''; // Temporarily clear the src to stop playback
+  iframe.src = videoSrc; // Reset the src for potential reuse
 
-    video.pause();
-    video.currentTime = 0;
-    videoContainer.style.display = 'none';
-  });
+  // Hide the video container
+  videoContainer.style.display = 'none';
+});
+
+
+// Add keyboard support (Escape to close fullscreen)
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+        const videoContainer = document.getElementById('video-container');
+        if (videoContainer.classList.contains('fullscreen')) {
+            videoContainer.classList.remove('fullscreen');
+        }
+    }
+});
+
 
   // Floating links visibility based on footer
   window.addEventListener('scroll', function() {

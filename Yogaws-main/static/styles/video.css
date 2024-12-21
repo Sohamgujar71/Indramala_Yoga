@@ -55,6 +55,21 @@
   background-color: darkred;
 }
 
+/* Iframe size control */
+#embedded-video {
+  width: 100%; /* Use the full width of the container */
+  height: 100%; /* Ensure it fills the container */
+  border: none; /* Remove border around the iframe */
+}
+
+/* Fullscreen mode */
+#video-container.fullscreen iframe {
+  width: 90%; /* Maintain similar fullscreen scaling */
+  max-height: 90%; /* Prevent overflow */
+  object-fit: cover; /* Ensure proper scaling */
+}
+
+
 /* Keyframes for sliding animation */
 @keyframes slideIn {
   0% {

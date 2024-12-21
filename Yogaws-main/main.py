@@ -58,6 +58,10 @@ def workshop():
 def knowmore():
     return render_template('information.html')
 
+@app.route('/brochure')
+def brochure():
+    return render_template('brochure.html')
+
 @app.route('/knowabtcourses')
 def knowabtcourses():
     return render_template('knowabtcourses.html')

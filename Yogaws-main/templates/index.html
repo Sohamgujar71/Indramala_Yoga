@@ -58,11 +58,19 @@
 
     <div id="video-container">
         <button id="close-btn">&times;</button>
-        <video id="minimized-video" controls>
-        <source src="/static/assets/Untitled Project.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-        </video>
+        <iframe 
+            id="embedded-video" 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/hZVoCZUhHhM?si=dvZaEurw0E6bely5" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+        </iframe>
     </div>
+    
 
     <section id="trainers">
         <div class="team-section">
@@ -397,7 +405,7 @@
                     <ul>
                         <li><a href="/static/assets/Yoga Brochure-1.pdf">Documents & Certificate</a></li>
                         <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
-                        <li><a href="/static/assets/Yoga Brochure-1.pdf">Brochure</a></li>
+                        <li><a href="{{ url_for('brochure') }}">Brochure</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
