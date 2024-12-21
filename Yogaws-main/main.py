@@ -62,6 +62,10 @@ def knowmore():
 def brochure():
     return render_template('brochure.html')
 
+@app.route('/certificates')
+def certificates():
+    return render_template('certificates.html')
+
 @app.route('/knowabtcourses')
 def knowabtcourses():
     return render_template('knowabtcourses.html')
