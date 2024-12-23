@@ -1,7 +1,7 @@
 import sqlite3
 
 # Connect to the database (or create it if it doesn't exist)
-conn = sqlite3.connect('./Yogaws-main/instances/YWS.db')
+conn = sqlite3.connect('./instances/YWS.db')
 cursor = conn.cursor()
 
 # # Create the users table
@@ -76,13 +76,7 @@ cursor = conn.cursor()
 
 # Create the workshop_sign_in table
 cursor.execute('''
-CREATE TABLE IF NOT EXISTS workshop_sign_in (
-    WID INTEGER PRIMARY KEY AUTOINCREMENT,
-    first_name TEXT,
-    last_name TEXT,
-    Ph_no TEXT,
-    Comments TEXT
-);
+DELETE FROM applicants
 ''')
 
 # Commit the transaction

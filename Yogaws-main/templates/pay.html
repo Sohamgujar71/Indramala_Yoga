@@ -218,6 +218,33 @@
             "order_id": "{{ order_id }}",
             "handler": function (response) {
                 alert("Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
+                // Send payment success data to the API
+                fetch('/process_payment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: '{{ full_username }}',
+                        courses: {{ courses | tojson }} 
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                    // Handle API response (e.g., display success message) 
+                    // (Optional: You can display a success message after API call)
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Handle API error (e.g., display error message)
+                });
+                document.getElementById('cancel-button').style.display = 'none';
                 document.getElementById('rzp-button1').style.display = 'none';
                 document.getElementById('success-button').style.display = 'block';
                 document.getElementById('download-button').style.display = 'inline-block';
