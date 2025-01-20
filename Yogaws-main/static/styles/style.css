@@ -86,6 +86,36 @@ html, body {
 
 /* Navbar styles */
 
+.announcement-section {
+    background-color: #055b0b; /* Match your theme */
+    color: #ffffff; /* Text color for contrast */
+    padding-top: 10px;
+  }
+  
+  .marquee-container {
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+  }
+  
+  .marquee {
+    display: inline-block;
+    animation: marquee-scroll 10s linear infinite;
+    font-size: 40px !important; /* Ensure font-size is applied */
+    font-family: "Ubuntu Mono", monospace;
+    font-weight: bold;
+    color: #f7e8c7; /* Soft yellow for better visibility */
+  }
+  
+  @keyframes marquee-scroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
 
 
 /* Hero section styling */

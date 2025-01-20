@@ -10,14 +10,12 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background: linear-gradient(to bottom, #055B0B, #588d69);
-  font-family: "Ubuntu Mono", monospace;
+  font-family: Helvetica, sans-serif;
   font-weight: 400;
   padding: 20px;
 }
-
 /* Flickity Carousel Styles */
 .carousel {
   width: 100%;
@@ -63,7 +61,7 @@
   opacity: 0;
   background: linear-gradient(
     0deg,
-    #7aab9c 0%, /* Gradient using the purple shade */
+    #7aab9c 15%, /* Gradient using the purple shade */
     rgba(255, 255, 255, 0) 60%
   );
   transform: translateY(100%);
@@ -73,7 +71,7 @@
 
 /* Hover Effects */
 .carousel-cell:hover {
-  box-shadow: 1px 3px 15px #54784f; /* Bright hover state shadow */
+  box-shadow: 3px 3px 25px #54784f; /* Bright hover state shadow */
 }
 
 .carousel-cell:hover .content {
@@ -83,11 +81,11 @@
 }
 
 .content h2{
-  color: rgb(183, 71, 183);
+  color: rgb(255, 255, 255);
 }
 .content span{
   color: rgb(0,0,0);
-}
+} 
 
 /* Join Button Styles */
 #joinbtn {
@@ -111,6 +109,11 @@
 #joinbtn a {
   color: white;
   text-decoration: none;
+}
+/* Adjust the photo position for 1st and 3rd carousel cells */
+.carousel-cell:nth-of-type(1),
+.carousel-cell:nth-of-type(3) {
+  background-position: center top; /* Move the image upwards */
 }
 
 /* Mobile Styles: One Card per Swipe */
