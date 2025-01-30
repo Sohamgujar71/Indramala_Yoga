@@ -16,7 +16,7 @@ def make_session_permanent():
 
 def get_db():
     if 'db' not in g:
-        g.db = sqlite3.connect('./Yogaws-main/instances/YWS.db')
+        g.db = sqlite3.connect('D:/misc/langs/Indramala_Yoga/Yogaws-main/instances/YWS2.db')
     return g.db
 
 @app.teardown_appcontext
