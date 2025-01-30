@@ -368,6 +368,10 @@ def gallery():
 def vision():
     return render_template('visionNmission.html')
 
+@app.route('/knowabtcourses_RYT')
+def knowabtcourses_RYT():
+    return render_template('knowabtcourses_RYT.html')
+
 @app.route('/admin')
 def admin():
     if 'user_type' not in session or session['user_type'] != 'admin':
