@@ -117,6 +117,12 @@
         </div>
         
         <div class="toggle-container">
+            <label class="switch">
+                <input type="checkbox" id="mode-toggle">
+                <span class="slider round"></span>
+            </label>
+            <span id="mode-status">Offline</span>
+
             <label for="payment-manner">Payment Manner:</label>
             <select id="payment-manner" onchange="updatePrices()">
                 <option value="" disabled selected>Select Payment Manner</option>
@@ -135,31 +141,7 @@
         </div>
         
         <div class="container">
-            <div id="root">
-                <div class="box" id="product-0" data-type="general-yoga">
-                    <div class="img-box">
-                        <img class="images" src="/static/assets/meditation.webp" alt="General Yoga">
-                    </div>
-                    <div class="description-box" id="description-0"></div>
-                    <div class="bottom">
-                        <p>General Yoga</p>
-                        <h2 id="price-0">Rs 2500.00</h2>
-                        <button onclick="addtocart(0)">Add to cart</button>
-                    </div>
-                </div>
-
-                <div class="box" id="product-1" data-type="advanced-yoga">
-                    <div class="img-box">
-                        <img class="images" src="/static/assets/advancedyoga.webp" alt="Advanced Yoga">
-                    </div>
-                    <div class="description-box" id="description-1"></div>
-                    <div class="bottom">
-                        <p>Advanced Yoga</p>
-                        <h2 id="price-1">Rs 3500.00</h2>
-                        <button onclick="addtocart(1)">Add to cart</button>
-                    </div>
-                </div>
-            </div>
+            <div id="root"></div>
 
             <div class="sidebar">
                 <div class="head"><p>My Cart</p></div>
@@ -178,6 +160,8 @@
                     id: 0,
                     image: "/static/assets/meditation.webp",
                     title: 'General Yoga',
+                    onlinePrice: 120,
+                    offlinePrice: 100,
                     dataType: 'general-yoga',
                     description: "1. Minor muscle exercise<br>2. Major muscle exercise<br>3. Sun/Moon Salutations<br>4. General Asanas<br>5. Pranayama<br>6. Bandha<br>7. Mudras<br>8. Shanti Path"
                 },
@@ -185,14 +169,73 @@
                     id: 1,
                     image: '/static/assets/advancedyoga.webp',
                     title: 'Advanced Yoga',
+                    onlinePrice: 60,
+                    offlinePrice: 50,
                     dataType: 'advanced-yoga',
                     description: '1. Minor muscle exercise<br>2. Major muscle exercise<br>3. Sun/Moon Salutations<br>4. Advanced Asanas<br>5. Hatha Yoga<br>6. Power Yoga<br>7. Vinyasa<br>8. Tratak<br>9. Bandha<br>10. Mudras <br>11. Deep Breathing<br>12. Yog Nidra<br>13. Meditation<br>14. Shata Karma<br>15. Shanti Path'
+                },
+                {
+                    id: 2,
+                    image: '/static/assets/pranayam.webp',
+                    title: 'Pranayam',
+                    onlinePrice: 230,
+                    offlinePrice: 200,
+                    description: '1. Anulom-Vilom<br>2. Surya Bhedi<br>3. Chandra Bhedi<br>4. Bhastrika<br>5. Bhramari<br>6. Ujjayi<br>7. Kapal Bhati'
+                },
+                {
+                    id: 3,
+                    image: '/static/assets/kidsyoga.webp',
+                    title: 'Kids Yoga',
+                    onlinePrice: 100,
+                    offlinePrice: 80,
+                    description: 'Yoga practice appropriate for kids'
+                },
+                {
+                    id: 4,
+                    image: '/static/assets/medicalyoga.webp',
+                    title: 'Medical Yoga',
+                    onlinePrice: 230,
+                    offlinePrice: 200,
+                    description: 'Yoga practice appropriate for people with medical issues'
+                },
+                {
+                    id: 5,
+                    image: '/static/assets/poweryoga.webp',
+                    title: 'Yog Therapy',
+                    onlinePrice: 230,
+                    offlinePrice: 200,
+                    description: 'For people looking for a therapeutic experience in their Yoga practice'
+                },
+                {
+                    id: 6,
+                    image: '/static/assets/weightlossyoga.webp',
+                    title: 'Weight Loss Yoga',
+                    onlinePrice: 230,
+                    offlinePrice: 200,
+                    description: 'Yoga practice suitable for weight loss'
+                },
+                {
+                    id: 7,
+                    image: '/static/assets/aerialyoga.webp',
+                    title: 'Aerial Yoga',
+                    onlinePrice: 230,
+                    offlinePrice: 200,
+                    description: 'Yoga practice using silk fabric in a hanging fashion,<br>useful for increasing core stability'
+                },
+                {
+                    id: 8,
+                    image: '/static/assets/pregnancyyoga.webp',
+                    title: 'Prenatal Yoga',
+                    onlinePrice: 230,
+                    offlinePrice: 200,
+                    description: 'Yoga appropriate for the soon to be mothers'
                 }
             ];
 
             const categories = [...new Set(product.map((item) => item))];
             let cart = [];
             let selectedCourseNames = [];
+            let isOnlineMode = false; // Default to offline mode
 
             const pricingData = {
                 "general-yoga": {
@@ -225,35 +268,66 @@
                 }
             };
 
+            // Render products
+            document.getElementById('root').innerHTML = categories.map((item, index) => {
+                const price = isOnlineMode ? item.onlinePrice : item.offlinePrice;
+                return (
+                    `<div class='box' id='product-${index}' data-type='${item.dataType || ''}'>
+                        <div class='img-box'>
+                            <img class='images' src=${item.image} alt=${item.title}>
+                        </div>
+                        <div class='description-box' id='description-${index}'></div>
+                        <div class='bottom'>
+                            <p>${item.title}</p>
+                            <h2 id='price-${index}'>Rs ${price}.00</h2>
+                            <button onclick='addtocart(${index})'>Add to cart</button>
+                        </div>
+                    </div>`
+                );
+            }).join('');
+
+            // Update prices based on mode (online/offline) and payment options
             function updatePrices() {
                 const paymentManner = document.getElementById('payment-manner').value;
                 const classFrequency = document.getElementById('class-frequency').value;
 
-                if (!paymentManner || !classFrequency) return; // Exit if no selection
-
-                // Loop through all products
-                document.querySelectorAll('.box').forEach((product) => {
+                document.querySelectorAll('.box').forEach((product, index) => {
                     const productType = product.getAttribute('data-type');
                     const priceElement = product.querySelector('h2');
 
-                    if (pricingData[productType] && pricingData[productType][classFrequency]) {
+                    if (productType && pricingData[productType] && pricingData[productType][classFrequency]) {
+                        // Dynamic pricing for General Yoga and Advanced Yoga
                         const price = pricingData[productType][classFrequency][paymentManner];
+                        priceElement.textContent = `Rs ${price}.00`;
+                    } else {
+                        // Default pricing for other courses
+                        const price = isOnlineMode ? categories[index].onlinePrice : categories[index].offlinePrice;
                         priceElement.textContent = `Rs ${price}.00`;
                     }
                 });
             }
 
+            // Toggle between online and offline modes
+            document.getElementById('mode-toggle').addEventListener('change', function() {
+                isOnlineMode = this.checked;
+                document.getElementById('mode-status').textContent = isOnlineMode ? 'Online' : 'Offline';
+                updatePrices();
+            });
+
+            // Add to cart function
             function addtocart(index) {
                 const product = categories[index];
                 const paymentManner = document.getElementById('payment-manner').value;
                 const classFrequency = document.getElementById('class-frequency').value;
 
-                if (!paymentManner || !classFrequency) {
+                if ((product.dataType === 'general-yoga' || product.dataType === 'advanced-yoga') && (!paymentManner || !classFrequency)) {
                     alert("Please select Payment Manner and Class Frequency before adding to cart.");
                     return;
                 }
 
-                const price = pricingData[product.dataType][classFrequency][paymentManner];
+                const price = product.dataType && pricingData[product.dataType] && pricingData[product.dataType][classFrequency] ?
+                    pricingData[product.dataType][classFrequency][paymentManner] :
+                    (isOnlineMode ? product.onlinePrice : product.offlinePrice);
 
                 let existingItem = cart.find(item => item.id === product.id);
                 if (existingItem) {
@@ -270,6 +344,7 @@
                 displaycart();
             }
 
+            // Display cart function
             function displaycart() {
                 let total = 0;
                 document.getElementById("count").innerHTML = cart.length;
@@ -285,7 +360,7 @@
                                 <div class='row-img'>
                                     <img class='rowimg' src=${item.image}>
                                 </div>
-                                <p style='font-size:12px;'>${item.title} (${item.paymentManner}, ${item.classFrequency}) x${item.quantity}</p>
+                                <p style='font-size:12px;'>${item.title} ${item.paymentManner ? `(${item.paymentManner}, ${item.classFrequency})` : ''} x${item.quantity}</p>
                                 <h2 style='font-size: 15px;'>Rs ${item.price * item.quantity}.00</h2>
                                 <button class='qty-btn' onclick='updateQuantity(${item.id}, 1)'>+</button>
                                 <button class='qty-btn' onclick='updateQuantity(${item.id}, -1)'>−</button>
@@ -294,55 +369,6 @@
                         );
                     }).join('');
                 }
-            }
-
-            function updateQuantity(productId, change) {
-                let itemIndex = cart.findIndex(item => item.id === productId);
-                if (itemIndex !== -1) {
-                    if (cart[itemIndex].quantity + change > 0) {
-                        cart[itemIndex].quantity += change;
-                    } else {
-                        cart.splice(itemIndex, 1);
-                    }
-                    displaycart();
-                }
-            }
-
-            function delElement(productId) {
-                cart = cart.filter(item => item.id !== productId);
-                displaycart();
-            }
-
-            function submitPayment() {
-                console.log("Selected Courses:", selectedCourseNames);
-                const totalElement = document.getElementById("total");
-                const totalText = totalElement.textContent;
-                const amount = parseFloat(totalText.replace("Rs", "").trim()) * 100; // Convert to paisa
-
-                if (amount <= 0) {
-                    alert("Total amount must be greater than 0!");
-                    return;
-                }
-
-                fetch('/create_order', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ amount: amount, courses: selectedCourseNames }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        window.location.href = `/pay?order_id=${data.order_id}`;
-                    } else {
-                        alert("Order creation failed. Please try again.");
-                    }
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                    alert("An error occurred while creating the order.");
-                });
             }
 
             // Initialize default prices
@@ -354,4 +380,5 @@
         </script>
     </body>
 </html>
+
 -->
