@@ -30,22 +30,28 @@
                 <span></span>
             </button>
         
-            <ul class="nav-links" id="navLinks">
-                <li><a href="{{ url_for('workshop') }}">Latest Workshop</a></li>
-                <li><a href="#">Home</a></li>
-                <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
-                <li><a href="#holder">Classes</a></li>
-                <li><a href="{{ url_for('knowabtcourses') }}">TTC</a></li>
-                <li><a href="{{ url_for('knowabtcourses_RYT') }}">RYT/RYS</a></li>
-                <li><a href="#foot">Contact</a></li>
-            </ul>
-            {% if session.get('user_name') %}
-            <button class="button-21" role="button" onclick="location.href='{{ url_for('logout') }}'">Sign Out</button>
-            <span class="welcome-message">Welcome, {{ session['user_name'] }}</span>
-        {% else %}
-            <button class="register-btn" id="openModal">Register/Login</button>
-        {% endif %}
+            <div class="nav-items">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="{{ url_for('workshop') }}">Latest Workshop</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
+                    <li><a href="#holder">Classes</a></li>
+                    <li><a href="{{ url_for('knowabtcourses') }}">TTC</a></li>
+                    <li><a href="{{ url_for('knowabtcourses_RYT') }}">RYT/RYS</a></li>
+                    <li><a href="#foot" class="contact-link">Contact</a></li>
+                </ul>
+        
+                <div class="nav-auth">
+                    {% if session.get('user_name') %}
+                        <span class="welcome-message">Welcome, {{ session['user_name'] }}</span>
+                        <button class="button-21" role="button" onclick="location.href='{{ url_for('logout') }}'">Sign Out</button>
+                    {% else %}
+                        <button class="register-btn" id="openModal">Register/Login</button>
+                    {% endif %}
+                </div>
+            </div>
         </nav>
+        
     
     <section class="hero">
             <div class="container hero-content">
@@ -74,13 +80,13 @@
     
     <section class="announcement-section">
         <div class="marquee-container">
-          <marquee behavior="scroll" direction="left" scrollamount="6">
-            Stay and Transport service available for International clients too!
-          </marquee>
+          <div class="marquee">
+            🚀Stay and Transport service available for International clients too!🌍
+          </div>
         </div>
       </section>
-      
-    <section id="trainers">
+     
+      <section id="trainers">
         <div class="team-section">
             <div class="carousel" data-flickity='{ "cellAlign": "center", "contain": true, "pageDots": false, "prevNextButtons": true, "wrapAround": true }'>
                 <div class="carousel-cell">
@@ -92,9 +98,8 @@
                 <div class="carousel-cell">
                     <div class="content">
                         <h2>Jayprakash Sharma</h2>
-                        <span>Head coach</span>
-                        <span>Advanced Yoga</span>
-                        <span>Hatha Yoga</span>
+                        <span>Head Coach</span>
+                        <span>Advanced Yoga, Hatha Yoga</span>
                     </div>
                 </div>
                 <div class="carousel-cell">
@@ -447,6 +452,20 @@
     </footer>
 </section>
     <script>
+        const signOutButton = document.querySelector(".button-21");
+const contactLink = document.querySelector(".contact-link");
+
+function handleLoginState(isLoggedIn) {
+  if (isLoggedIn) {
+    contactLink.classList.add("hidden");
+  } else {
+    contactLink.classList.remove("hidden");
+  }
+}
+
+// Simulate login
+handleLoginState(true);
+
 document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.querySelector('.custom-carousel');
     const items = document.querySelectorAll('.custom-carousel-item');
