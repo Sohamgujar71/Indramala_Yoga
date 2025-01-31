@@ -29,7 +29,7 @@ const product = [
         title: 'Kids Yoga',
         onlinePrice: 100,
         offlinePrice: 80,
-        description: ''
+        description: 'Yoga practice appropriate for kids'
     },
     {
         id: 4,
@@ -37,7 +37,7 @@ const product = [
         title: 'Medical Yoga',
         onlinePrice: 230,
         offlinePrice: 200,
-        description: ''
+        description: 'Yoga practice appropriate for people with medical issues'
     },
     {
         id: 5,
@@ -45,7 +45,7 @@ const product = [
         title: 'Yog Therapy',
         onlinePrice: 230,
         offlinePrice: 200,
-        description: ''
+        description: 'For people looking for a therapeutic experience in their Yoga practice'
     },
     {
         id: 6,
@@ -53,7 +53,7 @@ const product = [
         title: 'Weight Loss Yoga',
         onlinePrice: 230,
         offlinePrice: 200,
-        description: ''
+        description: 'Yoga practice suitable for weight loss'
     },
     {
         id: 7,
@@ -61,7 +61,7 @@ const product = [
         title: 'Aerial Yoga',
         onlinePrice: 230,
         offlinePrice: 200,
-        description: ''
+        description: 'Yoga practice using silk fabric in a hanging fashion,<br>useful for icreasing core stability'
     },
     {
         id: 8,
@@ -69,13 +69,13 @@ const product = [
         title: 'Prenatal Yoga',
         onlinePrice: 230,
         offlinePrice: 200,
-        description: ''
+        description: 'Yoga appropriate for the soon to be mothers'
     }
 ];
 
 const categories = [...new Set(product.map((item) => item))];
 let i = 0;
-let isOnlineMode = true; // Default mode
+let isOnlineMode = false; // Default mode
 
 document.getElementById('root').innerHTML = categories.map((item) => {
     var { image, title, onlinePrice, offlinePrice } = item;

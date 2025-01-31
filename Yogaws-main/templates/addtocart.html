@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="/static/styles/addtocart.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/92d70a2fd8.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
@@ -22,29 +23,47 @@
                 <p id="count">0</p>
             </div>
         </div>
-        <div class="toggle-container">
-            <label for="payment-manner">Payment Manner:</label>
-            <select id="payment-manner" onchange="updateClassFrequencyOptions()">
-                <option value="" disabled selected>Select Payment Manner</option>
-                <option value="monthly">Monthly</option>
-                <option value="quarterly">Quarterly</option>
-                <option value="half-yearly">Half Yearly</option>
-                <option value="yearly">Yearly</option>
-            </select>
         
-            <label for="class-frequency" style="margin-left: 15px;">Class Frequency:</label>
-            <select id="class-frequency" disabled>
-                <option value="" disabled selected>Select Class Frequency</option>
-                <option value="regular">Regular</option>
-                <option value="monthly">Monthly</option>
-            </select>
-            <label for="month-frequency" style="margin-left: 15px;">Month Frequency:</label>
-            <select id="month-frequency" disabled>
-                <option value="" disabled selected>Select Month Frequency</option>
-                <option value="4-sessions">4-sessions</option>
-                <option value="8-sessions">8-sessions</option>
-                <option value="12-sessions">12-sessions</option>
-            </select>
+        <div class="toggle-container">
+            <!-- Toggle Switch for Online/Offline -->
+            <label class="switch">
+                <input type="checkbox" id="mode-toggle">
+                <span class="slider round"></span>
+            </label>
+            <span id="mode-status">Offline</span>
+        
+            <!-- Payment Manner Dropdown -->
+            <div class="select-wrapper">
+                <label for="payment-manner">Payment Manner:</label>
+                <select id="payment-manner" onchange="updateClassFrequencyOptions()">
+                    <option value="" disabled selected>Select Payment Manner</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="quarterly">Quarterly</option>
+                    <option value="half-yearly">Half Yearly</option>
+                    <option value="yearly">Yearly</option>
+                </select>
+            </div>
+        
+            <!-- Class Frequency Dropdown -->
+            <div class="select-wrapper">
+                <label for="class-frequency">Class Frequency:</label>
+                <select id="class-frequency" disabled>
+                    <option value="" disabled selected>Select Class Frequency</option>
+                    <option value="regular">Regular</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+            </div>
+        
+            <!-- Month Frequency Dropdown -->
+            <div class="select-wrapper">
+                <label for="month-frequency">Month Frequency:</label>
+                <select id="month-frequency" disabled>
+                    <option value="" disabled selected>Select Month Frequency</option>
+                    <option value="4-sessions">4-sessions</option>
+                    <option value="8-sessions">8-sessions</option>
+                    <option value="12-sessions">12-sessions</option>
+                </select>
+            </div>
         </div>
         
         <div class="container">

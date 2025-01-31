@@ -13,6 +13,69 @@ body{
     background-color: #fff7e6;
 }
 
+
+/* Toggle Switch Styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f7b636;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #fa7921;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+#mode-status {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
 .header {
     height: auto;
     width: 100%;
@@ -283,30 +346,267 @@ button:hover{
     padding-bottom: 25px;
 }
 
+/* General Input Styles */
 .toggle-container {
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-family: Arial, sans-serif;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .toggle-container label {
     font-size: 16px;
+    font-weight: 500;
+    color: #333;
     margin-right: 10px;
 }
 
-.toggle-container input[type="checkbox"] {
-    transform: scale(1.2); /* Makes the toggle switch larger */
-    margin-right: 5px;
-}
-
-.toggle-container span {
-    font-weight: bold;
+/* Dropdown Styles */
+select {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px;
     font-size: 16px;
+    border: 2px solid #f7b636;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    appearance: none; /* Remove default arrow */
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+select:hover {
+    border-color: #fa7921;
+}
 
+select:focus {
+    border-color: #fa7921;
+    box-shadow: 0 0 8px rgba(247, 182, 54, 0.6);
+}
 
+/* Custom Dropdown Arrow */
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.select-wrapper::after {
+    content: "▼";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #f7b636;
+    font-size: 12px;
+}
+
+/* Radio Button Styles */
+input[type="radio"] {
+    display: none; /* Hide default radio buttons */
+}
+
+input[type="radio"] + label {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    background-color: #fff;
+    border: 2px solid #f7b636;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+input[type="radio"]:checked + label {
+    background-color: #f7b636;
+    color: #fff;
+    border-color: #f7b636;
+}
+
+input[type="radio"] + label:hover {
+    background-color: #fa7921;
+    color: #fff;
+    border-color: #fa7921;
+}
+
+/* Button Styles */
+button {
+    width: auto;
+    min-width: 120px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f7b636;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #fa7921;
+}
+
+/* Responsive Design for Inputs */
+/* @media (max-width: 768px) {
+    .toggle-container {
+        padding: 10px;
+    }
+
+    select {
+        width: 100%;
+        max-width: 150px;
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    input[type="radio"] + label {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+} */
+
+/* General Mobile-Friendly Adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 18px;
+    }
+    h3 {
+        font-size: 16px;
+    }
+}
+
+/* Header Adjustments */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+    .header1 {
+        position: static;
+        transform: none;
+        margin: 10px 0;
+    }
+    .cart {
+        margin-top: 10px;
+    }
+    .logo {
+        height: 80px;
+        width: 80px;
+    }
+    .logo img {
+        width: 60px;
+    }
+}
+
+/* Product Grid Adjustments */
+@media (max-width: 768px) {
+    #root {
+        grid-template-columns: 1fr;
+    }
+    .box {
+        padding: 10px;
+    }
+}
+
+/* Cart Adjustments */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .sidebar {
+        width: 100%;
+        max-width: none;
+        margin-top: 20px;
+    }
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .cart-item button {
+        width: 100%;
+    }
+}
+
+/* Input Adjustments */
+@media (max-width: 768px) {
+    .toggle-container {
+        padding: 10px;
+    }
+    .select-wrapper {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    select {
+        width: 100%;
+        max-width: none;
+    }
+    .switch {
+        margin-bottom: 10px;
+    }
+    input[type="radio"] + label {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+/* Tap Targets */
+button, a {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 12px;
+}
+
+/* Hide Non-Essential Elements */
+@media (max-width: 480px) {
+    .non-essential-element {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .toggle-container {
+        padding: 8px;
+    }
+
+    select {
+        max-width: 120px;
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    input[type="radio"] + label {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
 /* Responsive Design */
 @media (max-width: 1024px) {
     .header {
@@ -350,7 +650,7 @@ button:hover{
     }
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .header {
         padding: 15px;
     }
@@ -378,7 +678,7 @@ button:hover{
         font-size: 12px;
     }
 
-    /* Tap to Display Content */
+    /* Tap to Display Content 
     .box {
         cursor: pointer;
     }
@@ -389,9 +689,10 @@ button:hover{
     }
 
     .box.active .description-box {
-        height: auto; /* Show content on tap */
+        height: auto; 
     }
 }
+
 
 @media (max-width: 480px) {
     .header {
@@ -421,4 +722,4 @@ button:hover{
     .description-content {
         font-size: 10px;
     }
-}
+} */
