@@ -5,6 +5,7 @@ body, html {
     height: 100%;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
 }
 
 /* Fullscreen Container */
@@ -12,10 +13,10 @@ body, html {
     display: flex;
     min-height: 100vh;
     position: relative;
-    color: #333;
     padding: 40px;
     gap: 40px;
     align-items: center;
+    justify-content: center;
 }
 
 /* Translucent Background Image */
@@ -167,4 +168,31 @@ body, html {
         width: 100%;
         margin-bottom: 30px;
     }
+}
+
+/* Additional Enhancements */
+.workshop-details h1,
+.signup-form h2 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.workshop-details p {
+    color: #555;
+}
+
+.signup-form input::placeholder,
+.signup-form textarea::placeholder {
+    color: #999;
+}
+
+.signup-form button {
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+.signup-form button:hover {
+    box-shadow: 0 7px 25px rgba(102, 126, 234, 0.3);
+}
+
+.signup-form button:active {
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
 }
