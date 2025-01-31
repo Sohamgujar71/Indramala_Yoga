@@ -9,7 +9,7 @@ const product = [
     },
     {
         id: 1,
-        image: '/static/assets/advancedyoga.webp',
+        image: '/static/assets/advance_yoga.jpeg',
         title: 'Advance Yoga',
         onlinePrice: 60,
         offlinePrice: 50,
