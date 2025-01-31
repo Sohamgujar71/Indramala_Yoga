@@ -32,7 +32,6 @@
   --position: 3;
   pointer-events: none;
 }
-
 .custom-carousel-item {
   position: absolute;
   width: 300px;
@@ -46,7 +45,7 @@
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  padding: 15px;
+  padding: 20px; /* Increased padding for better spacing */
   --r: calc(var(--position) - var(--offset));
   --abs: max(calc(var(--r) * -1), var(--r));
   transition: all 0.5s ease-in-out;
@@ -54,6 +53,18 @@
   z-index: calc((var(--position) - var(--abs)));
 }
 
+.custom-carousel-item h3 {
+  font-size: 1.75rem; /* Increased font size for better visibility */
+  margin: 15px 0; /* Adjusted margin for better spacing */
+  color: #333; /* Darker color for better contrast */
+}
+
+.custom-carousel-item p {
+  font-size: 1.1rem; /* Increased font size for better readability */
+  margin-bottom: 15px; /* Adjusted margin for better spacing */
+  color: #555; /* Slightly darker color for better contrast */
+  line-height: 1.5; /* Improved line height for better readability */
+}
 
 .image-container {
   width: 100%;
@@ -64,7 +75,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Increased margin for better spacing */
 }
 
 .image-container img {
@@ -74,22 +85,11 @@
   border-radius: 10px;
 }
 
-
-.custom-carousel-item h3 {
-  font-size: 1.5rem;
-  margin: 10px 0;
-}
-
-.custom-carousel-item p {
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
-
 .apply-btn {
   background-color: #ff6f61;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 24px; /* Increased padding for better button size */
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
