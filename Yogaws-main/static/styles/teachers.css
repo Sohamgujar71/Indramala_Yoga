@@ -4,42 +4,45 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 /* Team Section Styles */
 .team-section {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background: linear-gradient(to bottom, #055B0B, #588d69);
-  font-family: Helvetica, sans-serif;
-  font-weight: 400;
-  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  padding: 40px 20px;
 }
+
 /* Flickity Carousel Styles */
 .carousel {
-  width: 100%;
+  width: 90%;
+  max-width: 1200px;
   margin-top: 20px;
   overflow: hidden;
 }
 
 .carousel-cell {
-  margin: 0 10px;
-  width: 150px;    /* Fixed width of 150px for each card */
-  height: 400px;   /* Fixed height of 400px for each card */
+  margin: 0 15px;
+  width: 250px;
+  height: 400px;
   background-size: cover;
   background-position: center;
   display: flex;
   justify-content: center;
-  align-items: center;
-  border-radius: 8px;
+  align-items: flex-end; /* Align content to the bottom */
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .carousel-cell:nth-of-type(1) {
   background-image: url('/static/assets/nitu_khemkar.png');
-} 
+}
 .carousel-cell:nth-of-type(2) {
   background-image: url('/static/assets/jay.jpg');
 }
@@ -49,89 +52,91 @@
 
 /* Content inside Carousel Cards */
 .carousel-cell .content {
-  height: 100%;
   width: 100%;
-  font-size: 1.5rem;
-  color: #ffffff; /* Accent text color */
+  font-size: 1.2rem;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 15px;
-  opacity: 0;
+  justify-content: flex-end;
+  padding: 20px;
   background: linear-gradient(
     0deg,
-    #7aab9c 15%, /* Gradient using the purple shade */
-    rgba(255, 255, 255, 0) 60%
+    rgba(0, 0, 0, 0.8) 30%,
+    rgba(0, 0, 0, 0) 100%
   );
-  transform: translateY(100%);
-  transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
-  visibility: hidden;
+  opacity: 0; /* Initially hidden */
+  transform: translateY(100%); /* Start off-screen */
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 /* Hover Effects */
 .carousel-cell:hover {
-  box-shadow: 3px 3px 25px #54784f; /* Bright hover state shadow */
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
 .carousel-cell:hover .content {
-  opacity: 1;
-  transform: translateY(10%);
-  visibility: visible;
+  opacity: 1; /* Show content on hover */
+  transform: translateY(0); /* Pop up effect */
 }
 
-.content h2{
-  color: rgb(255, 255, 255);
+.content h2 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  text-align: center;
 }
-.content span{
-  color: rgb(0,0,0);
-} 
+
+.content span {
+  color: #f7e8c7;
+  font-size: 1rem;
+  text-align: center;
+  margin: 5px 0;
+}
 
 /* Join Button Styles */
 #joinbtn {
   background-color: #f28b60;
   border: none;
-  border-radius: 20px;
+  border-radius: 25px;
   color: white;
   cursor: pointer;
-  font-size: 1rem;
-  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  padding: 0.75rem 2rem;
   text-align: center;
   display: inline-block;
-  transition: background-color 250ms;
-  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 30px;
 }
 
 #joinbtn:hover {
   background-color: #fb8332;
+  transform: translateY(-5px);
 }
 
 #joinbtn a {
   color: white;
   text-decoration: none;
 }
-/* Adjust the photo position for 1st and 3rd carousel cells */
-.carousel-cell:nth-of-type(1),
-.carousel-cell:nth-of-type(3) {
-  background-position: center top; /* Move the image upwards */
-}
 
 /* Mobile Styles: One Card per Swipe */
 @media (max-width: 768px) {
   .carousel-cell {
-    width: 100%; /* One card visible at a time */
+    width: 80%;
+    margin: 0 auto;
   }
   .carousel .flickity-button {
-    display: block; /* Show Flickity controls on mobile */
+    display: block;
   }
 }
 
 /* Desktop Styles: Multiple Cards Visible */
 @media (min-width: 769px) {
   .carousel-cell {
-    width: 25%; /* Multiple cards visible at once */
+    width: 25%;
   }
   .carousel .flickity-button {
-    display: none; /* Show Flickity controls on mobile */
+    display: none;
   }
 }
