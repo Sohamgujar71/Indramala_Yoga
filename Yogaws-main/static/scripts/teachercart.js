@@ -33,6 +33,41 @@ const product = [
         title: 'YCB 900 hours',
         onlinePrice: 49999,
         offlinePrice: 59999,
+    },
+    {
+        id: 5,
+        image: "/static/assets/ryt200.webp",
+        title: 'YCB 200 hours',
+        onlinePrice: 14999,
+        offlinePrice: 19999,
+    },
+    {
+        id: 6,
+        image: '/static/assets/ryt300.webp',
+        title: 'YCB 300 hours',
+        onlinePrice: 19999,
+        offlinePrice: 29999,
+    },
+    {
+        id: 7,
+        image: '/static/assets/ryt500.webp',
+        title: 'YCB 300 hours',
+        onlinePrice: 29999,
+        offlinePrice: 39999,
+    },
+    {
+        id: 8,
+        image: '/static/assets/ryt700.webp',
+        title: 'YCB 700 hours',
+        onlinePrice: 39999,
+        offlinePrice: 49999,
+    },
+    {
+        id: 9,
+        image: '/static/assets/ryt900.webp',
+        title: 'YCB 900 hours',
+        onlinePrice: 49999,
+        offlinePrice: 59999,
     }
 ];
 
