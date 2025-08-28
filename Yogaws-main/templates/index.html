@@ -1,94 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/static/styles/style.css">
-        <link rel="stylesheet" href="/static/styles/footer.css">
-        <link rel="stylesheet" href="/static/styles/registration.css">
-        <link rel="stylesheet" href="/static/styles/carousel.css">
-        <link rel="stylesheet" href="/static/styles/video.css">
-        <link rel="stylesheet" href="/static/styles/home.css">
-        <link rel="stylesheet" href="/static/styles/navbar.css">
-        <link rel="stylesheet" href="/static/styles/teachers.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <link rel="stylesheet" href="/static/styles/footer.css">
+    <link rel="stylesheet" href="/static/styles/registration.css">
+    <link rel="stylesheet" href="/static/styles/carousel.css">
+    <link rel="stylesheet" href="/static/styles/video.css">
+    <link rel="stylesheet" href="/static/styles/home.css">
+    <link rel="stylesheet" href="/static/styles/navbar.css">
+    <link rel="stylesheet" href="/static/styles/teachers.css">
+    <link rel="stylesheet" href="/Yogaws-main/static/styles/GanpatiBappa.css">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2.2.2/dist/flickity.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet"/>
-        <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico">
     <script src="https://unpkg.com/scrollreveal"></script>
-        <title>Indramala Yoga</title>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11548243331"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-11548243331'); </script>
-    </head>
-    <body>
-        <nav class="navbar">
-            <div class="logo">
-                <img src="/static/assets/website_icon1.webp" alt="Logo" />
+    <title>Indramala Yoga</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11548243331"></script>
+    <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'AW-11548243331'); </script>
+</head>
+
+<body>
+    <style>
+        /* Force same size as other social buttons */
+        .floating-social-links .custom-circle {
+            width: 100px !important;
+            /* match other icons */
+            height: 100px !important;
+            border-radius: 50% !important;
+            overflow: hidden !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: #fff !important;
+            /* same circle look */
+            padding: 0 !important;
+        }
+
+        /* Image inside circle */
+        .floating-social-links .custom-circle img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            /* keeps it cropped nicely */
+            border-radius: 50% !important;
+            display: block !important;
+        }
+
+        /* Force it above everything and full-screen */
+        .intro-overlay {
+            position: fixed !important;
+            left: 0 !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: 2147483647 !important;
+            /* max */
+            display: grid !important;
+            place-items: center !important;
+            background: rgba(0, 0, 0, 0.35) !important;
+            /* needed for blur */
+            backdrop-filter: blur(8px) saturate(1.1) !important;
+            -webkit-backdrop-filter: blur(8px) saturate(1.1) !important;
+            transition: opacity 300ms ease !important;
+        }
+
+        body.no-scroll {
+            overflow: hidden !important;
+        }
+
+        .intro-video-wrap {
+            position: relative !important;
+            width: min(70vw, 960px) !important;
+            /* smaller screen */
+            max-height: 80vh !important;
+            aspect-ratio: 16 / 9 !important;
+            background: #000 !important;
+            /* kills off-white halo */
+            border-radius: 16px !important;
+            overflow: hidden !important;
+            /* trims any edges */
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        .intro-video {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block !important;
+            background: #000 !important;
+        }
+
+        .intro-skip {
+            position: absolute !important;
+            top: 10px !important;
+            right: 10px !important;
+            padding: 8px 12px !important;
+            border: 0 !important;
+            border-radius: 999px !important;
+            background: #00a67e !important;
+            color: #fff !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25) !important;
+        }
+
+        .intro-overlay.hidden {
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        /* Phones (portrait) — bigger but still landscape 16:9 */
+        @media (max-width: 768px) {
+            .intro-video-wrap {
+                width: 95vw !important;
+                /* take nearly full width */
+                aspect-ratio: 16 / 9 !important;
+                height: auto !important;
+                /* auto height from ratio */
+                border-radius: 12px !important;
+            }
+        }
+
+        /* Very small phones — edge to edge horizontally */
+        @media (max-width: 480px) {
+            .intro-video-wrap {
+                width: 98vw !important;
+                /* even closer to full width */
+                aspect-ratio: 16 / 9 !important;
+                height: auto !important;
+                border-radius: 8px !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .intro-overlay {
+                display: none !important;
+            }
+        }
+    </style>
+    <!-- Intro Video Overlay -->
+    <div id="intro-overlay" class="intro-overlay" aria-hidden="true">
+        <div class="intro-video-wrap">
+            <video id="intro-video" class="intro-video" autoplay muted playsinline preload="auto"
+                poster="/static/assets/website_icon1.webp">
+                <source src="{{ url_for('static', filename='videos/GanpatiBappa.mp4') }}" type="video/mp4" />
+                <!-- Fallback: if mp4 unsupported -->
+                Your browser does not support the video tag.
+            </video>
+
+            <button id="intro-skip" class="intro-skip" aria-label="Skip intro">Skip</button>
+        </div>
+    </div>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/static/assets/website_icon1.webp" alt="Logo" />
+        </div>
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-items">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="{{ url_for('workshop') }}">Latest Workshop</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
+                <li><a href="#holder">Classes</a></li>
+                <li><a href="{{ url_for('knowabtcourses') }}">TTC</a></li>
+                <li><a href="{{ url_for('knowabtcourses_RYT') }}">RYT/RYS</a></li>
+                <li><a href="#foot" class="contact-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-auth">
+                {% if session.get('user_name') %}
+                <span class="welcome-message">Welcome, {{ session['user_name'] }}</span>
+                <button class="button-21" role="button" onclick="location.href='{{ url_for('logout') }}'">Sign
+                    Out</button>
+                {% else %}
+                <button class="register-btn" id="openModal">Register/Login</button>
+                {% endif %}
             </div>
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        
-            <div class="nav-items">
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="{{ url_for('workshop') }}">Latest Workshop</a></li>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
-                    <li><a href="#holder">Classes</a></li>
-                    <li><a href="{{ url_for('knowabtcourses') }}">TTC</a></li>
-                    <li><a href="{{ url_for('knowabtcourses_RYT') }}">RYT/RYS</a></li>
-                    <li><a href="#foot" class="contact-link">Contact</a></li>
-                </ul>
-        
-                <div class="nav-auth">
-                    {% if session.get('user_name') %}
-                        <span class="welcome-message">Welcome, {{ session['user_name'] }}</span>
-                        <button class="button-21" role="button" onclick="location.href='{{ url_for('logout') }}'">Sign Out</button>
-                    {% else %}
-                        <button class="register-btn" id="openModal">Register/Login</button>
-                    {% endif %}
-                </div>
-            </div>
-        </nav>
-        
-    
+        </div>
+    </nav>
+
+
     <section class="hero">
-            <div class="container hero-content">
-                <div class="hero-text-content">
-                    <h1 class="hero-title">Discover the Blissful Journey of Yoga</h1>
-                    <p class="hero-text">Embrace the harmonious union of mind, body, and spirit through our comprehensive yoga offerings.</p>
-                    <a href="{{ url_for('knowmore') }}" class="hero-button">Explore Now</a>
-                </div>
+        <div class="container hero-content">
+            <div class="hero-text-content">
+                <h1 class="hero-title">Discover the Blissful Journey of Yoga</h1>
+                <p class="hero-text">Embrace the harmonious union of mind, body, and spirit through our comprehensive
+                    yoga offerings.</p>
+                <a href="{{ url_for('knowmore') }}" class="hero-button">Explore Now</a>
             </div>
+        </div>
     </section>
 
     <div id="video-container">
         <button id="close-btn">&times;</button>
-        <iframe 
-            id="embedded-video" 
-            width="560" 
-            height="315" 
-            src="https://www.youtube.com/embed/hZVoCZUhHhM?si=dvZaEurw0E6bely5" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
+        <iframe id="embedded-video" width="560" height="315"
+            src="https://www.youtube.com/embed/hZVoCZUhHhM?si=dvZaEurw0E6bely5" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
         </iframe>
     </div>
-    
+
     <section class="announcement-section">
         <div class="marquee-container">
-          <div class="marquee">
-            🚀Stay and Transport service available for International clients too!🌍
-          </div>
+            <div class="marquee">
+                🚀Stay and Transport service available for International clients too!🌍
+            </div>
         </div>
-      </section>
-     
-      <section id="trainers">
+    </section>
+
+    <section id="trainers">
         <div class="team-section">
-            <div class="carousel" data-flickity='{ "cellAlign": "center", "contain": true, "pageDots": false, "prevNextButtons": true, "wrapAround": true }'>
+            <div class="carousel"
+                data-flickity='{ "cellAlign": "center", "contain": true, "pageDots": false, "prevNextButtons": true, "wrapAround": true }'>
                 <div class="carousel-cell">
                     <div class="content">
                         <h2>Nitu Khemkar</h2>
@@ -114,213 +250,220 @@
         </div>
     </section>
 
-<section id="holder" class="courses">
-    <div class="custom-carousel-container">
-        <!-- Radio buttons (hidden) -->
+    <section id="holder" class="courses">
+        <div class="custom-carousel-container">
+            <!-- Radio buttons (hidden) -->
 
-        <input class="custom-carousel-radio" type="radio" name="position" checked />
-        <input class="custom-carousel-radio" type="radio" name="position" />
-        <input class="custom-carousel-radio" type="radio" name="position" />
-        <input class="custom-carousel-radio" type="radio" name="position" />
-        <input class="custom-carousel-radio" type="radio" name="position" />
-        <input class="custom-carousel-radio" type="radio" name="position" />
-        <input class="custom-carousel-radio" type="radio" name="position" />
-        <input class="custom-carousel-radio" type="radio" name="position" />
-        <input class="custom-carousel-radio" type="radio" name="position" />
-        <input class="custom-carousel-radio" type="radio" name="position" />
-        <input class="custom-carousel-radio" type="radio" name="position" />
-        <input class="custom-carousel-radio" type="radio" name="position" />
-        <input class="custom-carousel-radio" type="radio" name="position" />
-        <input class="custom-carousel-radio" type="radio" name="position" />
-        {% for course in courses %}
-        <input class="custom-carousel-radio" type="radio" name="position" {% if loop.first %}checked{% endif %} />
-        {% endfor %}
-        <div class="custom-carousel">
-            <!-- Carousel Items -->
-            <div class="custom-carousel-item">
-                <div class="image-container">
-                    <img src="/static/assets/hathayoga.webp" alt="Hatha Yoga Pose">
-                </div>
-                <h3>Hatha Yoga</h3>
-                <p>Experience the balance of body and mind with traditional Hatha Yoga.</p>
-                <div class="link">
-                    <a href="{{ url_for('knowmore') }}">
-                    <!-- <button class="apply-btn">Apply Now</button> -->
-                </a>
-                </div>
-                
-            </div>
-            <div class="custom-carousel-item">
-                <div class="image-container">
-                    <img src="/static/assets/iyengaryoga.webp" alt="Iyengar Yoga Pose">
-                </div>
-                <h3>Iyengar Yoga</h3>
-                <p>Perfect your alignment with the precision of Iyengar Yoga.</p>
-                <!-- <button class="apply-btn">Apply Now</button> -->
-            </div>
-            <div class="custom-carousel-item">
-                <div class="image-container">
-                    <img src="/static/assets/ashtangayoga.webp" alt="Ashtanga Yoga Pose">
-                </div>
-                <h3>Ashtanga Yoga</h3>
-                <p>Flow through dynamic sequences with Ashtanga Yoga.</p>
-                <!-- <button class="apply-btn">Apply Now</button> -->
-            </div>
-            <div class="custom-carousel-item">
-                <div class="image-container">
-                    <img src="/static/assets/poweryoga.webp" alt="Power Yoga Pose">
-                </div>
-                <h3>Power Yoga</h3>
-                <p>Boost your strength and endurance with Power Yoga.</p>
-                <!-- <button class="apply-btn">Apply Now</button> -->
-            </div>
-            <div class="custom-carousel-item">
-                <div class="image-container">
-                    <img src="/static/assets/aerialyoga.webp" alt="Aerial Yoga Pose">
-                </div>
-                <h3>Aerial Yoga</h3>
-                <p>Defy gravity and find balance with Aerial Yoga.</p>
-                <!-- <button class="apply-btn">Apply Now</button> -->
-            </div>
-            <div class="custom-carousel-item">
-                <div class="image-container">
-                    <img src="/static/assets/advance_yoga.jpeg" alt="Aerial Yoga Pose">
-                </div>
-                <h3>Advance Yoga</h3>
-                <p>Challenge your limits and deepen your practice with Advanced Yoga.</p>
-                <!-- <button class="apply-btn">Apply Now</button> -->
-            </div>
-            <div class="custom-carousel-item">
-                <div class="image-container">
-                    <img src="/static/assets/competitveyoga.webp" alt="Aerial Yoga Pose">
-                </div>
-                <h3>Competetive Yoga</h3>
-                <p>Push your boundaries and compete in the art of Competitive Yoga.</p>
-                <!-- <button class="apply-btn">Apply Now</button> -->
-            </div>
-            <div class="custom-carousel-item">
-                <div class="image-container">
-                    <img src="/static/assets/weightlossyoga.webp" alt="Aerial Yoga Pose">
-                </div>
-                <h3>Weight Loss Yoga</h3>
-                <p>Achieve your fitness goals and tone your body with Weight Loss Yoga.</p>
-                <!-- <button class="apply-btn">Apply Now</button> -->
-            </div>
-            <div class="custom-carousel-item">
-                <div class="image-container">
-                    <img src="/static/assets/pregnancyyoga.webp" alt="Aerial Yoga Pose">
-                </div>
-                <h3>Preganancy Yoga</h3>
-                <p>Support your journey to motherhood with gentle Pregnancy Yoga.</p>
-                <!-- <button class="apply-btn">Apply Now</button> -->
-            </div>
-            <div class="custom-carousel-item">
-                <div class="image-container">
-                    <img src="/static/assets/yogatherapy.webp" alt="Aerial Yoga Pose">
-                </div>
-                <h3>Yog Therapy</h3>
-                <p>Heal and restore your body with therapeutic Yoga Therapy.</p>
-                <!-- <button class="apply-btn">Apply Now</button> -->
-            </div>
-            <!-- Add more items as needed -->
+            <input class="custom-carousel-radio" type="radio" name="position" checked />
+            <input class="custom-carousel-radio" type="radio" name="position" />
+            <input class="custom-carousel-radio" type="radio" name="position" />
+            <input class="custom-carousel-radio" type="radio" name="position" />
+            <input class="custom-carousel-radio" type="radio" name="position" />
+            <input class="custom-carousel-radio" type="radio" name="position" />
+            <input class="custom-carousel-radio" type="radio" name="position" />
+            <input class="custom-carousel-radio" type="radio" name="position" />
+            <input class="custom-carousel-radio" type="radio" name="position" />
+            <input class="custom-carousel-radio" type="radio" name="position" />
+            <input class="custom-carousel-radio" type="radio" name="position" />
+            <input class="custom-carousel-radio" type="radio" name="position" />
+            <input class="custom-carousel-radio" type="radio" name="position" />
+            <input class="custom-carousel-radio" type="radio" name="position" />
             {% for course in courses %}
-            <div class="custom-carousel-item">
-                <div class="image-container">
-                    <img src="{{ course.image }}" alt="{{ course.name }} Pose">
-                </div>
-                <h3>{{ course.name }}</h3>
-                <p>{{ course.description }}</p>
-                <!-- <button class="apply-btn">Apply Now</button> -->
-            </div>
+            <input class="custom-carousel-radio" type="radio" name="position" {% if loop.first %}checked{% endif %} />
             {% endfor %}
+            <div class="custom-carousel">
+                <!-- Carousel Items -->
+                <div class="custom-carousel-item">
+                    <div class="image-container">
+                        <img src="/static/assets/hathayoga.webp" alt="Hatha Yoga Pose">
+                    </div>
+                    <h3>Hatha Yoga</h3>
+                    <p>Experience the balance of body and mind with traditional Hatha Yoga.</p>
+                    <div class="link">
+                        <a href="{{ url_for('knowmore') }}">
+                            <!-- <button class="apply-btn">Apply Now</button> -->
+                        </a>
+                    </div>
+
+                </div>
+                <div class="custom-carousel-item">
+                    <div class="image-container">
+                        <img src="/static/assets/iyengaryoga.webp" alt="Iyengar Yoga Pose">
+                    </div>
+                    <h3>Iyengar Yoga</h3>
+                    <p>Perfect your alignment with the precision of Iyengar Yoga.</p>
+                    <!-- <button class="apply-btn">Apply Now</button> -->
+                </div>
+                <div class="custom-carousel-item">
+                    <div class="image-container">
+                        <img src="/static/assets/ashtangayoga.webp" alt="Ashtanga Yoga Pose">
+                    </div>
+                    <h3>Ashtanga Yoga</h3>
+                    <p>Flow through dynamic sequences with Ashtanga Yoga.</p>
+                    <!-- <button class="apply-btn">Apply Now</button> -->
+                </div>
+                <div class="custom-carousel-item">
+                    <div class="image-container">
+                        <img src="/static/assets/poweryoga.webp" alt="Power Yoga Pose">
+                    </div>
+                    <h3>Power Yoga</h3>
+                    <p>Boost your strength and endurance with Power Yoga.</p>
+                    <!-- <button class="apply-btn">Apply Now</button> -->
+                </div>
+                <div class="custom-carousel-item">
+                    <div class="image-container">
+                        <img src="/static/assets/aerialyoga.webp" alt="Aerial Yoga Pose">
+                    </div>
+                    <h3>Aerial Yoga</h3>
+                    <p>Defy gravity and find balance with Aerial Yoga.</p>
+                    <!-- <button class="apply-btn">Apply Now</button> -->
+                </div>
+                <div class="custom-carousel-item">
+                    <div class="image-container">
+                        <img src="/static/assets/advance_yoga.jpeg" alt="Aerial Yoga Pose">
+                    </div>
+                    <h3>Advance Yoga</h3>
+                    <p>Challenge your limits and deepen your practice with Advanced Yoga.</p>
+                    <!-- <button class="apply-btn">Apply Now</button> -->
+                </div>
+                <div class="custom-carousel-item">
+                    <div class="image-container">
+                        <img src="/static/assets/competitveyoga.webp" alt="Aerial Yoga Pose">
+                    </div>
+                    <h3>Competetive Yoga</h3>
+                    <p>Push your boundaries and compete in the art of Competitive Yoga.</p>
+                    <!-- <button class="apply-btn">Apply Now</button> -->
+                </div>
+                <div class="custom-carousel-item">
+                    <div class="image-container">
+                        <img src="/static/assets/weightlossyoga.webp" alt="Aerial Yoga Pose">
+                    </div>
+                    <h3>Weight Loss Yoga</h3>
+                    <p>Achieve your fitness goals and tone your body with Weight Loss Yoga.</p>
+                    <!-- <button class="apply-btn">Apply Now</button> -->
+                </div>
+                <div class="custom-carousel-item">
+                    <div class="image-container">
+                        <img src="/static/assets/pregnancyyoga.webp" alt="Aerial Yoga Pose">
+                    </div>
+                    <h3>Preganancy Yoga</h3>
+                    <p>Support your journey to motherhood with gentle Pregnancy Yoga.</p>
+                    <!-- <button class="apply-btn">Apply Now</button> -->
+                </div>
+                <div class="custom-carousel-item">
+                    <div class="image-container">
+                        <img src="/static/assets/yogatherapy.webp" alt="Aerial Yoga Pose">
+                    </div>
+                    <h3>Yog Therapy</h3>
+                    <p>Heal and restore your body with therapeutic Yoga Therapy.</p>
+                    <!-- <button class="apply-btn">Apply Now</button> -->
+                </div>
+                <!-- Add more items as needed -->
+                {% for course in courses %}
+                <div class="custom-carousel-item">
+                    <div class="image-container">
+                        <img src="{{ course.image }}" alt="{{ course.name }} Pose">
+                    </div>
+                    <h3>{{ course.name }}</h3>
+                    <p>{{ course.description }}</p>
+                    <!-- <button class="apply-btn">Apply Now</button> -->
+                </div>
+                {% endfor %}
+            </div>
+
+            <form action="/knowmore" method="GET">
+                <button type="submit" class="know-more-btn">Know More</button>
+            </form>
+
+            <!-- Navigation Arrows -->
+            <button class="carousel-prev">&#10094;</button>
+            <button class="carousel-next">&#10095;</button>
         </div>
-
-        <form action="/knowmore" method="GET">
-            <button type="submit" class="know-more-btn">Know More</button>
-        </form>
-
-        <!-- Navigation Arrows -->
-        <button class="carousel-prev">&#10094;</button>
-        <button class="carousel-next">&#10095;</button>
-    </div>
-</section>
+    </section>
 
 
     <!-- <section class="Bcustom-carousel">
         <div class="Bcustom-container">
         </div>
         </section> -->
-        <section>
-            <div class="wowim">
-                <img src="/static/assets/yoyo.png" alt="hi">
-            </div>
-        </section>
+    <section>
+        <div class="wowim">
+            <img src="/static/assets/yoyo.png" alt="hi">
+        </div>
+    </section>
 
-<section id="hello" class="hello-section">
-    <div class="hello-img">
-        <img src="/static/assets/Founder.webp" alt="Indramala Yoga Sansthan">
-    </div>
-    <div class="hello-container">
-        <h1>Hello from the Founder</h1>
-        <p>Hello! I am Shivprakash Sharma - a yoga coach with expertise in Hatha Yoga, Power Yoga, Vinyasa flow, yoga therapist, 
-           prenatal yoga,Iyengar Yoga, Aerial Yoga, and Traditional Yoga.</p>
+    <section id="hello" class="hello-section">
+        <div class="hello-img">
+            <img src="/static/assets/Founder.webp" alt="Indramala Yoga Sansthan">
+        </div>
+        <div class="hello-container">
+            <h1>Hello from the Founder</h1>
+            <p>Hello! I am Shivprakash Sharma - a yoga coach with expertise in Hatha Yoga, Power Yoga, Vinyasa flow,
+                yoga therapist,
+                prenatal yoga,Iyengar Yoga, Aerial Yoga, and Traditional Yoga.</p>
 
-        <p>My passion lies in guiding individuals towards holistic well-being through the integration of these diverse yoga practices.
-           Let's embark on a transformative journey to nurture your mind, body, and spirit!</p>
-    </div>  
+            <p>My passion lies in guiding individuals towards holistic well-being through the integration of these
+                diverse yoga practices.
+                Let's embark on a transformative journey to nurture your mind, body, and spirit!</p>
+        </div>
 
     </section>
 
-<section>
-    <div class="gradient-section"></div>
-    <div class="yogsec">
-        <img src="/static/assets/image.png" alt="hi">
-    </div>
-</section>
+    <section>
+        <div class="gradient-section"></div>
+        <div class="yogsec">
+            <img src="/static/assets/image.png" alt="hi">
+        </div>
+    </section>
 
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h2>Register</h2>
-            <form id="registration"  action="{{ url_for('register') }}" method="post" autocomplete="on" onsubmit="return validateForm()">
+            <form id="registration" action="{{ url_for('register') }}" method="post" autocomplete="on"
+                onsubmit="return validateForm()">
                 <!--First name-->
                 <div class="box">
                     <div class="iconBox">
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </div>
-                    <input type="text" name="firstName" placeholder="First Name" class="textBox" autofocus="on"  required>
+                    <input type="text" name="firstName" placeholder="First Name" class="textBox" autofocus="on"
+                        required>
                 </div>
-            
+
                 <!--Second name-->
                 <div class="box">
                     <div class="iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
                     <input type="text" required name="secondName" placeholder="Last Name" class="textBox">
                 </div>
-            
+
                 <!--Phone No.-->
                 <div class="box">
                     <div class="iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
-                    <input type="text" required name="phoneNo" maxlength="10" required pattern="[0-9]{10}" placeholder="Phone No." class="textBox">
+                    <input type="text" required name="phoneNo" maxlength="10" required pattern="[0-9]{10}"
+                        placeholder="Phone No." class="textBox">
                 </div>
-            
+
                 <!--Password-->
                 <div class="box">
                     <div class="iconBox"><i class="fa fa-key" aria-hidden="true"></i></div>
-                    <input type="password" required name="password" placeholder="Password" maxlength="20" minlength="8" class="textBox" id="password" >
+                    <input type="password" required name="password" placeholder="Password" maxlength="20" minlength="8"
+                        class="textBox" id="password">
                 </div>
 
                 <div class="box">
                     <div class="iconBox"><i class="fa fa-key" aria-hidden="true"></i></div>
-                    <input type="password" required name="confirmpassword" placeholder="Confirm Password" maxlength="20" minlength="8" class="textBox" id="confirmpassword" >
+                    <input type="password" required name="confirmpassword" placeholder="Confirm Password" maxlength="20"
+                        minlength="8" class="textBox" id="confirmpassword">
                 </div>
-            
+
                 <!--Gender-->
                 <div class="box radio">
                     <label for="gender" class="fl fontLabel">Gender:</label>
                     <input type="radio" name="Gender" value="Male" required> Male &nbsp; &nbsp; &nbsp; &nbsp;
                     <input type="radio" name="Gender" value="Female" required> Female
                 </div>
-            
+
                 <!--Submit Button-->
                 <div class="box" style="background: #2d3e3f">
                     <input type="submit" name="Submit" class="submit" value="SUBMIT">
@@ -335,190 +478,243 @@
     <p class="section__subheader">TESTIMONY</p>
     <h2 class="section__header">Success Stories</h2>
     <div class="stories__grid">
-      <div class="stories__card">
-        <div class="stories__content">
-          <span><i class="ri-double-quotes-l"></i></span>
-          <p>
-            "This yoga website has been a game-changer for me. The variety of
-            classes and guided sessions have not only improved my flexibility
-            but also brought a sense of calm to my hectic days."
-          </p>
-        </div>
-        <div class="stories__author">
-          <img src="/static/assets/placeholderpfp.jpg" alt="author" />
-          <div class="stories__author__details">
-            <h4>Kangana Puri</h4>
-            <h6>Member</h6>
-          </div>
-        </div>
-      </div>
-      <div class="stories__card">
-        <div class="stories__content">
-          <span><i class="ri-double-quotes-l"></i></span>
-          <p>
-            "It's been more than 7 months with the Indramala Yoga Sansthan and had an exceptional experience. The instructor was incredibly knowledgeable and guided the class with expertise, catering to all skill levels."
-          </p>
-        </div>
-        <div class="stories__author">
-          <img src="/static/assets/placeholderpfp.jpg" alt="author" />
-          <div class="stories__author__details">
-            <h4>Rahul Sasane</h4>
-            <h6>Member</h6>
-          </div>
-        </div>
-      </div>
-      <div class="stories__card">
-        <div class="stories__content">
-          <span><i class="ri-double-quotes-l"></i></span>
-          <p>
-            "Outstanding experience at this yoga studio! The ambiance is serene, with relaxing elements and a welcoming environment. Teachers are superb, making yoga accessible for all levels. I felt refreshed and peaceful. Definitely returning!"
-          </p>
-        </div>
-        <div class="stories__author">
-          <img src="/static/assets/placeholderpfp.jpg" alt="author" />
-          <div class="stories__author__details">
-            <h4>Sneha Gaikwad</h4>
-            <h6>Member</h6>
-        </div>
-        </div>
-    </div>
-    </div>
-</section>
-    
-<div class="floating-social-links">
-    <a href="https://wa.me/918851246435/?text=Hello%2C%20I%20am%20interested%20to%20enquire%20about%20your%20institute" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="https://www.facebook.com/people/Indramala-yoga-sansthan/100083211976601/" target="_blank">
-        <i class="fab fa-facebook"></i>
-    </a>
-    <a href="https://m.youtube.com/@IndramalayogaSansthan" target="_blank">
-        <i class="fab fa-youtube"></i>
-    </a>
-    <a href="https://www.instagram.com/indramala_yoga?igsh=eDk3NmcyZ2JweWtj" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a>
-</div>
-
-
-
-<section id="foot">
-<footer class="footer">
-    <div class="container">
-            <div class="row">
-                <div class="footer-col">
-                    <h4>Explore</h4>
-                    <ul>
-                        <li><a href="{{ url_for('vision') }}">Vision & Mission</a></li>
-                        <li><a href="{{ url_for('knowmore') }}">Distinctive Features</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="{{ url_for('certificates') }}">Credentials</a></li>
-                        <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
-                        <li><a href="{{ url_for('brochure') }}">Brochure</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Follow Us</h4>
-                    <div class="social-links">
-                        <a href="https://wa.me/918851246435/?text=Hello%2C%20I%20am%20interested%20to%20enquire%20about%20your%20institute" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="https://www.facebook.com/people/Indramala-yoga-sansthan/100083211976601/" target="_blank">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="https://m.youtube.com/@IndramalayogaSansthan" target="_blank">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://www.instagram.com/indramala_yoga?igsh=eDk3NmcyZ2JweWtj" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <img src="/static/assets/website_icon1.webp" alt="">
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Address</h4>
-                    <ul class="Address">
-                        <li>Plot No. 56, 1st Floor,Shivaji Hsg. Soc, Senapati Bapat Rd, Pune,Maharashtra 411016 (INDIA)</li>
-                        <li><h5>Contact us at:</h5>8851246435,<br>9096384926</li>
-                        <li><h5>Mail to:</h5>indramalayogasansthan@gmail.com</li>
-                    </ul>
+        <div class="stories__card">
+            <div class="stories__content">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <p>
+                    "This yoga website has been a game-changer for me. The variety of
+                    classes and guided sessions have not only improved my flexibility
+                    but also brought a sense of calm to my hectic days."
+                </p>
+            </div>
+            <div class="stories__author">
+                <img src="/static/assets/placeholderpfp.jpg" alt="author" />
+                <div class="stories__author__details">
+                    <h4>Kangana Puri</h4>
+                    <h6>Member</h6>
                 </div>
             </div>
         </div>
-    </footer>
-</section>
+        <div class="stories__card">
+            <div class="stories__content">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <p>
+                    "It's been more than 7 months with the Indramala Yoga Sansthan and had an exceptional experience.
+                    The instructor was incredibly knowledgeable and guided the class with expertise, catering to all
+                    skill levels."
+                </p>
+            </div>
+            <div class="stories__author">
+                <img src="/static/assets/placeholderpfp.jpg" alt="author" />
+                <div class="stories__author__details">
+                    <h4>Rahul Sasane</h4>
+                    <h6>Member</h6>
+                </div>
+            </div>
+        </div>
+        <div class="stories__card">
+            <div class="stories__content">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <p>
+                    "Outstanding experience at this yoga studio! The ambiance is serene, with relaxing elements and a
+                    welcoming environment. Teachers are superb, making yoga accessible for all levels. I felt refreshed
+                    and peaceful. Definitely returning!"
+                </p>
+            </div>
+            <div class="stories__author">
+                <img src="/static/assets/placeholderpfp.jpg" alt="author" />
+                <div class="stories__author__details">
+                    <h4>Sneha Gaikwad</h4>
+                    <h6>Member</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <div class="floating-social-links">
+        <div class="custom-circle">
+            <img src="{{ url_for('static', filename='assets/ganeshJi.jpg') }}" alt="Ganesh Chaturthi" />
+        </div>
+        <a href="https://wa.me/918851246435/?text=Hello%2C%20I%20am%20interested%20to%20enquire%20about%20your%20institute"
+            target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.facebook.com/people/Indramala-yoga-sansthan/100083211976601/" target="_blank">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://m.youtube.com/@IndramalayogaSansthan" target="_blank">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.instagram.com/indramala_yoga?igsh=eDk3NmcyZ2JweWtj" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+
+
+
+    <section id="foot">
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4>Explore</h4>
+                        <ul>
+                            <li><a href="{{ url_for('vision') }}">Vision & Mission</a></li>
+                            <li><a href="{{ url_for('knowmore') }}">Distinctive Features</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="{{ url_for('certificates') }}">Credentials</a></li>
+                            <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
+                            <li><a href="{{ url_for('brochure') }}">Brochure</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="https://wa.me/918851246435/?text=Hello%2C%20I%20am%20interested%20to%20enquire%20about%20your%20institute"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://www.facebook.com/people/Indramala-yoga-sansthan/100083211976601/"
+                                target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://m.youtube.com/@IndramalayogaSansthan" target="_blank">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://www.instagram.com/indramala_yoga?igsh=eDk3NmcyZ2JweWtj" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <img src="/static/assets/website_icon1.webp" alt="">
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Address</h4>
+                        <ul class="Address">
+                            <li>Plot No. 56, 1st Floor,Shivaji Hsg. Soc, Senapati Bapat Rd, Pune,Maharashtra 411016
+                                (INDIA)</li>
+                            <li>
+                                <h5>Contact us at:</h5>8851246435,<br>9096384926
+                            </li>
+                            <li>
+                                <h5>Mail to:</h5>indramalayogasansthan@gmail.com
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
     <script>
         const signOutButton = document.querySelector(".button-21");
-const contactLink = document.querySelector(".contact-link");
+        const contactLink = document.querySelector(".contact-link");
 
-function handleLoginState(isLoggedIn) {
-  if (isLoggedIn) {
-    contactLink.classList.add("hidden");
-  } else {
-    contactLink.classList.remove("hidden");
-  }
-}
-
-// Simulate login
-handleLoginState(true);
-
-document.addEventListener('DOMContentLoaded', () => {
-    const carousel = document.querySelector('.custom-carousel');
-    const items = document.querySelectorAll('.custom-carousel-item');
-    const prevButton = document.querySelector('.carousel-prev');
-    const nextButton = document.querySelector('.carousel-next');
-    let position = Math.ceil(items.length / 2); // Start from middle
-    const totalItems = items.length;
-
-    function updateCarouselPosition() {
-        // Simply update the CSS custom property
-        carousel.style.setProperty('--position', position);
-        
-        // Update visibility and z-index of items
-        items.forEach((item, index) => {
-            const distance = Math.abs(index + 1 - position);
-            if (distance === 0) {
-                item.style.zIndex = totalItems;
+        function handleLoginState(isLoggedIn) {
+            if (isLoggedIn) {
+                contactLink.classList.add("hidden");
             } else {
-                item.style.zIndex = totalItems - distance;
+                contactLink.classList.remove("hidden");
             }
+        }
+
+        // Simulate login
+        handleLoginState(true);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.querySelector('.custom-carousel');
+            const items = document.querySelectorAll('.custom-carousel-item');
+            const prevButton = document.querySelector('.carousel-prev');
+            const nextButton = document.querySelector('.carousel-next');
+            let position = Math.ceil(items.length / 2); // Start from middle
+            const totalItems = items.length;
+
+            function updateCarouselPosition() {
+                // Simply update the CSS custom property
+                carousel.style.setProperty('--position', position);
+
+                // Update visibility and z-index of items
+                items.forEach((item, index) => {
+                    const distance = Math.abs(index + 1 - position);
+                    if (distance === 0) {
+                        item.style.zIndex = totalItems;
+                    } else {
+                        item.style.zIndex = totalItems - distance;
+                    }
+                });
+            }
+
+            prevButton.addEventListener('click', () => {
+                position = position > 1 ? position - 1 : totalItems;
+                updateCarouselPosition();
+            });
+
+            nextButton.addEventListener('click', () => {
+                position = position < totalItems ? position + 1 : 1;
+                updateCarouselPosition();
+            });
+
+            // Initialize carousel position
+            updateCarouselPosition();
         });
-    }
 
-    prevButton.addEventListener('click', () => {
-        position = position > 1 ? position - 1 : totalItems;
-        updateCarouselPosition();
-    });
+        document.addEventListener('DOMContentLoaded', () => {
+            const applyButtons = document.querySelectorAll('.apply-btn');
 
-    nextButton.addEventListener('click', () => {
-        position = position < totalItems ? position + 1 : 1;
-        updateCarouselPosition();
-    });
-
-    // Initialize carousel position
-    updateCarouselPosition();
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const applyButtons = document.querySelectorAll('.apply-btn');
-
-    applyButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            window.location.href = 'templates/successs.html';
+            applyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    window.location.href = 'templates/successs.html';
+                });
+            });
         });
-    });
-});
-</script>
+    </script>
 
 
-</script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/flickity@2.2.2/dist/flickity.pkgd.min.js"></script>
-<script src="/static/scripts/main.js" defer></script>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/flickity@2.2.2/dist/flickity.pkgd.min.js"></script>
+    <script>
+        (function () {
+            const overlay = document.getElementById('intro-overlay');
+            const video = document.getElementById('intro-video');
+            const skip = document.getElementById('intro-skip');
+
+            // 1) make sure page can’t scroll under overlay
+            document.body.classList.add('no-scroll');
+
+            const MAX_DURATION_MS = 5000; // force-hide after ~5s
+            let hidden = false;
+
+            function hideOverlay() {
+                if (hidden) return;
+                hidden = true;
+                overlay.classList.add('hidden');
+                document.body.classList.remove('no-scroll');
+                try { video.pause(); } catch (e) { }
+                setTimeout(() => overlay.remove(), 350);
+            }
+
+            // 2) hide when video ends or after timeout / skip
+            video && video.addEventListener('ended', hideOverlay);
+            const t = setTimeout(hideOverlay, MAX_DURATION_MS);
+            skip && skip.addEventListener('click', () => { clearTimeout(t); hideOverlay(); });
+
+            // 3) try autoplay; if blocked, show controls
+            window.addEventListener('load', () => {
+                if (!video) return;
+                const p = video.play?.();
+                if (p && typeof p.then === 'function') {
+                    p.catch(() => video.setAttribute('controls', 'controls'));
+                }
+            });
+        })();
+    </script>
+    <script src="/static/scripts/main.js" defer></script>
+</body>
+
 </html>
