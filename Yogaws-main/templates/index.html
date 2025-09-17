@@ -146,11 +146,12 @@
         }
     </style>
     <!-- Intro Video Overlay -->
+    <!-- Intro Video Overlay -->
     <div id="intro-overlay" class="intro-overlay" aria-hidden="true">
         <div class="intro-video-wrap">
             <video id="intro-video" class="intro-video" autoplay muted playsinline preload="auto"
-                poster="/static/assets/website_icon1.webp">
-                <source src="{{ url_for('static', filename='videos/GanpatiBappa.mp4') }}" type="video/mp4" />
+                poster="visvakarama_puja_srt.mp4">
+                <source src="{{ url_for('static', filename='videos/visvakarama_puja_srt.mp4') }}" type="video/mp4" />
                 <!-- Fallback: if mp4 unsupported -->
                 Your browser does not support the video tag.
             </video>
@@ -533,9 +534,6 @@
     </section>
 
     <div class="floating-social-links">
-        <div class="custom-circle">
-            <img src="{{ url_for('static', filename='assets/ganeshJi.jpg') }}" alt="Ganesh Chaturthi" />
-        </div>
         <a href="https://wa.me/918851246435/?text=Hello%2C%20I%20am%20interested%20to%20enquire%20about%20your%20institute"
             target="_blank" rel="noopener noreferrer">
             <i class="fab fa-whatsapp"></i>
@@ -680,39 +678,37 @@
     <script src="https://unpkg.com/flickity@2.2.2/dist/flickity.pkgd.min.js"></script>
     <script>
         (function () {
-            const overlay = document.getElementById('intro-overlay');
-            const video = document.getElementById('intro-video');
-            const skip = document.getElementById('intro-skip');
+const overlay = document.getElementById('intro-overlay');
+    const video = document.getElementById('intro-video');
+    const skip = document.getElementById('intro-skip');
 
-            // 1) make sure page can’t scroll under overlay
-            document.body.classList.add('no-scroll');
+    document.body.classList.add('no-scroll');
 
-            const MAX_DURATION_MS = 5000; // force-hide after ~5s
-            let hidden = false;
+    let hidden = false;
+    function hideOverlay() {
+        if (hidden) return;
+        hidden = true;
+        overlay.classList.add('hidden');
+        document.body.classList.remove('no-scroll');
+        try { video.pause(); } catch (e) {}
+        setTimeout(() => overlay.remove(), 350); // remove after fade-out
+    }
 
-            function hideOverlay() {
-                if (hidden) return;
-                hidden = true;
-                overlay.classList.add('hidden');
-                document.body.classList.remove('no-scroll');
-                try { video.pause(); } catch (e) { }
-                setTimeout(() => overlay.remove(), 350);
-            }
+    // Hide when video finishes
+    if (video) video.addEventListener('ended', hideOverlay);
 
-            // 2) hide when video ends or after timeout / skip
-            video && video.addEventListener('ended', hideOverlay);
-            const t = setTimeout(hideOverlay, MAX_DURATION_MS);
-            skip && skip.addEventListener('click', () => { clearTimeout(t); hideOverlay(); });
+    // Hide if skip is clicked
+    if (skip) skip.addEventListener('click', hideOverlay);
 
-            // 3) try autoplay; if blocked, show controls
-            window.addEventListener('load', () => {
-                if (!video) return;
-                const p = video.play?.();
-                if (p && typeof p.then === 'function') {
-                    p.catch(() => video.setAttribute('controls', 'controls'));
-                }
-            });
-        })();
+    // Try autoplay; if blocked, show controls
+    window.addEventListener('load', () => {
+        if (!video) return;
+        const p = video.play?.();
+        if (p && typeof p.then === 'function') {
+            p.catch(() => video.setAttribute('controls', 'controls'));
+        }
+    });
+})();
     </script>
     <script src="/static/scripts/main.js" defer></script>
 </body>
